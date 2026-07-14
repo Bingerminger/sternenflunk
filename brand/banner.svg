@@ -36,7 +36,7 @@
     <circle cx="140" cy="82" r="1.8"/><circle cx="744" cy="120" r="1.5"/><circle cx="880" cy="330" r="1.6"/>
     <text x="340" y="66" font-size="16" fill="#e2b45f">✦</text>
     <text x="1052" y="118" font-size="13" fill="#e2b45f">✦</text>
-    <text x="170" y="300" font-size="13" fill="#e2b45f">✦</text>
+    <text x="744" y="302" font-size="13" fill="#e2b45f">✦</text>
   </g>
 
   <!-- Orbit-Duett rechts -->
@@ -57,16 +57,16 @@
   <text x="66" y="205" font-size="76" font-style="italic" font-weight="bold" fill="#efeafd">Sternenflunk</text>
   <text x="70" y="248" font-size="23" font-style="italic" fill="#b3a9d6">Wir flunkern. Die Sterne nicken dazu.</text>
 
-  <!-- Feature-Pills -->
-  <g font-family="Menlo, 'Cascadia Mono', monospace" font-size="13.5">
-    <rect x="68" y="282" rx="15" width="256" height="30" fill="none" stroke="#5fc6da" stroke-opacity="0.6"/>
-    <text x="86" y="302" fill="#5fc6da">✓ Alle 144 Zeichen-Kombinationen</text>
-    <rect x="338" y="282" rx="15" width="248" height="30" fill="none" stroke="#ef7d9c" stroke-opacity="0.6"/>
-    <text x="356" y="302" fill="#ef7d9c">✓ 87,3 % gefühlte Treffsicherheit*</text>
-    <rect x="68" y="322" rx="15" width="238" height="30" fill="none" stroke="#e2b45f" stroke-opacity="0.6"/>
-    <text x="86" y="342" fill="#e2b45f">✓ 0 Datenbanken, 0 echte Sterne</text>
-    <rect x="320" y="322" rx="15" width="266" height="30" fill="none" stroke="#8FB861" stroke-opacity="0.6"/>
-    <text x="338" y="342" fill="#8FB861">✓ Für Paare jeder Konstellation 🏳️‍🌈</text>
+  <!-- Feature-Pills: Text zentriert + textLength gedeckelt, läuft nie über den Rahmen -->
+  <g font-family="Menlo, 'Cascadia Mono', monospace" font-size="13.5" lengthAdjust="spacingAndGlyphs" text-anchor="middle">
+    <rect x="68" y="280" rx="16" width="300" height="32" fill="none" stroke="#5fc6da" stroke-opacity="0.6"/>
+    <text x="218" y="301" fill="#5fc6da" textLength="256">✓ Alle 144 Zeichen-Kombinationen</text>
+    <rect x="382" y="280" rx="16" width="324" height="32" fill="none" stroke="#ef7d9c" stroke-opacity="0.6"/>
+    <text x="544" y="301" fill="#ef7d9c" textLength="280">✓ 87,3 % gefühlte Treffsicherheit*</text>
+    <rect x="68" y="320" rx="16" width="300" height="32" fill="none" stroke="#e2b45f" stroke-opacity="0.6"/>
+    <text x="218" y="341" fill="#e2b45f" textLength="256">✓ 0 Datenbanken, 0 echte Sterne</text>
+    <rect x="382" y="320" rx="16" width="300" height="32" fill="none" stroke="#8FB861" stroke-opacity="0.6"/>
+    <text x="532" y="341" fill="#8FB861" textLength="256">✓ Für Paare jeder Konstellation</text>
   </g>
 
   <text x="70" y="388" font-size="12.5" fill="#7d739f" font-family="Menlo, monospace">*Wert täglich frisch erflunkert. Genau wie alles andere hier — außer den Mondphasen, die sind echt.</text>
