@@ -1,4 +1,6 @@
 .DS_Store
+# Deploy-Skripte enthalten private Synology-Pfade/URLs — nur lokal.
+tools/deploy-*.sh
 data/couple.json
 data/days/*.json
 data/days/*.tmp.*
