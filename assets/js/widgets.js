@@ -45,8 +45,9 @@ const SFWidgets = (() => {
       }
       ctx.globalAlpha = 1;
 
-      // Sternschnuppe: selten, dezent
-      if (!shooting && Math.random() < 0.0012) {
+      // Sternschnuppe: selten, dezent — in Perseiden-/Geminiden-Nächten Dauershow
+      const shootRate = document.body.dataset.holiday === 'meteors' ? 0.014 : 0.0012;
+      if (!shooting && Math.random() < shootRate) {
         shooting = {
           x: Math.random() * innerWidth * 0.7 + innerWidth * 0.15,
           y: Math.random() * innerHeight * 0.3,
@@ -293,7 +294,74 @@ const SFWidgets = (() => {
     'Erst aufräumen, dann sehen wir weiter.',
     'Das bleibt zwischen dir und dem Mond.',
     'Ja — und einer von euch wusste es schon.',
+    'Ja — aber erst nach dem Essen. Das Orakel kennt euch.',
+    'Klares Jein. Morgen wird daraus ein Ja, wenn ihr nett fragt.',
+    'Die Sterne sagen ja, der Verstand sagt ja, der Kalender lacht.',
+    'Nur wenn ihr es zusammen macht. Sonst wird es nur halb so gut.',
+    'Das Orakel hat nachgeschlagen: Ja, steht so im Sternenregister.',
+    'Nein — und in drei Tagen wisst ihr, warum das Glück war.',
+    'Ja, mit 91,4-prozentiger Sicherheit. Die restlichen 8,6 % sind Nervenkitzel.',
+    'Frag das Sofa. Es kennt euch besser, als euch lieb ist.',
+    'Die Antwort steht in den Sternen. Da oben. Genau — das Funkeln heißt ja.',
+    'Erst Wasser trinken, dann nochmal fragen. Hydration klärt Visionen.',
+    'Das Orakel würfelt … eine Sechs. Das war ein Ja mit Stil.',
+    'Heute nein, aus Prinzip. Das Orakel muss auch mal Grenzen setzen.',
+    'Ja — die Konstellation dafür kommt so schnell nicht wieder.',
+    'Das Orakel enthält sich und schiebt die Kristallkugel verlegen hin und her.',
+    'Wenn Zweifel bestehen: ja. Es bestehen Zweifel. Also: ja.',
+    'Die Venus nickt, der Merkur zuckt, der Mond ist dafür. Mehrheitsbeschluss: ja.',
+    'Nein. Aber das Orakel bewundert den Mut der Frage.',
+    'Ja, sofern gestern kein Blumentopf umgefallen ist. Das Orakel prüft … alles gut. Ja!',
+    'Antwort unscharf — bitte einmal um den Tisch tanzen und erneut fragen.',
+    'Zu 50 % ja, zu 50 % unbedingt.',
+    'Das hängt vom Wetter ab. Innenwetter. Eures ist gut — also ja.',
+    'Das Orakel sagt ja und möchte namentlich in der Danksagung erwähnt werden.',
+    'Nein, nein, nein. Kleiner Scherz: ja.',
+    'Die Kristallkugel zeigt … euch beide, lachend. Interpretiert das mal schön selbst.',
+    'Ja. Und diesmal meint das Orakel es völlig unironisch.',
+    'Später nochmal fragen — das Orakel hat gerade Sternschnuppen-Schicht.',
   ];
+
+  // Keyword-Eastereggs: Wer dem Orakel bestimmte Wörter zuspielt,
+  // bekommt Antworten aus dem Spezialarchiv.
+  const ORACLE_SPECIALS = [
+    [/pizza/i, [
+      'Pizza ist IMMER die Antwort. Die Frage ist zweitrangig.',
+      'Das Orakel bestellt mit. Einmal Margherita fürs Universum.',
+      'Ja — und der Rand wird heute nicht liegen gelassen. Sternenbefehl.',
+    ]],
+    [/kaffee|espresso/i, [
+      'Ja. Die Frage war rhetorisch, oder?',
+      'Kaffee ist im Sternenrecht als Grundbedürfnis anerkannt. Ja.',
+      'Das Orakel läuft selbst auf Koffein. Selbstverständlich ja.',
+    ]],
+    [/lieb/i, [
+      'Mehr, als die Sterne zählen können. Und die können weit zählen.',
+      'Das Orakel verweist auf die Beweislage: erdrückend. Ja.',
+      'Diese Frage beantwortet sich jeden Morgen von selbst. Ja.',
+    ]],
+    [/urlaub|reise|verreisen/i, [
+      'Buchen. Das Orakel packt heimlich schon.',
+      'Ja — Fernweh verjährt nicht, es verzinst sich.',
+      'Die Sterne stehen auf Abflug. Deutliches Ja.',
+    ]],
+    [/flunk|horoskop|orakel|stern/i, [
+      'Das Orakel bittet, das Orakel nicht mit Meta-Fragen zu überlasten. Aber ja.',
+      'Der Sternenflunk weiß alles, verrät die Hälfte und flunkert den Rest. Trotzdem ja.',
+      'Frag doch den Himmel selbst — ach nee, dafür bin ich ja da. Ja!',
+    ]],
+    [/42/, [
+      '42. Moment — falsche Richtung. Aber ja.',
+      'Die Antwort auf diese Frage ist die Frage auf die Antwort 42. Also ja.',
+    ]],
+  ];
+
+  function oracleAnswer(question) {
+    for (const [pattern, pool] of ORACLE_SPECIALS) {
+      if (pattern.test(question)) return pool[Math.floor(Math.random() * pool.length)];
+    }
+    return ORACLE_ANSWERS[Math.floor(Math.random() * ORACLE_ANSWERS.length)];
+  }
 
   const ORACLE_LIMIT = 3;
 
@@ -349,13 +417,14 @@ const SFWidgets = (() => {
 
     askBtn.addEventListener('click', () => {
       if (askBtn.disabled) return;
+      const question = input.value;
       askBtn.disabled = true;
       answer.classList.add('shaking');
       answerText.textContent = 'Das Orakel schüttelt die Sterne …';
 
       setTimeout(() => {
         answer.classList.remove('shaking');
-        answerText.textContent = ORACLE_ANSWERS[Math.floor(Math.random() * ORACLE_ANSWERS.length)];
+        answerText.textContent = oracleAnswer(question);
         const count = oracleUse(today);
         renderQuota(count);
         if (count < ORACLE_LIMIT) askBtn.disabled = false;
