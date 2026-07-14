@@ -54,14 +54,18 @@ chmod -R u+rwX sternenflunk/data
 ## 5. Onboarding & Verwaltung
 
 - **Erster Start:** Die App zeigt automatisch das Onboarding. Zwei Namen
-  (max. 24 Zeichen), zwei Sternzeichen, „✨ Funk aufnehmen" — ab jetzt ist
-  der Einrichtungstag der erste Tag der Zeitrechnung (das Archiv beginnt dort).
-- **Stammdaten ändern:** Zahnrad ⚙ oben rechts. Achtung: Namens- oder
-  Zeichenänderung erzeugt eine neue Zeitlinie — alle Tage werden rückwirkend
-  neu geflunkert (die Sterne erinnern sich eh an nichts).
-- **Werksreset:** `data/couple.json` löschen → beim nächsten Aufruf kommt
-  wieder das Onboarding. Wer auch das Archiv leeren will, löscht zusätzlich
-  `data/days/*.json` (passiert bei geänderten Stammdaten automatisch).
+  (max. 24 Zeichen), zwei Sternzeichen, eine Admin-PIN (4–8 Ziffern),
+  „✨ Funk aufnehmen" — ab jetzt ist der Einrichtungstag der erste Tag der
+  Zeitrechnung (das Archiv beginnt dort).
+- **Stammdaten ändern:** Zahnrad ⚙ oben rechts — zum Speichern wird die
+  Admin-PIN verlangt. Dort lässt sich (optional) auch eine neue PIN setzen.
+  Achtung: Namens- oder Zeichenänderung erzeugt eine neue Zeitlinie — alle
+  Tage werden rückwirkend neu geflunkert (die Sterne erinnern sich eh an
+  nichts). Ein reiner PIN-Wechsel lässt die Horoskope unangetastet.
+- **PIN vergessen / Werksreset:** `data/couple.json` löschen → beim nächsten
+  Aufruf kommt wieder das Onboarding (inklusive neuer PIN). Wer auch das
+  Archiv leeren will, löscht zusätzlich `data/days/*.json` (passiert bei
+  geänderten Stammdaten automatisch).
 
 ## 6. Update / neues Deployment
 
@@ -76,14 +80,19 @@ Backup an).
 |---|---|
 | Onboarding meldet „lässt sich nicht schreiben" | `data/` ist für den Webserver-User nicht beschreibbar → Rechte setzen (siehe oben). |
 | Es kommt immer wieder das Onboarding | `data/couple.json` kann nicht gelesen werden oder ist kaputt → Rechte prüfen, Datei ggf. löschen und neu einrichten. |
+| „Falsche PIN" trotz richtiger PIN | Feststelltaste/Autokorrektur prüfen — die PIN besteht nur aus Ziffern. Im Zweifel: Werksreset (siehe oben). |
 | „Die Zukunft bleibt versiegelt" für heute | Server-Zeitzone ≠ eure Zeitzone → `APP_TIMEZONE` in `config.php` prüfen (Standard: Europe/Berlin). |
 | Sonnenzeiten passen nicht | `GEO_LAT`/`GEO_LON`/`GEO_NAME` in `config.php` auf euren Ort stellen (Standard: Leipzig). |
 | Horoskope ändern sich nach Code-Update rückwirkend | Passiert nur bei Tagen, die nie ausgeliefert wurden. Ausgelieferte Tage sind in `data/days/` eingefroren und bleiben stabil. |
 
-## 8. Was diese App absichtlich NICHT hat
+## 8. Sicherheitsmodell (ehrlich beschriftet)
 
-- Kein Login/Passwort: Sie ist für den Betrieb im Heimnetz oder hinter
-  einem Reverse-Proxy-Schutz gedacht. Wer sie öffentlich hostet, sollte
-  wissen: Jeder mit Zugriff kann die Stammdaten über das Zahnrad ändern.
+- **Admin-PIN = Haustür-Niveau, kein Tresor.** Die PIN (gehasht gespeichert,
+  `password_hash`) schützt die Stammdaten vor versehentlichen und
+  scherzhaften Änderungen durch Mitbewohner. Es gibt bewusst kein
+  Rate-Limiting, keine Sessions, kein HTTPS-Erzwingen — die App ist für den
+  Betrieb im Heimnetz oder hinter einem Reverse-Proxy-Schutz gedacht.
+- Die Horoskope selbst sind ohne PIN lesbar (es ist ein Horoskop, kein
+  Bankkonto).
 - Keine Cookies, kein Tracking, keine externen Requests. Der Browser merkt
   sich lediglich lokal die zuletzt gewählte Ansicht und den Orakel-Zähler.

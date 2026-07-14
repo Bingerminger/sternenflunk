@@ -33,10 +33,12 @@ wie Schicksal anfühlt.
 
 ## Features
 
-- **Onboarding in 30 Sekunden:** zwei Namen, zwei Sternzeichen, fertig.
-  Alle 144 Kombinationen, jede Konstellation — Frau & Frau, Mann & Mann,
-  zweimal Steinbock: Der Himmel ist da komplett entspannt.
-- **Admin-Zahnrad ⚙:** Stammdaten jederzeit änderbar. Achtung: Neue
+- **Onboarding in 30 Sekunden:** zwei Namen, zwei Sternzeichen, eine
+  Admin-PIN, fertig. Alle 144 Kombinationen, jede Konstellation — Frau & Frau,
+  Mann & Mann, zweimal Steinbock: Der Himmel ist da komplett entspannt.
+- **Admin-Zahnrad ⚙ mit PIN:** Stammdaten jederzeit änderbar — aber nur mit
+  der beim Onboarding festgelegten Admin-PIN (4–8 Ziffern). Eine leichte
+  Barriere, damit Mitbewohner-Hände nichts verstellen. Achtung: Neue
   Stammdaten = neue Zeitlinie, alles wird rückwirkend neu geflunkert.
 - **Drei Ansichten:** Person Eins · Gemeinsam (Paar-Protokoll) · Person Zwei
 - **Täglich neu, für immer reproduzierbar:** deterministischer Generator,
@@ -61,6 +63,16 @@ wie Schicksal anfühlt.
 - **Keine Datenbank, kein Build, kein Framework:** PHP + Vanilla JS +
   zwei JSON-Dateien. Läuft auf jedem Hoster mit PHP — auch auf dem NAS im Flur.
 
+## Screenshots
+
+| Onboarding — „Wer flunkt hier?" | Paar-Protokoll mit Orbit-Duett |
+|---|---|
+| ![Onboarding](docs/screenshots/onboarding.png) | ![Paar-Ansicht](docs/screenshots/paar.png) |
+
+| Personen-Horoskop | Admin mit PIN | Mobil |
+|---|---|---|
+| ![Personen-Ansicht](docs/screenshots/person.png) | ![Admin-Modal](docs/screenshots/admin.png) | ![Mobile](docs/screenshots/mobile.png) |
+
 ## Schnellstart
 
 ```bash
@@ -80,10 +92,13 @@ Ausführliche Anleitung (Webserver, Synology, Rechte, Troubleshooting):
 | `api.php?action=meta` | Grenzen, Stammdaten, Zeichen-Katalog (`configured: false` vor dem Onboarding) |
 | `api.php?action=day` | Horoskop von heute (Server-Zeit) |
 | `api.php?action=day&date=2026-07-15` | Horoskop dieses Tages — nur Vergangenheit/heute |
-| `api.php?action=setup` (POST) | Stammdaten speichern: `{"a":{"name":"Kim","sign":"loewe"},"b":{"name":"Alex","sign":"fische"}}` |
+| `api.php?action=setup` (POST) | Stammdaten speichern: `{"a":{"name":"Kim","sign":"loewe"},"b":{"name":"Alex","sign":"fische"},"pin":"2411"}` — bei Änderungen ist `pin` die bestehende PIN, optional `newPin` zum Wechseln |
 
-Regeln: kein Setup → `409 setup_required`, Zukunft → `403 future_locked`,
-vor der Einrichtung → `404 before_epoch`, kaputtes Datum → `422 bad_date`.
+Regeln: kein Setup → `409 setup_required`, falsche PIN → `403 wrong_pin`,
+Zukunft → `403 future_locked`, vor der Einrichtung → `404 before_epoch`,
+kaputtes Datum → `422 bad_date`. Die PIN wird nur gehasht gespeichert
+(`password_hash`) und ist bewusst nicht Teil des coupleKey — ein PIN-Wechsel
+lässt alle Horoskope in Ruhe.
 Ohne Schreibrechte auf `data/` läuft die Auslieferung trotzdem — der
 Generator ist deterministisch, Persistenz ist nur Einfrieren.
 
@@ -132,6 +147,10 @@ Zu 87,3 %. Der Wert wurde nach demselben Verfahren ermittelt wie alle anderen.
 **Was passiert mit unseren Daten?**
 Sie liegen als eine (1) JSON-Datei auf eurem eigenen Server und langweilen
 sich. Kein Tracking, keine Cloud, keine Cookies außer dem Tab-Gedächtnis.
+
+**PIN vergessen?**
+`data/couple.json` auf dem Server löschen → das Onboarding kommt wieder,
+inklusive frischer PIN. Die Sterne verzeihen alles, sie vergessen ja auch alles.
 
 ## Lizenz & Ernsthaftigkeit
 

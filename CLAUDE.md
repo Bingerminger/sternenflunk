@@ -28,6 +28,14 @@ frotzelnd, leicht frivol, Fake-Präzision als Humor-Werkzeug.
 - Stammdaten: `data/couple.json` (via `POST api.php?action=setup`,
   Onboarding & Admin nutzen denselben Endpoint). `since` = Erstinstallation
   = Kalender-Untergrenze (Epoche); bleibt bei Stammdaten-Änderungen erhalten.
+- **Admin-PIN:** beim Onboarding festgelegt (4–8 Ziffern, `Couple::PIN_PATTERN`),
+  als `pinHash` (`password_hash`) in couple.json. Jede Stammdaten-Änderung
+  verlangt `pin` im Body (falsch → 403 wrong_pin), optional `newPin` zum
+  Wechseln. Fehlt `pinHash` (Alt-Stand), verhält sich setup wie Onboarding
+  und legt die PIN an (`meta.pinSet` steuert das Frontend-Formular).
+  **Invariante: Die PIN ist NICHT Teil des coupleKey** — PIN-Wechsel darf
+  die Zeitlinie nicht verschieben. Leichte Barriere, bewusst ohne
+  Rate-Limiting/Sessions (Heimnetz).
 - `api.php?action=day&date=…` → generiert/liefert den Tag.
   Kein Setup = 409, Zukunft = 403, vor `since` = 404.
 - **Determinismus-Invariante:** `HoroscopeGenerator::day($date, $couple)` ist
@@ -82,6 +90,12 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
   (frisches Onboarding am Ziel).
 - PROD-Deploy legt vorher `***REMOVED***/sternenflunk-backup-<TS>` an
   (rsync -rl, SMB-kompatibel) — **PROD nur auf ausdrücklichen Wunsch.**
+- Historie: Sternenflunk hat am 14.07.2026 das alte „Sternenfunk"
+  (Hendrik/Nora-Spezialversion, Repo `~/Code/horoskopgenerator` im Mono-Repo)
+  abgelöst — die Synology-Ordner `horoskop`/`horoskop-acc` wurden entfernt.
+  Der alte Quellcode bleibt im Mono-Repo erhalten, wird aber nicht mehr
+  deployt; dessen Skills `/git-commit-acc`/`/git-commit-prod` nicht mehr
+  benutzen.
 
 ## Important Notes
 
