@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.1 — 2026-07-14
+
+Kosmetik fürs Schaufenster.
+
+- **Screenshots repariert:** `paar.png` und `person.png` neu aufgenommen —
+  der Sternenhimmel läuft jetzt durchgehend über die volle Seitenhöhe.
+  (Die alten Full-Page-Aufnahmen hatten den `background-attachment: fixed`-
+  Verlauf nur im ersten Viewport gerendert; Neuaufnahme mit Viewport in
+  voller Inhaltshöhe, kein Code geändert.)
+
 ## 1.1.0 — 2026-07-14
 
 Der Flunk bekommt eine Haustür.
