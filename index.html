@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sternenflunk — das geflunkerte Paar-Horoskop</title>
+  <meta name="description" content="Täglich frisch geflunkert: das Paar-Horoskop für alle 144 Sternzeichen-Kombinationen. Astrologisch fragwürdig, emotional treffsicher.">
+  <meta name="theme-color" content="#0b0820">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.0.0">
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <div id="app" class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div id="brandGlyphs" class="brand-glyphs" aria-hidden="true"><span class="glyph-a">✶</span><span class="brand-spark">✦</span><span class="glyph-b">✶</span></div>
+        <div class="brand-text">
+          <h1>Sternenflunk</h1>
+          <p class="brand-claim">Täglich frisch geflunkert. Emotional treffsicher.</p>
+        </div>
+      </div>
+      <nav class="date-nav" aria-label="Tag wählen">
+        <button id="prevDay" class="icon-btn" type="button" aria-label="Vorheriger Tag">‹</button>
+        <button id="openCalendar" class="date-btn" type="button" aria-haspopup="dialog">
+          <span id="dateLabel">…</span>
+          <span class="date-cal" aria-hidden="true">📅</span>
+        </button>
+        <button id="nextDay" class="icon-btn" type="button" aria-label="Nächster Tag">›</button>
+        <button id="shareBtn" class="icon-btn share-btn" type="button" aria-label="Diesen Tag teilen">↗</button>
+        <button id="adminBtn" class="icon-btn" type="button" aria-label="Stammdaten des Paares ändern" title="Stammdaten">⚙</button>
+      </nav>
+    </header>
+
+    <div id="retroBanner" class="retro-banner" hidden></div>
+
+    <section id="astroTicker" class="astro-ticker" aria-label="Kosmische Lage" hidden></section>
+
+    <nav id="tabs" class="tabs" role="tablist" aria-label="Horoskop wählen" hidden>
+      <button class="tab tab--a" id="tab-a" role="tab" aria-selected="false" data-view="a" type="button">
+        <span class="tab-glyph" aria-hidden="true">✶</span><span class="tab-name">…</span><span class="tab-sub">…</span>
+      </button>
+      <button class="tab tab--c" id="tab-paar" role="tab" aria-selected="true" data-view="paar" type="button">
+        <span class="tab-glyph" aria-hidden="true">❍</span><span class="tab-name">Gemeinsam</span><span class="tab-sub">Duett</span>
+      </button>
+      <button class="tab tab--b" id="tab-b" role="tab" aria-selected="false" data-view="b" type="button">
+        <span class="tab-glyph" aria-hidden="true">✶</span><span class="tab-name">…</span><span class="tab-sub">…</span>
+      </button>
+    </nav>
+
+    <main id="view" class="view" aria-live="polite"></main>
+
+    <footer class="footer">
+      <p id="countdownRow" class="countdown" hidden>Neues Horoskop in <span id="countdown" class="mono">—:—:—</span></p>
+      <p id="disclaimer" class="disclaimer">Keine Sterne wurden für dieses Horoskop befragt.</p>
+      <p class="colophon">Sternenflunk <span id="appVersion">1.0.0</span> · sendet täglich ab 00:00 Uhr · flunkert, seit ihr eingeschaltet habt</p>
+    </footer>
+  </div>
+
+  <div id="setupOverlay" class="setup-overlay" role="dialog" aria-modal="true" aria-label="Onboarding" hidden>
+    <div class="setup-panel">
+      <div class="setup-head">
+        <div class="setup-glyphs" aria-hidden="true">✶ ✦ ✶</div>
+        <h2>Wer flunkt hier?</h2>
+        <p>Der Himmel braucht Stammdaten: zwei Namen, zwei Sternzeichen —
+           mehr will er gar nicht wissen. Ab dann sendet der Sternenflunk täglich
+           ein Horoskop für jede Person und eins für euch als Paar.</p>
+      </div>
+      <div id="setupForm"></div>
+    </div>
+  </div>
+
+  <div id="adminModal" class="modal" role="dialog" aria-modal="true" aria-label="Stammdaten ändern" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel modal-panel--wide">
+      <div class="cal-head">
+        <h2 class="cal-title">Stammdaten des Paares</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Schließen">×</button>
+      </div>
+      <p class="admin-warn">⚠️ Neue Stammdaten bedeuten eine neue Zeitlinie: Sämtliche
+         bisherigen Tage werden rückwirkend neu geflunkert. Die Sterne haben damit
+         kein Problem — sie erinnern sich eh an nichts.</p>
+      <div id="adminForm"></div>
+    </div>
+  </div>
+
+  <div id="calendarModal" class="modal" role="dialog" aria-modal="true" aria-label="Archiv-Kalender" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <div class="cal-head">
+        <button id="calPrev" class="icon-btn" type="button" aria-label="Voriger Monat">‹</button>
+        <h2 id="calTitle" class="cal-title">…</h2>
+        <button id="calNext" class="icon-btn" type="button" aria-label="Nächster Monat">›</button>
+      </div>
+      <div class="cal-weekdays" aria-hidden="true">
+        <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+      </div>
+      <div id="calGrid" class="cal-grid"></div>
+      <p class="cal-hint">Vergangenes ist offen, die Zukunft bleibt versiegelt. 🔮</p>
+      <button class="btn cal-close" type="button" data-close>Schließen</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="assets/js/charts.js?v=1.0.0"></script>
+  <script src="assets/js/widgets.js?v=1.0.0"></script>
+  <script src="assets/js/app.js?v=1.0.0"></script>
+</body>
+</html>
