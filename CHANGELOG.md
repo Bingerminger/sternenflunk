@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.0 — 2026-07-14
+
+Der Flunk bekommt eine Haustür.
+
+- **Admin-PIN:** Beim Onboarding wird eine PIN (4–8 Ziffern) festgelegt;
+  jede Stammdaten-Änderung über das Zahnrad verlangt sie (falsch → 403).
+  Optionaler PIN-Wechsel im Admin-Formular. Gehasht gespeichert
+  (`password_hash`), bewusst nicht Teil des coupleKey — ein PIN-Wechsel
+  lässt die Horoskop-Zeitlinie unangetastet. Alt-Stände ohne PIN werden
+  beim nächsten Speichern automatisch migriert.
+- Screenshots in `docs/screenshots/` + Galerie im README.
+- Doku: INSTALL.md mit ehrlichem Sicherheitsmodell („Haustür-Niveau,
+  kein Tresor"), PIN-vergessen-Anleitung, Troubleshooting-Eintrag.
+
 ## 1.0.0 — 2026-07-14
 
 Erstausgabe. Der Sternenflunk flunkert los.

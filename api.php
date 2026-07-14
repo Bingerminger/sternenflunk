@@ -8,11 +8,15 @@ declare(strict_types=1);
  *   GET  api.php?action=day[&date=YYYY-MM-DD]  → Horoskop des Tages (Standard: heute)
  *   GET  api.php?action=meta                   → Kalender-Grenzen, Stammdaten, Zeichen-Katalog
  *   POST api.php?action=setup                  → Stammdaten speichern (Onboarding & Admin)
- *                                                Body: {"a":{"name":…,"sign":…},"b":{…}}
+ *                                                Body: {"a":{"name":…,"sign":…},"b":{…},
+ *                                                       "pin":…[,"newPin":…]}
  *
  * Regeln:
  *  - Ohne Stammdaten liefert action=day 409 setup_required — erst das Paar,
  *    dann die Prophezeiung.
+ *  - Die Admin-PIN wird beim Onboarding festgelegt (gehasht gespeichert) und
+ *    bei jeder Stammdaten-Änderung verlangt (falsch → 403 wrong_pin).
+ *    Leichte Barriere gegen Mitbewohner, kein Hochsicherheitsschloss.
  *  - Zukunft ist gesperrt (Überraschungsschutz), Vergangenheit ab Einrichtung offen.
  *  - Einmal generierte Tage werden als JSON eingefroren (data/days/). Ändert das
  *    Paar seine Stammdaten, passt der coupleKey nicht mehr und der Tag wird
@@ -50,6 +54,7 @@ function metaPayload(?array $couple, string $today): array
         'version'     => APP_VERSION,
         'serverToday' => $today,
         'configured'  => $couple !== null,
+        'pinSet'      => $couple !== null && !empty($couple['pinHash']),
         'epoch'       => $couple['since'] ?? null,
         'couple'      => $couple === null ? null : [
             'a'     => Couple::person($couple, 'a'),
@@ -70,11 +75,28 @@ if ($action === 'setup') {
     $raw  = file_get_contents('php://input', length: 16384);
     $body = is_string($raw) ? json_decode($raw, true) : null;
     if (!is_array($body) || !is_array($body['a'] ?? null) || !is_array($body['b'] ?? null)) {
-        fail(422, 'bad_body', 'Erwartet wird JSON mit den Feldern a und b (je name + sign).');
+        fail(422, 'bad_body', 'Erwartet wird JSON mit den Feldern a und b (je name + sign) plus pin.');
     }
 
+    $existing = Couple::load();
+    $pinSet   = $existing !== null && !empty($existing['pinHash']);
+
     try {
-        $couple = Couple::save($body['a'], $body['b']);
+        if (!$pinSet) {
+            // Onboarding (oder Alt-Stand ohne PIN): neue PIN wird festgelegt.
+            $pinHash = Couple::hashPin($body['pin'] ?? null);
+        } else {
+            // Admin-Änderung: erst die PIN, dann die Sterne.
+            if (!Couple::verifyPin($existing, $body['pin'] ?? null)) {
+                fail(403, 'wrong_pin', 'Falsche PIN — die Stammdaten bleiben versiegelt. Die Sterne petzen nicht.');
+            }
+            $newPin  = $body['newPin'] ?? null;
+            $pinHash = (is_string($newPin) && $newPin !== '')
+                ? Couple::hashPin($newPin)
+                : $existing['pinHash'];
+        }
+
+        $couple = Couple::save($body['a'], $body['b'], $pinHash);
     } catch (InvalidArgumentException $e) {
         fail(422, 'invalid_input', $e->getMessage());
     } catch (RuntimeException $e) {

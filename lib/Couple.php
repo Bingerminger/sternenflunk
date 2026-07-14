@@ -5,18 +5,23 @@ declare(strict_types=1);
 require_once __DIR__ . '/Zodiac.php';
 
 /**
- * Stammdaten des Paares: zwei Namen, zwei Sternzeichen, ein Startdatum.
+ * Stammdaten des Paares: zwei Namen, zwei Sternzeichen, ein Startdatum —
+ * plus eine Admin-PIN (leichte Barriere gegen kreative Mitbewohner-Hände).
  *
  * Gespeichert in data/couple.json. Der coupleKey fließt in alle Rng-Seeds —
  * ändert sich das Paar, ändert sich deterministisch das gesamte Programm.
- * Eingefrorene Tage mit fremdem coupleKey werden beim Ausliefern verworfen
- * und neu generiert; save() räumt sie zusätzlich direkt weg.
+ * Die PIN ist bewusst NICHT Teil des coupleKey: Eine PIN-Änderung darf die
+ * Horoskop-Zeitlinie nicht anfassen. Eingefrorene Tage mit fremdem coupleKey
+ * werden beim Ausliefern verworfen; save() räumt sie zusätzlich direkt weg.
  */
 final class Couple
 {
     public const NAME_MAX = 24;
 
-    /** @return ?array{a:array{name:string,sign:string}, b:array{name:string,sign:string}, since:string} */
+    /** 4–8 Ziffern: Haustür-Niveau, kein Tresor — mehr braucht der Flunk nicht. */
+    public const PIN_PATTERN = '/^\d{4,8}$/';
+
+    /** @return ?array{a:array{name:string,sign:string}, b:array{name:string,sign:string}, since:string, pinHash:?string} */
     public static function load(): ?array
     {
         if (!is_file(COUPLE_FILE)) {
@@ -35,7 +40,8 @@ final class Couple
 
         return ['a' => ['name' => $c['a']['name'], 'sign' => $c['a']['sign']],
                 'b' => ['name' => $c['b']['name'], 'sign' => $c['b']['sign']],
-                'since' => $c['since']];
+                'since' => $c['since'],
+                'pinHash' => is_string($c['pinHash'] ?? null) ? $c['pinHash'] : null];
     }
 
     /**
@@ -44,10 +50,11 @@ final class Couple
      *
      * @param array{name?:mixed, sign?:mixed} $a
      * @param array{name?:mixed, sign?:mixed} $b
+     * @param string $pinHash bereits gehashte Admin-PIN (self::hashPin)
      * @throws InvalidArgumentException bei Validierungsfehlern (Klartext, user-tauglich)
      * @throws RuntimeException wenn data/ nicht beschreibbar ist
      */
-    public static function save(array $a, array $b): array
+    public static function save(array $a, array $b, string $pinHash): array
     {
         $clean = [
             'a' => ['name' => self::cleanName($a['name'] ?? '', 'Person Eins'), 'sign' => self::cleanSign($a['sign'] ?? '', 'Person Eins')],
@@ -56,6 +63,7 @@ final class Couple
 
         $previous = self::load();
         $clean['since']     = $previous['since'] ?? date('Y-m-d');
+        $clean['pinHash']   = $pinHash;
         $clean['updatedAt'] = date('c');
 
         if (!is_dir(DATA_DIR) && !@mkdir(DATA_DIR, 0775, true)) {
@@ -79,7 +87,28 @@ final class Couple
         return $clean;
     }
 
-    /** Kurzer, stabiler Fingerabdruck des Paares — Bestandteil aller Rng-Seeds. */
+    /** Validiert das PIN-Format und liefert den Hash für save(). */
+    public static function hashPin(mixed $pin): string
+    {
+        if (!is_string($pin) || !preg_match(self::PIN_PATTERN, $pin)) {
+            throw new InvalidArgumentException('Die Admin-PIN braucht 4 bis 8 Ziffern — gut merkbar, schwer verwechselbar.');
+        }
+
+        return password_hash($pin, PASSWORD_DEFAULT);
+    }
+
+    /** Prüft eine eingegebene PIN gegen die gespeicherten Stammdaten. */
+    public static function verifyPin(array $couple, mixed $pin): bool
+    {
+        $hash = $couple['pinHash'] ?? null;
+
+        return is_string($pin) && is_string($hash) && $hash !== '' && password_verify($pin, $hash);
+    }
+
+    /**
+     * Kurzer, stabiler Fingerabdruck des Paares — Bestandteil aller Rng-Seeds.
+     * Bewusst OHNE PIN: Eine PIN-Änderung darf die Zeitlinie nicht verschieben.
+     */
     public static function key(array $couple): string
     {
         $norm = mb_strtolower(trim($couple['a']['name'])) . '|' . $couple['a']['sign'] . '|'

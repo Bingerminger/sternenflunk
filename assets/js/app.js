@@ -113,11 +113,35 @@
         </div>
       </div>`;
 
+    // PIN: beim Onboarding (oder Alt-Stand ohne PIN) festlegen,
+    // sonst zur Bestätigung eingeben + optional ändern.
+    const needsNewPin = !prefill || !state.meta.pinSet;
+    const pinInput = (field, label, hint, autocomplete) => `
+      <label class="setup-label">${label}${hint ? ` <span class="label-soft">${hint}</span>` : ''}
+        <input type="password" class="setup-name setup-pin" data-field="${field}"
+               inputmode="numeric" pattern="[0-9]*" maxlength="8"
+               placeholder="4–8 Ziffern" autocomplete="${autocomplete}">
+      </label>`;
+
+    const pinCard = needsNewPin
+      ? `<div class="setup-card setup-card--pin">
+           <div class="eyebrow">Admin-PIN</div>
+           <p class="pin-hint">Die PIN wird beim Ändern der Stammdaten abgefragt — eine leichte
+              Barriere, damit Mitbewohner-Hände nichts verstellen. Gut merken!</p>
+           ${pinInput('pin', 'PIN festlegen', '', 'new-password')}
+         </div>`
+      : `<div class="setup-card setup-card--pin">
+           <div class="eyebrow">Admin-PIN</div>
+           ${pinInput('pin', 'PIN eingeben', '(zum Speichern nötig)', 'current-password')}
+           ${pinInput('newPin', 'Neue PIN', '(leer lassen = behalten)', 'new-password')}
+         </div>`;
+
     return `
       <div class="setup-grid">
         ${card('a', 'Person Eins', prefill?.a)}
         ${card('b', 'Person Zwei', prefill?.b)}
       </div>
+      ${pinCard}
       <div class="setup-actions">
         <button type="button" class="btn btn--gold setup-submit">${prefill ? 'Speichern & neu flunkern' : '✨ Funk aufnehmen'}</button>
       </div>`;
@@ -144,14 +168,18 @@
       });
       const a = read('a');
       const b = read('b');
+      const pin = container.querySelector('[data-field="pin"]').value.trim();
+      const newPin = container.querySelector('[data-field="newPin"]')?.value.trim() || '';
 
       if (!a.name || !b.name) { SFWidgets.toast('Beide Namen, bitte — die Sterne duzen nur namentlich. ✍️'); return; }
       if (!a.sign || !b.sign) { SFWidgets.toast('Jede Person braucht ein Sternzeichen. Einfach eins anklicken. ♈︎–♓︎'); return; }
+      if (!/^\d{4,8}$/.test(pin)) { SFWidgets.toast('Die Admin-PIN braucht 4–8 Ziffern. 🔐'); return; }
+      if (newPin && !/^\d{4,8}$/.test(newPin)) { SFWidgets.toast('Auch die neue PIN braucht 4–8 Ziffern. 🔐'); return; }
 
       const btn = e.currentTarget;
       btn.disabled = true;
       try {
-        await postSetup({ a, b });
+        await postSetup(newPin ? { a, b, pin, newPin } : { a, b, pin });
         await onSave();
       } catch (err) {
         SFWidgets.toast(err.message);
