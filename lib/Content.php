@@ -46,6 +46,39 @@ final class Content
         'Heute fällt dir etwas zu, das andere suchen müssen: der richtige Moment.',
         'Kosmischer Kassenbon: Heute wird dir mehr zurückgegeben, als du gibst.',
         'Der Horizont hat heute extra für dich aufgeräumt.',
+        'Houston meldet: keine Probleme. Ungewohnt, aber genieß es.',
+        'Dein Karma hat heute Bonuspunkte gutgeschrieben. Einlösbar sofort.',
+        'Heute bist du die Antwort auf eine Frage, die jemand gestern gestellt hat.',
+        'Das Universum hat dich heute auf Lautsprecher gestellt. Sag was Nettes.',
+        'Offizielle Durchsage: Dein Bauchgefühl hat heute Weisungsbefugnis.',
+        'Die Sterne haben deinen Namen heute zweimal unterstrichen.',
+        'Heute klappt sogar der zweite Anlauf beim ersten Versuch.',
+        'Kosmisches Update 2.0.1: behebt Montagsgefühle, verbessert Timing.',
+        'Du bist heute zu 73 % Sonnenschein und zu 27 % Verhandlungsmasse.',
+        'Der Tag hat 24 Stunden. Deine gehören heute zu den besseren.',
+        'Heute gilt Rückenwind-Verordnung, Paragraf 1: einfach laufen lassen.',
+        'Deine Aura wurde heute frisch gewischt. Bitte nicht drauf rumtrampeln lassen.',
+        'Die Galaxis dreht sich weiter — heute ausnahmsweise um dich.',
+        'Heute fällt dir etwas ein, das du dir gestern merken wolltest. Pünktlich.',
+        'Sternenamt, Zimmer 7: Dein Antrag auf einen guten Tag wurde bewilligt.',
+        'Der Kosmos hat heute Kulanz-Tag. Kleine Fehler werden rausgerechnet.',
+        'Heute bist du der Beweis, dass Glück Timing plus Dickkopf ist.',
+        'Achtung, Prognose: 80 % Chance auf ein Lächeln ohne Vorwarnung.',
+        'Das Schicksal hat heute deine Nummer gewählt. Geh ran.',
+        'Heute läuft dein Film. Untertitel braucht niemand.',
+        'Die Sterne haben heute Nacht heimlich für dich geprobt.',
+        'Kosmischer Wartungshinweis: Deine gute Laune wurde über Nacht aktualisiert.',
+        'Heute triffst du den Ton. Auch den zwischen den Zeilen.',
+        'Der Horoskop-Beirat war sich einig: Dir kann heute wenig passieren.',
+        'Deine Umlaufbahn kreuzt heute auffällig viele gute Gelegenheiten.',
+        'Heute bist du pünktlicher als dein Kalender. Das verunsichert ihn.',
+        'Sternenlage: stabil. Restrisiko: Übermut. Empfehlung: genau richtig dosieren.',
+        'Heute wächst dir etwas zu: Gelassenheit, in genau deiner Größe.',
+        'Das Universum hat für dich reserviert. Fensterplatz, versteht sich.',
+        'Dein innerer Kompass zeigt heute nach vorn. Der Rest ist Fußweg.',
+        'Heute bekommst du recht, Rabatt und ein Kompliment. Reihenfolge offen.',
+        'Die Schwerkraft gilt heute für alle — nur deine Mundwinkel sind ausgenommen.',
+        'Heute ist einer dieser Tage, die man später „damals“ nennt. Im besten Sinn.',
     ];
 
     // -------------------------------------------------------- Kosmisches Wetter
@@ -69,6 +102,28 @@ final class Content
         'Die Nacht wird klar. Beste Bedingungen für Geständnisse und Balkon.',
         'Gefühlslage föhnig: warm, trocken, leicht elektrisierend.',
         'Kosmische Sichtweite: bis übermorgen.',
+        'Ruhige Umlaufbahnen, gegen Abend auflebender Kuschelwind aus Südwest.',
+        'Vereinzelt Gedankenblitze, dazwischen ausgedehnte Phasen von innerem Sonnenschein.',
+        'Leichter Alltagsniesel am Morgen, ab mittags freundlich bis verschmust.',
+        'Über {ORT} klart es im Kopf schneller auf als am Himmel. Beides rechtzeitig.',
+        'Galaktische Großwetterlage: ruhig. Wer Drama sucht, muss heute selbst welches mitbringen.',
+        'Am Vormittag Restmüdigkeit, die sich gegen 10 Uhr in Tatendrang umwandelt. Chemisch erstaunlich.',
+        'Sternschnuppen-Restbestand von letzter Nacht wird heute als gute Laune ausgeliefert.',
+        'Emotionale Pollenbelastung: niedrig. Durchatmen ausdrücklich empfohlen.',
+        'Zwischen 17 und 19 Uhr romantische Turbulenzen möglich. Anschnallzeichen bleibt aus.',
+        'Der Abend bringt klare Sicht auf Sofa, Sterne und Wesentliches.',
+        'Herzdruckgebiet über dem Wohnzimmer, Tendenz: steigend.',
+        'Milde 21 Grad im Gefühlsraum, gefühlt wie Urlaub.',
+        'Ein Tiefausläufer namens Alltag zieht vorbei, verliert aber deutlich an Kraft.',
+        'Nachts sternenklar mit erhöhter Wunschaktivität. Formulierungen bitte vorbereiten.',
+        'Kosmischer Seegang: ruhig bis verspielt. Beste Bedingungen für Landgänge zu zweit.',
+        'Glitzerfront im Anmarsch, Eintreffen zur Kaffeezeit.',
+        'Vormittags sachlich, nachmittags charmant, abends zärtlich aufgelockert.',
+        'Die Aussichten: erst rosig, dann golden, gegen Mitternacht sternenklar.',
+        'Örtlich begrenzte Euphorieschauer, besonders in Küchennähe.',
+        'Hoch „Herzlich“ bleibt stabil über eurer Adresse liegen. Kein Durchzug in Sicht.',
+        'Für heute gemeldet: 0 % Weltuntergang, 100 % Feierabend.',
+        'Magnetfeld freundlich gestimmt — Anziehung funktioniert heute überdurchschnittlich.',
     ];
 
     // ------------------------------------------------- Astro-Fakt zum Klugscheißern
@@ -94,20 +149,81 @@ final class Content
         'Der Sternenhimmel, den ihr seht, ist Vergangenheit — manche Sterne sind längst woanders. Der Himmel postet also auch nur alte Fotos.',
         'Saturn würde in einer riesigen Badewanne schwimmen — seine Dichte ist geringer als Wasser. Wellness-Planet.',
         'Der Polarstern ist gar nicht der hellste Stern am Himmel, nur der mit dem besten Job. Positionierung ist alles.',
+        'Ein Tag auf der Venus dauert länger als ihr Jahr. Manche Sonntage schaffen das gefühlt auch.',
+        'Der Jupiter-Sturm „Großer Roter Fleck“ tobt seit mindestens 190 Jahren. Und ihr diskutiert noch über die Spülmaschine.',
+        'Auf dem Mond bleiben Fußspuren Millionen Jahre erhalten. Auf dem Küchenboden gefühlt auch.',
+        'Die Sonne macht 99,86 % der Masse des Sonnensystems aus. Der Rest ist Deko — sagt die Sonne.',
+        'Olympus Mons auf dem Mars ist fast dreimal so hoch wie der Everest. Und hat trotzdem keinen Gipfelstempel.',
+        'In der Milchstraße gibt es mehr Sterne als Sekunden in 3000 Jahren. Zeit relativiert sich, Zuneigung nicht.',
+        'Merkur hat keine Atmosphäre und trotzdem den schlechtesten Ruf. Rufschädigung durch Astrologie.',
+        'Die Erde rast mit 107.000 km/h um die Sonne — und niemandem wird schlecht. Bordservice: Atmosphäre.',
+        'Neutronensterne rotieren bis zu 700-mal pro Sekunde. Trotzdem wirken sie gelassener als ein Montagmorgen.',
+        'Auf Titan, dem Saturnmond, regnet es Methan. Es gibt also Orte mit schlechterem Wetter als eurem.',
+        'Das Universum dehnt sich ständig aus. Eure Sofaecke tut es ihm nach — Kissen für Kissen.',
+        'Rund 100 Tonnen Weltraumstaub rieseln täglich auf die Erde. Staubwischen ist also offiziell sinnlos.',
+        'Die Andromeda-Galaxie ist auf Kollisionskurs mit der Milchstraße — Ankunft in 4 Milliarden Jahren. Kein Grund zur Eile.',
+        'Ohne Mond würde die Erde deutlich stärker taumeln. Jeder braucht jemanden, der stabilisiert.',
+        'Ein Jahr auf dem Neptun dauert 165 Erdjahre. Dort wäre noch nicht mal euer erster Jahrestag rum.',
+        'Im Weltall kann niemand schnarchen hören. Im All. Nicht im Schlafzimmer.',
+        'Die ISS ist innen etwa so groß wie ein Sechs-Zimmer-Haus — nur mit besserer Aussicht und schlechterem Balkon.',
+        'Licht vom nächsten Stern (Proxima Centauri) ist über 4 Jahre unterwegs. Manche Antworten auf Sprachnachrichten auch.',
+        'Auf dem Merkur schwankt die Temperatur um 600 Grad. Und ihr streitet über 3,5 Grad Thermostat.',
+        'Galaxien halten durch dunkle Materie zusammen. Beziehungen durch Insider-Witze. Beides unsichtbar, beides stark.',
+        'Die Sonne wird in 5 Milliarden Jahren zum Roten Riesen. Bis dahin: alles halb so wild.',
+        'Astronauten wachsen im All bis zu 5 cm. Urlaub streckt eben — die Rückkehr staucht.',
+        'Der Mond zeigt uns immer dieselbe Seite. Verlässlichkeit kann man lernen. Vom Mond.',
+        'Seit 1971 liegen zwei Golfbälle auf dem Mond. Manche Hobbys brauchen einfach Platz.',
     ];
 
     // ------------------------------------------------------------- Numerologie
 
+    /** @var array<int, list<string>> pro Tageszahl mehrere Varianten (Rng-gepickt). */
     public const NUMEROLOGY = [
-        1 => 'Die 1 steht heute für: Anfänge, Alleingänge und das erste Wort beim Frühstück.',
-        2 => 'Die 2 steht heute für: Paare, Parallelen und doppelten Espresso.',
-        3 => 'Die 3 steht heute für: aller guten Dinge, dritte Versuche und Dreiklang im Feierabend.',
-        4 => 'Die 4 steht heute für: stabile Stühle, stabile Beziehungen, stabile WLAN-Verbindung.',
-        5 => 'Die 5 steht heute für: fünf Minuten länger liegen bleiben. Genehmigt.',
-        6 => 'Die 6 steht heute für: Gemütlichkeit mit System und ein Sechser-Gefühl im Bauch.',
-        7 => 'Die 7 steht heute für: Glück, Zwerge und die Erkenntnis, dass eine Woche schneller rum ist als gedacht.',
-        8 => 'Die 8 steht heute für: Unendlichkeit, nur einmal umgefallen. Gilt auch für eure Geduld.',
-        9 => 'Die 9 steht heute für: fast am Ziel — der letzte Schritt ist der mit dem Applaus.',
+        1 => [
+            'Die 1 steht heute für: Anfänge, Alleingänge und das erste Wort beim Frühstück.',
+            'Die 1 steht heute für: einmal tief durchatmen, einmal anfangen, einmal glänzen.',
+            'Die 1 steht heute für: das erste Lächeln des Tages — es bestimmt die Richtung.',
+        ],
+        2 => [
+            'Die 2 steht heute für: Paare, Parallelen und doppelten Espresso.',
+            'Die 2 steht heute für: zwei Meinungen, ein Team. Funktioniert seit jeher.',
+            'Die 2 steht heute für: alles, was zu zweit besser geht. Also fast alles.',
+        ],
+        3 => [
+            'Die 3 steht heute für: aller guten Dinge, dritte Versuche und Dreiklang im Feierabend.',
+            'Die 3 steht heute für: Frühstück, Mittag, Abendbrot — Struktur ist auch eine Kunst.',
+            'Die 3 steht heute für: dreimal raten, wer heute an dich denkt.',
+        ],
+        4 => [
+            'Die 4 steht heute für: stabile Stühle, stabile Beziehungen, stabile WLAN-Verbindung.',
+            'Die 4 steht heute für: vier Wände, die heute besonders gemütlich sind.',
+            'Die 4 steht heute für: solide Basis, stabile Laune, standfeste Pläne.',
+        ],
+        5 => [
+            'Die 5 steht heute für: fünf Minuten länger liegen bleiben. Genehmigt.',
+            'Die 5 steht heute für: fünf gerade sein lassen — der Kosmos rechnet heute großzügig.',
+            'Die 5 steht heute für: eine Hand voll guter Gründe, heute zufrieden zu sein.',
+        ],
+        6 => [
+            'Die 6 steht heute für: Gemütlichkeit mit System und ein Sechser-Gefühl im Bauch.',
+            'Die 6 steht heute für: sechs Richtige — in Form von sechs kleinen Glücksmomenten.',
+            'Die 6 steht heute für: Feierabend mit Vorlauf. Genehmigt und gegengezeichnet.',
+        ],
+        7 => [
+            'Die 7 steht heute für: Glück, Zwerge und die Erkenntnis, dass eine Woche schneller rum ist als gedacht.',
+            'Die 7 steht heute für: den siebten Himmel. Zugang heute barrierefrei.',
+            'Die 7 steht heute für: sieben Sachen packen und etwas Schönes draus machen.',
+        ],
+        8 => [
+            'Die 8 steht heute für: Unendlichkeit, nur einmal umgefallen. Gilt auch für eure Geduld.',
+            'Die 8 steht heute für: eine liegende Unendlichkeit. Zeit genug für alles Wichtige.',
+            'Die 8 steht heute für: achtsam sein — mit dir und der Lieblingsperson.',
+        ],
+        9 => [
+            'Die 9 steht heute für: fast am Ziel — der letzte Schritt ist der mit dem Applaus.',
+            'Die 9 steht heute für: neun von zehn Punkten. Den zehnten gibt es beim Abendessen.',
+            'Die 9 steht heute für: den letzten Schliff. Meisterwerke brauchen Geduld.',
+        ],
     ];
 
     // -------------------------------------------------------------- Mondphasen
@@ -118,6 +234,12 @@ final class Content
             'Neumond: beste Bedingungen für geheime Pläne und ungestörtes Kuscheln — nicht mal der Mond guckt zu.',
             'Neumond: Das Universum hat den Reset-Knopf gedrückt. Passwörter bleiben zum Glück gespeichert.',
             'Neumond: Dunkelster Himmel des Monats. Perfekt, um Sterne zu zählen oder einfach früh ins Bett zu fallen.',
+            'Neumond: null Prozent Beleuchtung, hundert Prozent Möglichkeiten.',
+            'Neumond: Der Himmel zeigt heute bewusst nichts. Datenschutz auf kosmisch.',
+            'Neumond: ideale Nacht für Wünsche in der Beta-Phase.',
+            'Neumond: Der Mond lädt auf. Ihr dürft das auch — Sofa gilt als Ladestation.',
+            'Neumond: Was ihr heute anfangt, wächst mit dem Mond mit. Die Richtung stimmt schon mal.',
+            'Neumond: Heute schreibt der Himmel eine leere Seite. Kritzeln erlaubt.',
         ],
         'zunehmend' => [
             'Der Mond nimmt zu und ist völlig entspannt dabei. Nehmt euch ein Beispiel.',
@@ -125,12 +247,23 @@ final class Content
             'Der Mond baut gerade auf. Ideale Phase für Projekte, Vorsätze und zweite Portionen.',
             'Zunehmender Mond: Rückenwind für alles, was größer werden soll. Ausgenommen Diskussionen.',
             'Der Mond ist im Aufbau-Training und postet keine Fortschrittsfotos. Vorbildlich.',
+            'Zunehmender Mond: Der Himmel füllt gerade den Fortschrittsbalken. Ihr auch — weiter so.',
+            'Der Mond legt zu und lässt sich dabei nicht hetzen. Ein Vorbild mit Kratern.',
+            'Zunehmende Phase: gute Zeit, Dinge zu gießen — Pflanzen, Pläne, Beziehungen.',
+            'Der Mond arbeitet an seiner besten Form. Genau wie euer Wochenende.',
+            'Zunehmender Mond: jeden Abend ein bisschen mehr. Das Prinzip funktioniert auch bei Vertrauen.',
         ],
         'voll' => [
             'Vollmond! Alle sind heute etwas drüber — aber ihr wenigstens gemeinsam.',
             'Vollmond: maximale Beleuchtung, maximale Gefühle. Der Himmel hat das Flutlicht angemacht.',
             'Vollmond: Wer heute schlecht schläft, darf offiziell den Mond beschuldigen. Einmalige Gelegenheit.',
             'Vollmond: 100 % Beleuchtung, 0 % Diskretion. Der perfekte Abend für große Auftritte am Balkonfenster.',
+            'Vollmond: Der Himmel hat heute Abend die große Lampe an. Schlafqualität: Verhandlungssache.',
+            'Vollmond: beste Bühne für Balkon-Auftritte und dramatische Blicke. Beides bitte nutzen.',
+            'Vollmond: Heute werden Gefühle in Großbuchstaben geschrieben. Lesebrille optional.',
+            'Vollmond: Das Meer macht Flut, ihr macht Gefühle. Alles nach Plan.',
+            'Vollmond: Wer heute etwas Verrücktes vorschlägt, hat ein astronomisches Alibi.',
+            'Vollmond: 100 % Sichtbarkeit. Gilt heute auch für Herzensangelegenheiten.',
         ],
         'abnehmend' => [
             'Abnehmender Mond: Der Himmel macht vor, wie Loslassen geht. Der Wäscheberg wäre ein Anfang.',
@@ -138,6 +271,11 @@ final class Content
             'Abnehmender Mond: gute Phase zum Ausmisten. Sorgenkiste und Krimskrams-Schublade zählen beide.',
             'Der Mond zieht sich dezent zurück. Ihr dürft es ihm heute Abend gleichtun.',
             'Abnehmender Mond: Ballast abwerfen erlaubt. Sorgen zuerst, Sarkasmus dürft ihr behalten.',
+            'Abnehmender Mond: Der Himmel macht Inventur. Behalten wird alles, was glücklich macht.',
+            'Der Mond lässt los und wirkt dabei sehr entspannt. Nachmachen erlaubt.',
+            'Abnehmende Phase: perfekt zum Abhaken, Aufräumen, Abschließen. Und für Tee.',
+            'Der Mond reduziert auf das Wesentliche. Der Kalender könnte das auch vertragen.',
+            'Abnehmender Mond: Alte Sorgen verlieren an Leuchtkraft. Neue sind nicht bestellt.',
         ],
     ];
 
@@ -147,17 +285,30 @@ final class Content
         'Der Tag ist {MIN} Min länger als gestern — die Sonne gibt eine Zugabe.',
         '{MIN} Min mehr Tageslicht als gestern. Verwendungszweck: frei wählbar, Vorschlag: Balkon.',
         'Heute gibt es {MIN} Min Licht extra. Ein Geschenk, keine Verpflichtung.',
+        'Plus {MIN} Min Tageslicht: Die Sonne baut euer Glücksfenster eigenhändig aus.',
+        'Die Sonne legt {MIN} Min drauf. Kein Kleingedrucktes, keine Gegenleistung.',
+        '{MIN} Min mehr Licht — der Himmel verlängert eure Spielzeit.',
+        'Heute {MIN} Min heller als gestern. Der Sommer schickt Vorboten.',
+        'Die Sonne bleibt {MIN} Min länger. Aus Sympathie, vermutlich.',
     ];
 
     public const SUN_SHORTER = [
         'Der Tag ist {MIN} Min kürzer als gestern — die Sonne knausert schon wieder.',
         '{MIN} Min weniger Tageslicht als gestern. Die Sonne macht Homeoffice.',
         'Heute fehlen {MIN} Min Licht. Kompensation: Kerzen, Bildschirme, Ausstrahlung.',
+        'Minus {MIN} Min Licht — der Himmel spart, ihr dürft trotzdem leuchten.',
+        'Die Sonne geht {MIN} Min früher. Mehr Zeit für die Kerzenschein-Konkurrenz.',
+        '{MIN} Min weniger Tag — dafür {MIN} Min mehr gemütliche Dunkelheit. Nettosumme: kein Grund zur Klage.',
+        'Die Sonne kürzt um {MIN} Min. Der Abend übernimmt die Schicht gern.',
+        'Heute {MIN} Min dunkler als gestern. Gute Nachricht für Sterne und Kuscheldecken.',
     ];
 
     public const SUN_EQUAL = [
         'Tageslänge exakt wie gestern. Die Sonne hat heute Dienst nach Vorschrift.',
         'Heute genau so lang wie gestern — das Universum kopiert sich selbst. Kommt vor.',
+        'Tageslänge unverändert — der Himmel drückt heute auf Wiederholen.',
+        'Exakt gleiche Tageslänge wie gestern. Stabilität kann so schön unspektakulär sein.',
+        'Die Sonne liefert heute das Gestern-Programm. Bewährt ist bewährt.',
     ];
 
     // ---------------------------------------------------------- Merkur & Saison
@@ -167,6 +318,12 @@ final class Content
         'Merkur läuft rückwärts (bis {BIS}) — Missverständnisse haben Hochsaison. Im Zweifel: nochmal nett fragen.',
         'Merkur retro (bis {BIS}): Technik zickt, Termine rutschen, und niemand kann etwas dafür. Praktisch.',
         'Merkur ist rückläufig — bis {BIS} ist der offizielle Sündenbock für alles damit gestellt.',
+        'Merkur retro (bis {BIS}): Wer heute Technik anschreit, bekommt Verständnis, aber keine Lösung.',
+        'Merkur rückwärts (bis {BIS}): Doppelt gesendete Nachrichten gelten als Zärtlichkeit.',
+        'Merkur ist rückläufig (bis {BIS}). Alte Bekannte tauchen auf, alte Passwörter nicht.',
+        'Merkur retro bis {BIS}: Verträge zweimal lesen, Komplimente sofort raushauen.',
+        'Merkur läuft rückwärts (bis {BIS}) — perfekte Ausreden-Saison. Vorräte anlegen.',
+        'Merkur retro (bis {BIS}): Missverständnisse gibt es heute im Doppelpack. Humor zum Glück auch.',
     ];
 
     public const SEASON_HOME = [
@@ -174,18 +331,32 @@ final class Content
         '{NAME} hat gerade kosmisches Heimrecht. Einspruch zwecklos.',
         '{SIGN}-Saison: {NAME} spielt in der eigenen Liga — Logenplätze für die Begleitung.',
         'Die Sonne steht im Zeichen von {NAME}. Bitte entsprechend behandeln: wie Besuch, nur mit Hausschlüssel.',
+        '{SIGN}-Saison: {NAME} bekommt heute kosmischen Applaus schon fürs Aufstehen.',
+        'Heimspiel für {NAME}: Die Sterne tragen heute Fanschal in {SIGN}-Farben.',
+        '{NAME} hat Saison-Bonus: Wünsche gelten heute als halb erfüllt.',
+        'Der Kosmos beleuchtet gerade die {SIGN}-Loge. {NAME} sitzt drin und winkt.',
+        '{SIGN}-Wochen im Universum: {NAME} genießt Sonderkonditionen, die Begleitung profitiert mit.',
     ];
 
     public const SEASON_BOTH = [
         'Doppeltes Heimspiel! Die {SIGN}-Saison gehört euch beiden. Der Kosmos bittet um Zurückhaltung beim Triumphieren.',
         '{SIGN}-Saison für euch beide — Heimvorteil im Quadrat, Gegner: keine.',
         'Eure gemeinsame Saison: zwei {SIGN_PLURAL} mit Heimrecht. Die Nachbar-Sternzeichen sind still neidisch.',
+        'Doppelsaison! Zwei {SIGN_PLURAL}, ein Festmonat — der Himmel hat Girlanden aufgehängt.',
+        'Eure Saison läuft: doppeltes Heimrecht, halbierte Wartezeiten beim Glück.',
+        'Zwei {SIGN_PLURAL} in der eigenen Saison — der Rest des Tierkreises schaut ehrfürchtig zu.',
+        '{SIGN}-Saison im Doppelpack: Der Kosmos hat euch beide auf die Gästeliste gesetzt. Mit Plus eins — also euch gegenseitig.',
     ];
 
     public const SEASON_GENERIC = [
         'Kein Heimspiel für euch beide — offiziell neutraler Boden, faire Verhandlungen.',
         'Fremdes Revier, aber ihr habt ja euch.',
         'Gastauftritt für euch beide — benehmt euch wie immer: nicht ganz.',
+        'Auswärtsspiel für euch beide — gut, dass ihr als Team antretet.',
+        'Fremde Saison, vertraute Taktik: zusammenhalten und charmant sein.',
+        'Kein Heimvorteil heute — macht nichts, ihr habt Heimgefühl im Gepäck.',
+        'Neutraler kosmischer Boden: Heute zählt nur die Tagesform. Eure ist gut.',
+        'Gastspiel-Saison: Der Applaus kommt trotzdem, nur eine Sekunde später.',
     ];
 
     // ================================================== Kategorien (für beide)
@@ -209,6 +380,28 @@ final class Content
         'Dein Herz schließt heute den größten Deal des Tages ab: Verlängerung mit {PARTNER}, unbefristet.',
         'Die Sterne notieren: {PARTNER} hat heute Zuneigung verdient. Grund: einfach so.',
         'Heute lohnt Geduld: {PARTNER} braucht drei Sätze Anlauf, dann kommt etwas Wunderschönes.',
+        'Heute gilt: Ein „Ich denk an dich“ zur Unzeit schlägt jedes Blumen-Abo.',
+        'Die Venus hat heute Frühschicht: Schon der erste Blick am Morgen sitzt.',
+        'Kosmischer Befund: Deine Hand und die von {PARTNER} haben heute Magnetstatus.',
+        'Heute lohnt es sich, eine Kleinigkeit zu feiern. Zur Not die Uhrzeit.',
+        'Die Sterne raten zu einem Spontankuss um {ZEIT} Uhr. Begründung folgt keine.',
+        'Dein Herz sendet heute in HD. {PARTNER} hat den passenden Empfänger.',
+        'Liebesamt, Abteilung Alltag: Heute zählt Zuhören doppelt. Nicken allein reicht nicht.',
+        'Heute macht ein „Wir“ aus jedem Problem eine Aufgabe. Sprachmagie.',
+        'Der Kosmos legt heute ein gutes Wort für dich ein — bei {PARTNER} war das gar nicht nötig.',
+        'Venus-Tipp: Die schönsten Gespräche entstehen heute nebenbei. Beim Schnippeln, beim Gehen, beim Nichtstun.',
+        'Heute darfst du kitschig sein. Der Kosmos schaut weg und lächelt.',
+        'Zuneigungsprognose: stabil sonnig mit örtlichen Umarmungsfronten.',
+        'Ein „Danke“ für Selbstverständliches wirkt heute wie ein kleines Feuerwerk.',
+        'Heute Abend hat das Sofa Anziehungskraft der Kategorie „Schwarzes Loch“. Widerstand zwecklos, Gesellschaft empfohlen.',
+        'Die Sterne bestätigen: {PARTNER} lacht heute besonders gern über deine Witze. Auch die mittleren.',
+        'Herzfrequenz-Hinweis: Beim Blickkontakt um {ZEIT} Uhr bitte nicht erschrecken. Das ist Absicht.',
+        'Heute ist ein guter Tag, ein altes Versprechen einzulösen. Das kleine reicht.',
+        'Kosmischer Serviervorschlag: Frühstück machen und so tun, als wäre es keine große Sache. Es ist eine.',
+        'Die Liebe steckt heute im Detail: im aufgeladenen Akku, im freigehaltenen Platz, im letzten Stück.',
+        'Heute wird einmal laut gelacht und einmal leise gedrückt. Reihenfolge frei wählbar.',
+        'Venus notiert: Wer heute zuerst nach der Hand greift, gewinnt. Es gewinnen beide.',
+        'Dein Lächeln hat heute Reichweite bis in den nächsten Raum. Nutzung uneingeschränkt erlaubt.',
     ];
 
     public const ENERGIE = [
@@ -230,6 +423,28 @@ final class Content
         'Heute knackst du eine Bestzeit. Vielleicht nur beim Treppensteigen, aber Bestzeit ist Bestzeit.',
         'Dein Puls läuft heute im Takt des Universums. Und deiner Lieblings-Playlist.',
         'Muskelkater-Prognose: 40 %, mit Stolz-Garantie.',
+        'Dein Akku zeigt heute 100 % an und meint es ehrlich.',
+        'Beweglichkeits-Bonus: Heute gelingt sogar das Bücken nach dem heruntergefallenen Löffel mit Stil.',
+        'Die Sterne zählen heute deine Schritte mit und runden wohlwollend auf.',
+        'Trink-Erinnerung des Kosmos: Das Glas Wasser um {ZEIT} Uhr ist das wichtigste des Tages.',
+        'Heute trägt dich der Schwung vom Aufstehen bis zum Feierabend. Einsteigen und festhalten.',
+        'Frische Luft wirkt heute wie ein Software-Update: Danach läuft alles runder.',
+        'Dein Rücken wünscht sich heute drei Dehnübungen. Er hat es schriftlich beim Kosmos eingereicht.',
+        'Energielevel: überraschend gut. Verwendung: bitte nicht nur fürs Aufräumen.',
+        'Heute zählt Alltagssport doppelt: Treppen, Einkaufstüten, spontanes Tanzen in der Küche.',
+        'Der Kosmos verschreibt 20 Minuten Tageslicht. Nebenwirkung: gute Laune.',
+        'Dein Körper ist heute kooperativ gestimmt. Verhandle neue Gewohnheiten, solange er gut drauf ist.',
+        'Powernap-Fenster: {ZEIT} Uhr, Dauer 20 Minuten, Wirkung wie ein kurzer Urlaub.',
+        'Heute fühlt sich Bewegung leichter an als Ausreden. Seltene Wetterlage, ausnutzen.',
+        'Deine Schultern dürfen heute runterkommen. Sie hingen die ganze Woche auf Halbmast nach oben.',
+        'Vitamin-Hinweis der Sterne: Obst, das man teilen kann, wirkt doppelt.',
+        'Heute läuft der Kreislauf rund wie ein geölter Orbit.',
+        'Das Workout von heute heißt vielleicht nur „zügig gehen“ — zählt aber voll.',
+        'Abends müde zu sein ist heute ein Qualitätssiegel, keine Schwäche.',
+        'Deine Haltung ist heute aufrechter als sonst. Innen wie außen.',
+        'Gesundheits-Update: Alle Systeme laufen. Ein Obstteller würde Applaus bekommen.',
+        'Heute schlafen die Sorgen vor dir ein. Endlich mal die richtige Reihenfolge.',
+        'Sportliche Höchstleistung des Tages: rechtzeitig aufhören. Du schaffst das.',
     ];
 
     public const ERFOLG = [
@@ -251,6 +466,28 @@ final class Content
         'Dein Timing ist heute unheimlich: Du erwischst überall die kurze Schlange.',
         'Etwas, das andere längst abgeschrieben hatten, schließt du heute ab. Dein Spezialgebiet.',
         'Der Feierabend beginnt heute pünktlich. Das ist keine Prognose, das ist eine Anordnung.',
+        'Heute funktioniert der Drucker beim ersten Mal. Nutze diesen kosmischen Moment für Wichtiges.',
+        'Deine E-Mails haben heute Trefferquote: kurz, freundlich, erledigt.',
+        'Der Kosmos hat deine Warteschleifen heute verkürzt. Durchschnittlich um 4,7 Minuten.',
+        'Heute gilt das Zwei-Minuten-Gesetz: Was schneller geht, wird sofort gemacht. Der Effekt ist verblüffend.',
+        'Dein Verhandlungsgeschick hat heute Sternebewertung. Nutze es auch beim Thema Abendessen.',
+        'Multitasking ist heute verboten — und genau deshalb wirst du fertig.',
+        'Ein Anruf ersetzt heute sieben Nachrichten. Die Sterne haben nachgezählt.',
+        'Heute findest du den Fehler, den alle übersehen haben. Bescheidenheit ist danach optional.',
+        'Der Aktenberg von gestern ist heute nur noch ein Hügel mit Aussicht.',
+        'Um {ZEIT} Uhr kommt eine gute Nachricht. Bitte nicht im Spam suchen, sie kommt persönlich.',
+        'Heute zahlt sich Gründlichkeit von vorgestern aus. Das Vergangenheits-Ich verdient ein Danke.',
+        'Dein wichtigstes Werkzeug heute: die Pause. Direkt nach ihr passiert der Durchbruch.',
+        'Aufgeräumter Schreibtisch, aufgeräumter Orbit: 10 Minuten investieren, den ganzen Tag profitieren.',
+        'Heute sagst du einmal freundlich „nein“ und gewinnst dadurch zwei Stunden.',
+        'Kleiner Verwaltungserfolg mit großer Wirkung: Ein Abo, ein Termin oder ein Papierstau löst sich heute.',
+        'Dein Zeitgefühl ist heute geeicht. Sogar die Nudeln werden auf die Minute fertig.',
+        'Heute lohnt der zweite Blick auf eine verworfene Idee. Sie hat sich weiterentwickelt.',
+        'Die Glückssträhne beginnt heute unauffällig: mit einem Parkplatz in erster Reihe.',
+        'Sparsamkeits-Bonus: Heute widerstehst du genau einem unnötigen Kauf und bist unerträglich stolz. Zu Recht.',
+        'Was du heute delegierst, kommt besser zurück als gedacht. Vertrauen zahlt Zinsen.',
+        'Heute klappt der Behördengang, das Update oder beides. Der Kosmos weiß selbst nicht, was ihn geritten hat.',
+        'Dein To-do von heute liest sich abends wie eine Siegerliste.',
     ];
 
     public const KOPF = [
@@ -270,8 +507,30 @@ final class Content
         'Der Ohrwurm von heute ist morgen weg. Der Kosmos verspricht es. Halbherzig.',
         'Heute darfst du eine Meinung ändern. Das ist kein Umfallen, das ist Aerodynamik.',
         'Dein Humor ist heute schneller als dein Filter. Die Umgebung wird es lieben. Meistens.',
-        'Heute liest du zwischen den Zeilen — und findet da ein Kompliment.',
+        'Heute liest du zwischen den Zeilen — und findest da ein Kompliment.',
         'Konzentrations-Fenster: {ZEIT} Uhr. Was auch immer dann passiert — es wird gründlich.',
+        'Heute sortiert dein Kopf von allein. Einfach machen lassen, ab und zu nicken.',
+        'Eine Idee klopft heute zweimal. Beim zweiten Mal aufmachen.',
+        'Dein Gedächtnis serviert heute Bonusmaterial: Szenen, die du längst vergessen glaubtest. Beste Auswahl.',
+        'Um {ZEIT} Uhr denkst du an genau die richtige Person. Ein kurzer Gruß wirkt Wunder.',
+        'Heute verwandelst du Grübeln in Nachdenken. Der Unterschied: ein Ergebnis.',
+        'Dein Kopfkino zeigt heute eine Komödie. Endlich mal gutes Programm.',
+        'Zwischen zwei Gedanken ist heute eine Lücke. Sie heißt Ruhe und ist begehbar.',
+        'Heute verstehst du {PARTNER} auf Anhieb. Sogar die Halbsätze. Vor allem die Halbsätze.',
+        'Dein Bauch und dein Kopf sind sich heute einig. Protokollieren — das ist selten und wertvoll.',
+        'Kreative Sternzeit um {ZEIT} Uhr: Da entsteht die Idee, von der du nächste Woche erzählst.',
+        'Heute liest du ein Kapitel, hörst einen Gedanken oder siehst ein Bild, das bleibt.',
+        'Dein innerer Kritiker hat heute Betriebsausflug. Der innere Fan übernimmt kommissarisch.',
+        'Gedanken-Wartung: Ein kurzer Spaziergang defragmentiert heute die Festplatte.',
+        'Heute darfst du eine Sache NICHT zu Ende denken. Sie denkt sich selbst fertig, während du schläfst.',
+        'Dein Wortschatz hat heute Premium-Zugriff: Das treffende Wort kommt zur treffenden Zeit.',
+        'Eine kleine Erkenntnis über dich selbst kommt heute beim Zähneputzen. Klassischer Ort.',
+        'Heute hilft Aufschreiben: Drei Zeilen am Abend, und der Tag ergibt rückwirkend Sinn.',
+        'Dein Optimismus ist heute faktenbasiert. Die beste Sorte.',
+        'Im Kopf ist heute Frühjahrsputz — egal welche Jahreszeit. Platz für Neues entsteht.',
+        'Heute erkennst du: Das Problem von letzter Woche war ein Hinweis. Gut aufgepasst.',
+        'Dein Humor rettet heute eine Situation, die es noch gar nicht wusste.',
+        'Melancholie klopft kurz an, bleibt aber nur auf einen Tee. Danach: klare Sicht.',
     ];
 
     // ------------------------------------------------ Sternzeichen-Ansagen (12)
@@ -284,6 +543,12 @@ final class Content
             'Widder-Modus: Anlauf ist was für andere. Du startest aus dem Stand.',
             'Heute gilt: erst machen, dann googeln, ob man das so macht. Hat bisher immer geklappt.',
             'Dein innerer Motor läuft heute im roten Bereich. Das ist bei dir der Normalbereich.',
+            'Widder-Update: Deine Ungeduld ist heute produktiv — sie treibt genau das Richtige an.',
+            'Heute rennst du keine Türen ein. Sie öffnen sich vorsorglich von selbst.',
+            'Widder-Wetter: 100 % Tatendrang mit vereinzelten Siegesposen.',
+            'Dein „Machen wir sofort“ rettet heute jemandem den Tag. Vermutlich allen Beteiligten.',
+            'Der Kosmos reicht dir heute die Ziellinie ein Stück entgegen. Aus Respekt.',
+            'Widder-Weisheit: Wer Erster sein will, muss loslaufen. Du bist schon um die Ecke.',
         ],
         'stier' => [
             'Stier-Ansage: Du bist nicht stur, du bist stabil. Mit Meinung.',
@@ -291,6 +556,12 @@ final class Content
             'Heute bewegst du dich exakt so schnell wie nötig. Der Kosmos nennt es Souveränität.',
             'Dein Beharrungsvermögen ist heute eine Superkraft. Das Sofa bestätigt.',
             'Stier-Weisheit: Gut Ding will Weile. Sehr gut Ding will Decke und Snacks.',
+            'Stier-Update: Dein Ruhepuls ist heute ansteckend. Die Umgebung entspannt sich in deiner Nähe von allein.',
+            'Heute verteidigst du erfolgreich: deine Meinung, deinen Stammplatz und das letzte Stück Kuchen.',
+            'Stier-Wetter: gemütlich mit Aussicht auf Genuss in Serie.',
+            'Dein Qualitätsanspruch zahlt sich heute aus — beim Einkauf, beim Essen, bei der Gesellschaft.',
+            'Beständigkeit ist deine Superkraft: Was du heute versprichst, gilt. Sternenamtlich.',
+            'Der Kosmos serviert heute in deinem Tempo. Endlich versteht es jemand.',
         ],
         'zwillinge' => [
             'Zwillinge-Ansage: Du hast heute zu allem zwei Meinungen. Beide sind gut.',
@@ -298,6 +569,12 @@ final class Content
             'Heute wechselst du dreimal das Thema, ohne den Faden zu verlieren. Zirkusreif.',
             'Neugier-Level: Weltraumteleskop. Heute entdeckst du garantiert etwas.',
             'Zwillinge-Modus: Plan A und Plan B laufen heute parallel. Einer gewinnt, beide hatten Spaß.',
+            'Zwillinge-Update: Dein Small Talk hat heute Tiefgang und dein Deep Talk Leichtigkeit. Seltene Doppelbegabung.',
+            'Heute jonglierst du Termine, Themen und Teetassen — und nichts geht zu Bruch.',
+            'Zwillinge-Wetter: geistreich mit erhöhter Pointendichte am Nachmittag.',
+            'Deine Neugier findet heute genau die Information, die alle gesucht haben.',
+            'Zwei Seelen, ein Ergebnis: Heute einigen sich deine inneren Stimmen ausnahmsweise sofort.',
+            'Der Kosmos hat heute Gesprächsbedarf — und du bist die erste Wahl.',
         ],
         'krebs' => [
             'Krebs-Ansage: Dein Panzer ist heute nur Deko. Die Tür an der Seite kennt eh nur eine Person.',
@@ -305,6 +582,12 @@ final class Content
             'Heute spürst du, was andere brauchen, bevor sie es sagen. Nutze das für Gutes.',
             'Dein Zuhause-Radar läuft auf Hochtouren: Du machst heute jeden Ort ein bisschen wärmer.',
             'Krebs-Modus: Erst fühlen, dann denken, dann Tee. Die Reihenfolge stimmt.',
+            'Krebs-Update: Dein Bauchgefühl hat heute Beweiskraft. Zitierfähig.',
+            'Heute machst du aus vier Wänden ein Nest und aus einem Abend ein Zuhause-Gefühl.',
+            'Krebs-Wetter: warmherzig mit örtlichen Fürsorgeschauern.',
+            'Deine Erinnerung an Kleinigkeiten macht heute jemanden sehr glücklich.',
+            'Sensibel ist keine Schwäche, sondern dein Radar. Heute ortet es ausschließlich Gutes.',
+            'Der Kosmos bringt dir heute Wärme zurück, die du irgendwann verliehen hast. Mit Zinsen.',
         ],
         'loewe' => [
             'Löwen-Ansage: Die Bühne ist heute da, wo du stehst. Publikum findet sich.',
@@ -312,6 +595,12 @@ final class Content
             'Großzügigkeits-Hoch: Du verteilst heute Komplimente wie Konfetti. Steht dir.',
             'Heute gilt: Wer glänzen kann, muss nicht blenden. Du kannst beides, wählst aber weise.',
             'Löwen-Modus: Drama nur in homöopathischen Dosen. Dafür Herz in Großpackung.',
+            'Löwen-Update: Dein Lachen ist heute die beste Beleuchtung im Raum.',
+            'Heute brauchst du keine Bühne — du bist tragbar, und die Bühne kommt mit.',
+            'Löwen-Wetter: strahlend mit großzügigen Gesten bis in die Abendstunden.',
+            'Dein Stolz und deine Herzlichkeit arbeiten heute Hand in Hand. Ein starkes Team.',
+            'Heute inspirierst du jemanden, ohne es zu merken. Königsdisziplin.',
+            'Der Kosmos hat den roten Teppich heute nur symbolisch ausgerollt. Aber er liegt.',
         ],
         'jungfrau' => [
             'Jungfrau-Ansage: Deine Liste hat heute eine Unterliste. Und die funktioniert.',
@@ -319,6 +608,12 @@ final class Content
             'Perfektions-Level: 97,2 %. Die fehlenden 2,8 % sind Absicht — du nennst es Charme.',
             'Heute bringst du Ordnung in etwas, das andere für hoffnungslos hielten. Standing Ovations.',
             'Jungfrau-Modus: Qualitätskontrolle mit Herz. Bestanden haben heute: alle, die du liebst.',
+            'Jungfrau-Update: Dein Blick fürs Detail entdeckt heute eine Abkürzung, die niemand sah.',
+            'Heute stimmen Plan, Ausführung und sogar die Pausen. Applaus vom Klemmbrett.',
+            'Jungfrau-Wetter: klar strukturiert mit spontanen Perfektionsmomenten.',
+            'Deine leise Sorgfalt bekommt heute laute Anerkennung. Nimm sie an.',
+            'Heute optimierst du etwas, das offiziell nicht zu optimieren war. Rekord.',
+            'Der Kosmos legt dir heute alles zurecht — sortiert nach Größe, versteht sich.',
         ],
         'waage' => [
             'Waagen-Ansage: Du wägst heute ab und findest die elegante Mitte. Wie immer, nur schneller.',
@@ -326,6 +621,12 @@ final class Content
             'Heute entscheidest du dich in Rekordzeit: nur zweimal umentschieden. Neue Bestmarke.',
             'Dein Sinn für Schönheit läuft auf Anschlag. Selbst der Einkaufszettel wird heute ästhetisch.',
             'Waagen-Modus: Erst alle Seiten hören, dann charmant recht behalten.',
+            'Waagen-Update: Du bringst heute zwei Fronten an einen Tisch — mit Charme und gutem Gebäck.',
+            'Heute gelingt dir die eleganteste Entscheidung der Woche: die richtige.',
+            'Waagen-Wetter: ausgeglichen mit ästhetischen Höchstwerten am Abend.',
+            'Dein Gerechtigkeitssinn trifft heute auf Gelegenheit. Nutze beides.',
+            'Heute charmierst du dich durch jede Warteschlange. Man lässt dich gern vor.',
+            'Der Kosmos hat die Balance heute vorjustiert. Du musst nur noch lächeln.',
         ],
         'skorpion' => [
             'Skorpion-Ansage: Ein Blick von dir ersetzt heute drei Gespräche. Sparsam einsetzen.',
@@ -333,6 +634,12 @@ final class Content
             'Du durchschaust heute alles — auch, dass jemand heimlich stolz auf dich ist.',
             'Geheimnis-Level: Du weißt Dinge. Woher, bleibt dein Geheimnis. Natürlich.',
             'Skorpion-Modus: Tiefgang serienmäßig, Stachel im Halfter, Herz auf Empfang.',
+            'Skorpion-Update: Deine Menschenkenntnis ist heute röntgenscharf — und du nutzt sie für Gutes.',
+            'Heute bekommst du eine Wahrheit heraus, ohne eine einzige Frage zu stellen.',
+            'Skorpion-Wetter: intensiv mit magnetischen Phasen nach Einbruch der Dunkelheit.',
+            'Deine Loyalität ist heute spürbar wie Schwerkraft: unsichtbar, unverhandelbar, verlässlich.',
+            'Heute wird unterschätzt, wer dich unterschätzt.',
+            'Der Kosmos flüstert dir heute etwas zu, das sonst niemand hören darf. Du nickst nur.',
         ],
         'schuetze' => [
             'Schütze-Ansage: Der Horizont ruft an und fragt, wann du kommst. Bald, sagst du. Wie immer.',
@@ -340,6 +647,12 @@ final class Content
             'Deine Direktheit trifft heute ins Schwarze — und landet trotzdem im Herzen.',
             'Fernweh-Prognose: erhöht. Zur Not tut es heute auch der weiteste Weg zum Bäcker.',
             'Schütze-Modus: Ziel gesehen, Pfeil geschnitzt, gelacht, getroffen.',
+            'Schütze-Update: Dein Optimismus hat heute Beweise gesammelt. Die Lage ist tatsächlich gut.',
+            'Heute triffst du mit einer ehrlichen Bemerkung genau den Punkt, der weiterhilft.',
+            'Schütze-Wetter: weitsichtig mit spontanen Aufbruchsböen.',
+            'Dein Lachen öffnet heute mehr Türen als jeder Schlüssel.',
+            'Heute planst du groß und fängst klein an. Exakt die richtige Reihenfolge.',
+            'Der Kosmos hat den Horizont heute extra weit gestellt. Nur für dich.',
         ],
         'steinbock' => [
             'Steinbock-Ansage: Dein Plan hat heute einen Plan. Beide funktionieren.',
@@ -347,6 +660,12 @@ final class Content
             'Dein trockener Humor hat heute Premiumqualität. Reifung: jahrelang, Abgang: perfekt.',
             'Disziplin-Level: Gipfelstürmer. Aber du machst Pausen — das ist der eigentliche Fortschritt.',
             'Steinbock-Modus: leise Ziele, laute Ergebnisse.',
+            'Steinbock-Update: Deine Ausdauer bekommt heute Rückenwind — der Gipfel rückt sichtbar näher.',
+            'Heute erledigst du still etwas Großes. Die Fanfaren kommen später, aber sie kommen.',
+            'Steinbock-Wetter: beständig mit trockenen Pointen zur besten Sendezeit.',
+            'Dein Wort hat heute Gewicht. Deine Pausen übrigens auch.',
+            'Heute belohnst du dich für Erreichtes. Das ist ein Befehl vom Berg.',
+            'Der Kosmos respektiert heute deinen Plan und räumt sogar zwei Hindernisse weg.',
         ],
         'wassermann' => [
             'Wassermann-Ansage: Deine Idee von gestern Nacht war doch nicht verrückt. Nur früh dran.',
@@ -354,6 +673,12 @@ final class Content
             'Eigenwilligkeits-Level: Manufaktur. Dich gibt es nicht in Serie, zum Glück.',
             'Heute löst du ein Problem auf eine Art, die vorher niemand und danach jeder genial findet.',
             'Wassermann-Modus: Zukunft ist dein Heimatort, Besuch in der Gegenwart jederzeit willkommen.',
+            'Wassermann-Update: Deine unkonventionelle Lösung von heute wird morgen Standard. Wie üblich.',
+            'Heute denkst du quer und landest damit genau richtig.',
+            'Wassermann-Wetter: originell mit überraschenden Geistesblitz-Fronten.',
+            'Deine Unabhängigkeit und deine Loyalität geben heute ein Doppelkonzert. Ausverkauft.',
+            'Heute erklärst du etwas Kompliziertes so einfach, dass alle nicken. Sogar das Sofa.',
+            'Der Kosmos testet heute neue Ideen — deine zuerst, aus gutem Grund.',
         ],
         'fische' => [
             'Fische-Ansage: Dein Tagtraum von heute hat Substanz. Notieren, nicht wegwinken.',
@@ -361,6 +686,12 @@ final class Content
             'Heute schwimmst du elegant um jedes Problem herum. Es merkt es nicht einmal.',
             'Deine Fantasie hat heute Flügel und Flossen. Amphibisch begabt, wie du selbst.',
             'Fische-Modus: halb hier, halb woanders — und genau deshalb ganz bei dir.',
+            'Fische-Update: Deine Fantasie legt heute einen Business-Plan vor. Beide Seiten staunen.',
+            'Heute spürst du Stimmungen, bevor sie den Raum betreten. Türsteher-Qualitäten.',
+            'Fische-Wetter: verträumt mit kreativen Strömungen und warmen Untiefen.',
+            'Dein Mitgefühl ist heute die Superkraft, die jemand dringend gebraucht hat.',
+            'Heute schwimmst du mit dem Strom — weil er zufällig exakt in deine Richtung fließt.',
+            'Der Kosmos hat heute ein Aquarium voller Ideen für dich. Greif einfach rein.',
         ],
     ];
 
@@ -380,6 +711,23 @@ final class Content
         'Die Sterne haben heute Nacht Sichtschutz gebucht. Aus Gründen.',
         'Ab {ZEIT} Uhr wird aus Feierabend Feuerabend.',
         'Dein Lieblingsduft hat heute Superkräfte. Einsatz nach eigenem Ermessen.',
+        'Heute Abend gilt: Kerzen an, Erwartungen hoch, Handy lautlos in Quarantäne.',
+        'Das Universum empfiehlt für heute Nacht: Neugier mitbringen, Uhr zu Hause lassen.',
+        'Knister-Vorhersage: ab {ZEIT} Uhr deutlich über dem Saisonmittel.',
+        'Der Abend startet harmlos mit „Komm mal kurz her“. Der Rest ist Astrologie.',
+        'Heute Nacht sind die Sterne diskret. Sie haben selbst genug zu tun.',
+        'Venus-Direktive: Komplimente heute flüstern statt sagen. Wirkung verdreifacht sich.',
+        'Später Abend, gute Musik, schwaches Licht: Die Zutaten stehen bereit. Das Rezept kennt ihr.',
+        'Heute knistert es schon beim Abwasch. Der Rest des Abends hat keine Chance, langweilig zu werden.',
+        'Anziehung heute: wissenschaftlich nicht erklärbar, praktisch hervorragend belegt.',
+        'Der Kosmos rät zu einem frühen Rückzug in private Sphären. Die Sterne halten draußen Wache.',
+        'Heute Abend zählt jede Berührung doppelt. Die Sternenbank schreibt alles gut.',
+        'Dresscode: das Teil, das angeblich nur für besondere Anlässe ist. Heute ist einer.',
+        'Nachtprogramm: erst lange Blicke, dann kurze Distanzen.',
+        'Die Playlist von damals wirkt heute wie ein Beschleuniger. Einsatz auf eigene Verantwortung.',
+        'Heute gilt Sperrstunde für Vernunft: Ab {ZEIT} Uhr übernimmt das Bauchgefühl.',
+        'Zärtlichkeits-Index: deutlich erhöht. Der Abend hat Rückenwind und ein Ziel.',
+        'Das Schlafzimmer meldet heute Heimvorteil an. Berechtigt.',
     ];
 
     // --------------------------------------------------------------- Warnungen
@@ -399,6 +747,24 @@ final class Content
         'Warnung: Jemand sagt heute „Das haben wir schon immer so gemacht“. Tief durchatmen, lächeln, gewinnen.',
         'Achtung: Die Frage „Was wollen wir essen?“ erreicht heute Gefahrenstufe Gelb. Frühzeitig entschärfen.',
         'Vorsicht zwischen {ZEIT} und 20 Minuten später: erhöhte Diskussionsneigung über Kleinigkeiten mit Grundsatzpotenzial.',
+        'Achtung: Ein „Kannst du mal kurz kommen?“ dauert heute im Schnitt 22 Minuten. Einplanen.',
+        'Warnung: Der Online-Warenkorb füllt sich heute wie von Geisterhand. Die Geisterhand ist deine.',
+        'Vorsicht bei Möbelaufbau nach 18 Uhr: Schraube 7 fehlt nie — sie versteckt sich nur.',
+        'Achtung: Heute droht ein Spontankauf im Supermarkt, Kategorie „stand so günstig“.',
+        'Warnung: Die Snooze-Taste hat heute überzeugende Argumente. Bleib stark. Oder auch nicht — dein Horoskop hält zu dir.',
+        'Vorsicht: Wer heute „Machen wir am Wochenende“ sagt, unterschreibt einen Vertrag. Die Sterne führen Buch.',
+        'Achtung um {ZEIT} Uhr: akute Umräum-Laune. Erst denken, dann Sofa schieben.',
+        'Warnung: Ein Software-Update wählt heute den unpassendsten Moment. Es ist ein Naturgesetz.',
+        'Vorsicht: Heute Nachmittag droht der Satz „Wo waren wir stehen geblieben?“ ohne Antwort.',
+        'Achtung: Die Tupperschrank-Lawine ist heute überfällig. Öffnen nur in Deckungshaltung.',
+        'Warnung: „Kurz die Nachrichten checken“ hat heute eine Halbwertszeit von 45 Minuten.',
+        'Vorsicht: Ein Ohrwurm in Dauerschleife sucht sich heute ausgerechnet euch beide aus. Duett-Pflicht.',
+        'Achtung: Der Wetterbericht ändert heute dreimal die Meinung. Nehmt eine Jacke. Und Humor.',
+        'Warnung: Das WLAN plant zwischen {ZEIT} und kurz danach eine Kunstpause. Es meint nichts Persönliches.',
+        'Vorsicht: Heute besteht Gefahr, beim Aufräumen alte Fotos zu finden. Zeitverlust: gern eine Stunde. Zeitgewinn: unbezahlbar.',
+        'Achtung: „Das räum ich morgen weg“ gilt heute als amtlich belächelte Aussage.',
+        'Warnung: Der Timer der Waschmaschine piept exakt im gemütlichsten Moment. Die Sterne konnten es nicht verhindern.',
+        'Vorsicht: Heute wird jemand „interessant“ sagen und „kompliziert“ meinen. Übersetzung mitdenken.',
     ];
 
     // ------------------------------------------------------------------- Glück
@@ -425,6 +791,26 @@ final class Content
         ['Glückskeks-Vanille', '#EFE3C0'],
         ['Espresso-Braun', '#6B4A32'],
         ['Kometen-Koralle', '#E07A6B'],
+        ['Nordlicht-Mint', '#7FD8C8'],
+        ['Kosmos-Kupfer', '#B87348'],
+        ['Milchstraßen-Mauve', '#B48EC7'],
+        ['Zenit-Zitrone', '#E5D370'],
+        ['Umlaufbahn-Ultramarin', '#3D5A9E'],
+        ['Sternwarten-Smaragd', '#3F8F6B'],
+        ['Perseiden-Pink', '#E585B2'],
+        ['Teleskop-Taupe', '#9C8E7E'],
+        ['Raketen-Rost', '#B05A3C'],
+        ['Jupiter-Jade', '#6FA287'],
+        ['Halo-Himmelblau', '#7FB3D9'],
+        ['Orion-Ocker', '#C89A4B'],
+        ['Gravitations-Grün', '#5F9E5C'],
+        ['Deneb-Denim', '#4F6D96'],
+        ['Astro-Aubergine', '#6E4470'],
+        ['Lichtjahr-Lachs', '#EA9982'],
+        ['Quasar-Quitte', '#D9C25F'],
+        ['Ereignishorizont-Erdbeere', '#C24B62'],
+        ['Finsternis-Flamingo', '#E58FA2'],
+        ['Sonnenwind-Sand', '#D9BE93'],
     ];
 
     public const ITEMS_COMMON = [
@@ -448,25 +834,62 @@ final class Content
         'ein Teelicht mit Überstunden',
         'die Playlist von damals',
         'ein Apfel mit Auftritt',
+        'die Kaffeetasse mit dem perfekten Henkel',
+        'ein Gummiband am Handgelenk (Verwendung offen)',
+        'das Feuerzeug, das immer funktioniert',
+        'ein Zehn-Euro-Schein im Wintermantel',
+        'die Ersatz-Socken im Rucksack',
+        'ein Bleistiftstummel mit Geschichte',
+        'der USB-Stick mit dem einen wichtigen Ordner',
+        'eine Büroklammer in Bereitschaft',
+        'das Pflaster in der Geldbörse',
+        'ein Bonbon aus einer anderen Jahreszeit',
+        'die Eintrittskarte von einem schönen Abend',
+        'ein glatter Stein aus dem Urlaub',
+        'die Mütze, die alles besser macht',
+        'ein Teebeutel für den Notfall',
+        'die Fernbedienung (heute auf deiner Seite)',
+        'ein frisch bezogenes Bett (zählt heute als Gegenstand)',
+        'der Parkschein mit Restlaufzeit',
+        'eine Postkarte, die nie abgeschickt wurde',
+        'das Maßband in der Küchenschublade',
+        'ein Knopf, der auf sein Comeback wartet',
+        'die Gießkanne mit Stammkundschaft',
+        'ein Würfel, der nur Sechsen kennt (behauptet er)',
+        'das Lesezeichen mit Dienstjahren',
+        'eine Streichholzschachtel aus einem guten Restaurant',
     ];
 
     /** Zeichen-spezifische Glücksbringer (werden dem Common-Pool beigemischt). */
     public const ITEMS_SIGN = [
-        'widder'     => ['ein Wecker ohne Snooze-Taste', 'die Turnschuhe direkt an der Tür', 'ein roter Stift für schnelle Entscheidungen', 'der Espresso, der eigentlich ein Doppelter ist'],
-        'stier'      => ['die weiche Decke (die gute)', 'ein Stück dunkle Schokolade mit Herkunftsnachweis', 'der Lieblingsplatz, frisch verteidigt', 'das Kissen mit Memory-Effekt'],
-        'zwillinge'  => ['zwei Bücher gleichzeitig', 'das Handy mit vier offenen Chats', 'ein Zettel für den zweiten Gedanken', 'die Kopfhörer für den Podcast'],
-        'krebs'      => ['der Lieblings-Hoodie', 'eine Tasse Tee mit Amtsstatus', 'das gerahmte Foto an der Wand', 'die Sofadecke mit Stammplatz'],
-        'loewe'      => ['die Sonnenbrille für den großen Auftritt', 'ein Spiegel mit gutem Licht', 'das Outfit mit Applausgarantie', 'die Playlist mit Fanfaren'],
-        'jungfrau'   => ['ein frisch gespitzter Bleistift', 'die To-do-Liste (im Herzen laminiert)', 'ein Ordner, der endlich Ordnung hat', 'das Mikrofasertuch des Vertrauens'],
-        'waage'      => ['zwei Optionen und eine Münze', 'die ästhetisch einwandfreie Kaffeetasse', 'ein Strauß Blumen (für die Balance)', 'das symmetrische Deko-Objekt'],
-        'skorpion'   => ['das Parfüm mit Superkräften', 'eine Kerze mit Bedeutung', 'das Notizbuch mit Geheimnissen', 'der Blick — zählt heute als Gegenstand'],
-        'schuetze'   => ['der Reisepass (griffbereit, man weiß nie)', 'die Landkarte mit Stecknadeln', 'ein Ticket ins Blaue', 'die Schuhe mit Fernweh'],
-        'steinbock'  => ['der Kalender mit Farbcode', 'die Thermoskanne (Dienstgrad: Verlässlichkeit)', 'ein Ziel, ausgedruckt und aufgehängt', 'der solide Bergschuh'],
-        'wassermann' => ['ein Gerät, das sonst niemand versteht', 'die Idee von gestern Nacht', 'ein Second-Hand-Fund mit Geschichte', 'das Kabel für später'],
-        'fische'     => ['die Badewanne (zählt heute als Gegenstand)', 'ein Tagtraum to go', 'die Playlist zum Wegdriften', 'ein Glas Wasser mit Meerblick-Fantasie'],
+        'widder'     => ['ein Wecker ohne Snooze-Taste', 'die Turnschuhe direkt an der Tür', 'ein roter Stift für schnelle Entscheidungen', 'der Espresso, der eigentlich ein Doppelter ist',
+                         'die Stoppuhr (rein symbolisch)', 'ein Energieriegel mit Startnummer', 'die Playlist zum Loslegen', 'ein Post-it mit „JETZT“ darauf'],
+        'stier'      => ['die weiche Decke (die gute)', 'ein Stück dunkle Schokolade mit Herkunftsnachweis', 'der Lieblingsplatz, frisch verteidigt', 'das Kissen mit Memory-Effekt',
+                         'der Gutschein vom Lieblingsrestaurant', 'eine Kerze mit Feierabend-Duft', 'das gute Olivenöl', 'die Hausschuhe mit Suchtfaktor'],
+        'zwillinge'  => ['zwei Bücher gleichzeitig', 'das Handy mit vier offenen Chats', 'ein Zettel für den zweiten Gedanken', 'die Kopfhörer für den Podcast',
+                         'ein angefangenes Kreuzworträtsel', 'die Sprachnachricht zum Weiterleiten', 'zwei Meinungen zum Mitnehmen', 'das Buch mit den Eselsohren'],
+        'krebs'      => ['der Lieblings-Hoodie', 'eine Tasse Tee mit Amtsstatus', 'das gerahmte Foto an der Wand', 'die Sofadecke mit Stammplatz',
+                         'ein Erinnerungsfoto im Portemonnaie', 'die Lieblingstasse mit Sprung (bleibt trotzdem)', 'das Rezept von früher', 'eine Wärmflasche in Bereitschaft'],
+        'loewe'      => ['die Sonnenbrille für den großen Auftritt', 'ein Spiegel mit gutem Licht', 'das Outfit mit Applausgarantie', 'die Playlist mit Fanfaren',
+                         'der Lippenbalsam mit Auftritt', 'ein goldener Stift', 'das Selfie von einem guten Tag', 'die Krone (unsichtbar, sitzt aber)'],
+        'jungfrau'   => ['ein frisch gespitzter Bleistift', 'die To-do-Liste (im Herzen laminiert)', 'ein Ordner, der endlich Ordnung hat', 'das Mikrofasertuch des Vertrauens',
+                         'ein Etikettiergerät mit Munition', 'die perfekt gefaltete Einkaufstasche', 'ein Radiergummi ohne Gebrauchsspuren', 'der Kalender mit Pufferzeiten'],
+        'waage'      => ['zwei Optionen und eine Münze', 'die ästhetisch einwandfreie Kaffeetasse', 'ein Strauß Blumen (für die Balance)', 'das symmetrische Deko-Objekt',
+                         'zwei identische Kissen in Symmetrie', 'die Playlist namens „Ästhetik“', 'ein Schal, der alles zusammenbindet', 'das Foto mit goldenem Schnitt'],
+        'skorpion'   => ['das Parfüm mit Superkräften', 'eine Kerze mit Bedeutung', 'das Notizbuch mit Geheimnissen', 'der Blick — zählt heute als Gegenstand',
+                         'der Schlüssel zu einem Schubfach', 'eine dunkle Schokolade mit 85 %', 'das Tagebuch mit Schloss', 'ein Blick hinter die Kulissen'],
+        'schuetze'   => ['der Reisepass (griffbereit, man weiß nie)', 'die Landkarte mit Stecknadeln', 'ein Ticket ins Blaue', 'die Schuhe mit Fernweh',
+                         'die halb gepackte Reisetasche', 'ein Kompass (dekorativ, aber bereit)', 'das Fernweh-Poster', 'ein Wörterbuch für den nächsten Trip'],
+        'steinbock'  => ['der Kalender mit Farbcode', 'die Thermoskanne (Dienstgrad: Verlässlichkeit)', 'ein Ziel, ausgedruckt und aufgehängt', 'der solide Bergschuh',
+                         'die Liste der erledigten Listen', 'ein Fels als Briefbeschwerer', 'das Sparschwein mit Namen', 'der Wanderstock im Flur'],
+        'wassermann' => ['ein Gerät, das sonst niemand versteht', 'die Idee von gestern Nacht', 'ein Second-Hand-Fund mit Geschichte', 'das Kabel für später',
+                         'ein Adapter für alles', 'die Idee auf einem Bierdeckel', 'das Retro-Gadget mit Zukunft', 'ein Lötkolben in Rufbereitschaft'],
+        'fische'     => ['die Badewanne (zählt heute als Gegenstand)', 'ein Tagtraum to go', 'die Playlist zum Wegdriften', 'ein Glas Wasser mit Meerblick-Fantasie',
+                         'das Fläschchen mit Sand vom Meer', 'ein Traumtagebuch neben dem Bett', 'die Aquarellfarben (kaum benutzt, sehr geliebt)', 'ein Muschel-Souvenir mit Rauschen'],
     ];
 
-    public const EMOJIS = ['✨', '🌙', '🔥', '🍀', '💫', '🧲', '🪐', '🌊', '⚡', '🎯', '🧿', '🌻', '🥇', '🫧', '🍯', '🔮', '🌈', '🛸', '🎲', '🧡'];
+    public const EMOJIS = ['✨', '🌙', '🔥', '🍀', '💫', '🧲', '🪐', '🌊', '⚡', '🎯', '🧿', '🌻', '🥇', '🫧', '🍯', '🔮', '🌈', '🛸', '🎲', '🧡',
+                           '🌟', '🪄', '🎁', '🧸', '🌞', '🦋', '🍒', '🎈', '🥂', '🍕', '🎧', '🚀'];
 
     // ------------------------------------------------------------- Energie-Peaks
 
@@ -477,24 +900,44 @@ final class Content
             'Beste Zeit für den mutigsten Punkt auf der Liste.',
             'Volle Flamme: Was du jetzt anfängst, brennt den ganzen Tag weiter.',
             'Wer dich in diesem Fenster erreicht, hat Glück. Oder einen sehr guten Plan.',
+            'Zünd-Fenster: Jetzt eine mutige Nachricht, ein mutiger Plan, ein mutiger Kaffee.',
+            'In dieser Phase brennst du am hellsten — große Aufgaben bitte jetzt vorlassen.',
+            'Turbo-Zeit: Was jetzt nicht mitkommt, wird freundlich überholt.',
+            'Dein Feuer hat jetzt Bestwerte. Ideal für Anfänge aller Art.',
+            'Startfenster geöffnet: Der Countdown läuft, und du bist die Rakete.',
         ],
         'erde' => [
             'Da läuft dein Uhrwerk am rundesten — beste Zeit für alles mit Substanz.',
             'Dein produktivstes Fenster: solide, gründlich, unaufhaltsam.',
             'Jetzt bewegst du Dinge, die andere für festgewachsen hielten.',
             'Beste Zeit für das, was liegen geblieben ist. Es hat Angst. Zu Recht.',
+            'Beste Stunden für Substanz: planen, bauen, abschließen, genießen.',
+            'Dein Fundament-Fenster: Jetzt gelingt das Solide besonders leicht.',
+            'In dieser Phase bist du der ruhende Pol mit maximaler Wirkung.',
+            'Jetzt zahlt sich Gründlichkeit doppelt aus — und fühlt sich dabei gut an.',
+            'Verlässlichkeits-Hoch: Was du jetzt zusagst, hält. Was du jetzt anfasst, sitzt.',
         ],
         'luft' => [
             'Nachmittagsbrise: Jetzt fliegen dir Ideen zu — Fangnetz bereithalten.',
             'Dein Gesprächs-Hoch: Wer jetzt mit dir verhandelt, unterschreibt lächelnd.',
             'Beste Zeit für Pläne, Post und Pointen.',
             'Jetzt bist du am schnellsten — im Kopf, im Witz, im Weiterdenken.',
+            'Kommunikations-Hoch: Nachrichten, Anrufe und Geistesblitze bitte jetzt.',
+            'In diesem Fenster jonglierst du mühelos drei Themen und lässt keins fallen.',
+            'Beste Zeit für kluge Fragen und noch klügere Antworten.',
+            'Dein Kopf hat jetzt Rückenwind — Brainstorming mit dir selbst ausdrücklich erlaubt.',
+            'Leichtigkeits-Fenster: Jetzt gelingt sogar Bürokratie mit Schwung.',
         ],
         'wasser' => [
             'Abendtiefe: Ab da läuft dein Kopf auf Vollgas — perfekt fürs Lieblingsprojekt.',
             'Dein Fenster: Die Welt wird leiser, du wirst klarer.',
             'Gefühl und Fokus in Bestform — jetzt gelingen die wichtigen Gespräche.',
             'Beste Zeit für alles, was Tiefe verträgt. Also fast alles, was zählt.',
+            'Tiefgang-Fenster: Jetzt gelingen die Gespräche, die tagsüber keinen Platz fanden.',
+            'In dieser Phase liest du zwischen allen Zeilen — und findest das Wesentliche.',
+            'Gefühls-Hoch: Jetzt entstehen die Momente, die man sich merkt.',
+            'Beste Zeit für Nähe, Notizen und nächtliche Geistesblitze.',
+            'Dein Gespür läuft jetzt auf Maximum. Vertrau ihm, es hat Bestform.',
         ],
     ];
 
@@ -509,6 +952,16 @@ final class Content
         'Heute gilt: gleiche Wellenlänge, unterschiedliche Lautstärke. Funktioniert.',
         'Die Sterne messen heute Rekordwerte in der Kategorie „grundloses Anlächeln“.',
         'Eure Zeichen ergeben heute mehr als zwei. Mathematisch fragwürdig, emotional bewiesen.',
+        'Heute funktioniert ihr wie ein eingespieltes Küchenteam: kein Wort, keine Kollision, ein Menü.',
+        'Der Himmel meldet Deckungsgleichheit: Eure Tagespläne passen zusammen wie Puzzle-Randstücke.',
+        'Ihr sendet heute im Duett — sogar euer Schweigen hat denselben Dialekt.',
+        'Zwei Umlaufbahnen, null Kollisionen, ein gemeinsames Ziel: Feierabend zu zweit.',
+        'Heute gilt: Einer denkt es, der andere sagt es. Die Reihenfolge wechselt stündlich.',
+        'Die Messstation meldet Synchronwerte, die sonst nur bei alten Tanzpaaren auftreten.',
+        'Ihr seid heute wie zwei Browser-Tabs derselben Seite: unterschiedlich gescrollt, gleicher Inhalt.',
+        'Kompatibilität in Bestform: Selbst eure Playlists würden heute fusionieren.',
+        'Heute reicht ein halber Satz. Der andere kennt die zweite Hälfte. Und die Pointe.',
+        'Der Kosmos hat eure Frequenzen heute feinjustiert. Rauschfreier Empfang bis Mitternacht.',
     ];
 
     public const KOMPAT_MITTEL = [
@@ -520,6 +973,16 @@ final class Content
         'Heute hilft die goldene Paar-Regel: Erst nachfragen, dann interpretieren. Spart eine Stunde.',
         'Ihr seid heute wie WLAN im Altbau: insgesamt stark, in manchen Ecken kurz mal Suchbewegung.',
         'Gute Grundlage, wechselhafte Details. Wie Aprilwetter, nur mit mehr Küssen.',
+        'Heute passt vieles, der Rest wird passend gelacht.',
+        'Stabile Werte mit charmanten Ausreißern: Einer will los, einer will liegen bleiben. Der Kompromiss heißt Frühstück.',
+        'Ihr seid heute wie zwei Instrumente beim Stimmen: kurz schräg, dann Konzert.',
+        'Die Verbindung steht, ein Balken flackert. Näher zusammenrücken verbessert den Empfang. Wörtlich.',
+        'Heute gibt es zwei Meinungen und ein Sofa. Das Sofa gewinnt.',
+        'Kleine Übersetzungsfehler inklusive — aber ihr sprecht beide fließend Humor.',
+        'Der Tag läuft auf 82 %: völlig ausreichend für alles außer Weltrekorde.',
+        'Zwischen euch heute: ein bisschen Reibung, viel Wärme, keine offenen Fragen ab 20 Uhr.',
+        'Einer plant, einer improvisiert. Ergebnis: besser als jeder Plan und jede Improvisation allein.',
+        'Heute seid ihr ein Team mit zwei Taktiken und einem Ziel. Reicht locker für den Sieg.',
     ];
 
     public const KOMPAT_NIEDRIG = [
@@ -529,17 +992,34 @@ final class Content
         'Reibungstag! Gute Nachricht: Reibung erzeugt Wärme. Schlechte Nachricht: erst später am Abend.',
         'Heute knirscht es im Getriebe. Öl der Wahl: Humor, großzügig auftragen.',
         'Der Kosmos testet heute eure Verbindung. Nicht dran rütteln — einfach neu starten: Spaziergang, Hand halten, fertig.',
+        'Heute gilt Funkdisziplin: kurze Sätze, freundlicher Ton, großzügige Auslegung.',
+        'Die Sterne stehen quer, ihr müsst es nicht auch tun. Erst Tee, dann Themen.',
+        'Der Empfang ist heute etwas gestört — sprecht in Zeitlupe und mit Snacks.',
+        'Heute lieber zweimal umarmen, einmal diskutieren. Die Quote rettet den Tag.',
+        'Kleines kosmisches Gewitter im Anmarsch: Der Regenschirm heißt Geduld, der Regenbogen kommt verlässlich.',
+        'Die Übertragung hakt heute. Alte Regel: erst laden lassen, dann antworten.',
+        'Heute ist Übersetzer-Tag: „Mir egal“ heißt „Entscheide du“, und „Nichts“ heißt „Frag später nochmal nett“.',
+        'Der Himmel testet heute eure Stoßdämpfer. Bestanden wird gemeinsam, gefeiert auch.',
     ];
 
     public const KOMPAT_JACKPOT = [
         'JACKPOT-TAG! Die Sterne haben heute alle Regler auf Maximum gedreht. Sowas gibt es nur ein paar Mal im Jahr — verschwendet es nicht mit Aufräumen.',
         'Kosmischer Ausnahmezustand: Heute seid ihr das Referenzpaar, an dem der Himmel andere misst. Feiert das. Sofort.',
         'Heute passt alles. ALLES. Die Sterne bitten um ein Foto für die Akte.',
+        'JACKPOT! Der Himmel hat heute alle Sterne auf eure Seite geschoben und behauptet, es sei Zufall. Ist es nicht.',
+        'Volltreffer-Tag: Diese Konstellation kommt seltener vor als ein leerer Wäschekorb. Feiern!',
+        'Der Kosmos hat heute Konfetti geladen. Ihr seid der Anlass.',
+        'Jackpot bestätigt, dreifach geprüft, notariell beglaubigt vom Mond. Heute seid ihr unschlagbar.',
+        'Heute funkelt alles: die Sterne, der Tag, ihr zwei. Der Rest des Universums macht sich Notizen.',
     ];
 
     public const KOMPAT_CHAOS = [
         'Kosmischer Störtag — der Himmel hat heute selbst schlechte Laune und projiziert. Regel Nummer eins: Ihr gegen das Problem, nie gegeneinander. Regel Nummer zwei: Schokolade zählt als Werkzeug.',
         'Achtung, Turbulenzen! Heute bitte anschnallen, Händchen halten und Servicewagen (Snacks) bereithalten. Morgen sieht der Himmel wieder normal aus.',
+        'Kosmischer Störtag, Stufe „interessant“: Heute geht einiges schief, aber nichts kaputt. Am Ende gibt es eine gute Geschichte und ein spätes Abendessen.',
+        'Der Himmel hat heute Schluckauf. Empfehlung: nichts Großes planen, viel Kleines kuscheln.',
+        'Turbulenzen gemeldet — Kurs halten, Crew versorgen, Humor nicht verstauen, der wird gebraucht.',
+        'Heute ist der Tag, an dem einfach ALLES dazwischenkommt. Der Trick: es zusammen komisch finden. Klappt ab der dritten Panne von selbst.',
     ];
 
     public const STREIT_THEMEN = [
@@ -561,6 +1041,32 @@ final class Content
         'ob man im Urlaub auch mal nichts machen kann',
         'wessen Ladekabel das auf dem Nachttisch ist',
         'ob die Pflanze noch lebt oder schon Kompost ist',
+        'die Frage, ob der Geschirrspüler „fast voll“ oder „noch halb leer“ ist',
+        'die korrekte Falttechnik für Handtücher',
+        'ob man dem Navi trotzdem widersprechen darf (ja, aber leise)',
+        'die letzte Scheibe Käse im Kühlschrank',
+        'ob „auf dem Stuhl“ ein Kleiderschrank ist',
+        'die richtige Lautstärke fürs Frühstücksradio',
+        'ob das Fenster nachts auf oder zu bleibt',
+        'wer die bessere Route kennt (beide, gleichzeitig)',
+        'ob man Pommes vom Teller des anderen nehmen darf (Grundsatzurteil steht aus)',
+        'die Anzahl der nötigen Dekokissen (Differenz: vier)',
+        'ob der Film „gut“ oder „ganz okay“ war',
+        'wessen Playlist beim Kochen läuft',
+        'ob man Restaurants nach Bewertung oder Bauchgefühl aussucht',
+        'die Kunst, Zahnpastatuben korrekt zu Ende zu drücken',
+        'ob „gleich“ vor oder nach „nachher“ kommt',
+        'die ideale Ankunftszeit am Bahnhof (Differenz: 25 Minuten)',
+        'ob die Jacke eine Wäsche braucht oder „nur Luft“',
+        'wer den besseren Toast macht (eskaliert freundlich)',
+        'ob Cornflakes ein Abendessen sind',
+        'die Definition von „kurz vorbeischauen“',
+        'ob die Pflanze zu viel oder zu wenig Wasser bekommt (sie schweigt)',
+        'wessen Schuhe im Flur die Mehrheit stellen',
+        'ob man im Bett noch „eine Folge“ schauen kann (Ausgang bekannt)',
+        'die optimale Grilltemperatur (Toleranz: null)',
+        'ob der Kalender-Eintrag „vielleicht“ bindend ist',
+        'wer zuletzt die Klopapierrolle gewechselt hat (Chronik lückenhaft)',
     ];
 
     public const FENSTER_TEXTE = [
@@ -568,6 +1074,12 @@ final class Content
         'In diesem Fenster seid ihr beide wach, warm und witzig. Nutzt es.',
         'Gemeinsames Hoch: Da gehen Gespräche, Pläne und Blödsinn gleichermaßen.',
         'Der Himmel hat euch dieses Zeitfenster reserviert. Stornieren unmöglich.',
+        'Hier läuft eure Doppelspitze: beide wach, beide charmant, beide zu Scherzen aufgelegt.',
+        'Dieses Fenster gehört euch — der Kosmos hat es extra breit geöffnet.',
+        'Beste Sendezeit für Wichtiges, Schönes und herrlich Unwichtiges.',
+        'Jetzt seid ihr im Takt: Was ihr in diesem Fenster anpackt, gelingt im Duett.',
+        'Synchronfenster: Sogar eure Kaffeepausen würden sich jetzt zufällig treffen.',
+        'In dieser Zeitspanne gilt: kurze Wege, schnelle Einigungen, gute Ideen im Doppelpack.',
     ];
 
     public const RECHT_PERSON = [
@@ -579,6 +1091,16 @@ final class Content
         '{NAME}, einstimmig. Sogar Merkur hat zugestimmt, und der ist rückläufig.',
         '{NAME}. Begründung: hat sich beim letzten Mal geirrt und ist damit statistisch heute dran.',
         '{NAME} — die Argumentation hatte Struktur, Timing und ein Lächeln am Ende. Keine Chance.',
+        '{NAME} — nach Punkten. Die Kür war strittig, die Pflicht war makellos.',
+        '{NAME}. Die Beweisführung bestand aus einem Screenshot. Vernichtend.',
+        '{NAME} — laut Sternenprotokoll, Seite 3, Absatz „Bauchgefühl“.',
+        '{NAME}. Der Kosmos gratuliert und empfiehlt, es nicht zu oft zu erwähnen. Höchstens dreimal.',
+        '{NAME} — mit dem seltenen Doppelsieg: recht gehabt UND nett geblieben.',
+        '{NAME}. Die Jury war sich einig, das Publikum applaudiert, {SIGN}-Fans jubeln.',
+        '{NAME} — per Handzeichen des Universums bestätigt. Einspruch wurde galant abgelehnt.',
+        '{NAME}. Zur Wahrheit gehört: Es war Glück. Zur ganzen Wahrheit: Es war trotzdem richtig.',
+        '{NAME} — die Sterne verweisen auf den Präzedenzfall von letztem Dienstag.',
+        '{NAME}, haushoch. Die Gegenseite bekommt einen Trostpreis: das letzte Wort beim Abendessen.',
     ];
 
     public const RECHT_BEIDE = [
@@ -586,12 +1108,23 @@ final class Content
         'Beide. Das Universum stellt erschöpft fest: Ihr hattet denselben Punkt, nur andere Vokabeln.',
         'Beide, zu exakt 50 %. Der Rest war Tonfall.',
         'Beide — einer hatte die Fakten, einer hatte recht. Klassische Arbeitsteilung.',
+        'Beide — zwei Wahrheiten, ein Missverständnis, null Verlierer.',
+        'Beide. Der Kosmos hat die Akte geschlossen und ein Herz drauf gemalt.',
+        'Beide, mit Auflagen: Wer zuerst grinst, muss Tee kochen.',
+        'Beide — im Detail uneinig, im Großen unschlagbar einig.',
+        'Beide. Es war, wie so oft, eine Frage der Definition. Und der Uhrzeit.',
+        'Beide, sagt der Schiedsrichter-Stern, und pfeift das Spiel freundlich ab.',
     ];
 
     public const RECHT_UNIVERSUM = [
         'Das Universum — es enthält sich, grinst aber auffällig.',
         'Niemand. Die Frage war falsch gestellt, sagt der Kosmos und verweist auf Formfehler.',
         'Das Universum behält heute recht. Einspruchsfrist: abgelaufen.',
+        'Das Universum — es hatte die besseren Daten und die schlechteste Ausrede.',
+        'Niemand. Der Anlass hat sich beim genauen Hinsehen in Luft aufgelöst. Klassiker.',
+        'Das Universum, mit Verweis auf höhere Gewalt. Es lacht dabei verdächtig.',
+        'Heute: das Wetter. Es hat einfach alle Pläne überstimmt.',
+        'Das Universum behält recht und spendiert zur Versöhnung einen schönen Abendhimmel.',
     ];
 
     public const DATE_IDEEN = [
@@ -617,6 +1150,31 @@ final class Content
         'Technik-frei bis 21 Uhr. Ausnahmegenehmigung gibt es nur für die Musik-Anlage.',
         'Gemeinsam alte Fotos anschauen und die schlechtesten Frisuren küren. Es gibt klare Favoriten.',
         'Heute wird ein Gericht gekocht, das keiner von euch aussprechen kann. Gelingt es, wird es Tradition.',
+        'Heute Abend: Küche wird Bar. Zwei Getränke, ein Barkeeper-Wettbewerb, großzügige Jury.',
+        'Spieleabend, aber rückwärts: das Lieblingsspiel von früher wieder ausgraben. Regeln improvisieren, wo sie fehlen.',
+        'Gemeinsam Sonnenaufgang ODER Sonnenuntergang mitnehmen — einer ist immer im Angebot ({SUNSET} Uhr).',
+        'Bücherei- oder Buchladen-Date: Jeder sucht ein Buch für den anderen aus. Budget: eins.',
+        'Wohnzimmer-Kino mit Programmheft: Einer schreibt die Ankündigung, der andere macht die Snackbar.',
+        'Kurz-Roadtrip zum besten Bäcker im Umkreis von 30 Minuten. Wissenschaftliche Begleitung: euer Appetit.',
+        'Heute: das Zimmer umdekorieren, das euch am wenigsten gefällt. 45 Minuten, große Wirkung.',
+        'Verabredung wie früher: getrennt ankommen und so tun, als wäre es das erste Treffen. Aufregend bis albern — beides gewollt.',
+        'Doppel-Interview: Jeder darf drei Fragen stellen, die sonst untergehen. Antworten in Ruhe, ohne Nebenbei.',
+        'Heute Abend wird der Himmel kartiert: Sternbilder raten, eigene erfinden, feierlich benennen.',
+        'Projekt „Zeitkapsel“: eine Kiste, fünf Dinge, Öffnungsdatum in einem Jahr.',
+        'Tandem-Kochen: Einer kocht mit links, einer würzt blind. Das Ergebnis heißt Erfahrung.',
+        'Flohmarkt- oder Kleinanzeigen-Safari: Wer das kurioseste Fundstück unter 5 Euro findet, gewinnt.',
+        'Heute: Frühstück zum Abendbrot. Pancakes um 19 Uhr schmecken nach Freiheit.',
+        'Ein Spaziergang, bei dem an jeder Kreuzung abwechselnd entschieden wird. Ziel: unbekannt. Rückweg: Abenteuer.',
+        'Heimwellness: warme Füße, kalte Getränke, Gesichtsmasken mit Fotoverbot. Oder Fotopflicht — euer Haus, eure Regeln.',
+        'Gemeinsam eine Bucket-List schreiben. Mindestens drei Punkte müssen albern sein.',
+        'Museums- oder Galerie-Besuch mit Spielregel: Jeder erklärt ein Kunstwerk komplett frei erfunden.',
+        'Heute Abend: Tanzstunde per Video im Wohnzimmer. Niveau egal, Drehung Pflicht.',
+        'Picknick zur blauen Stunde: Decke, Brote, Thermoskanne — die Lichtshow übernimmt der Himmel ({SUNSET} Uhr).',
+        'Gemeinsam ein Rätsel lösen: Escape-Spiel, Kreuzworträtsel XXL oder das Mysterium des Sockenschranks.',
+        'Jeder plant für den anderen eine 30-Minuten-Überraschung. Übergabe: heute. Reihenfolge: Münzwurf.',
+        'Tour zu dem Ort, an dem ihr euch das erste Mal getroffen habt — oder es wird feierlich ein neuer Gründungsort ernannt.',
+        'Heute: gemeinsames Update der Playlist „Unsere“. Drei Songs rein, einer raus, Diskussion inklusive.',
+        'Abendessen nach Weltkarte: blind auf eine Landkarte tippen, dazu passend kochen oder bestellen.',
     ];
 
     public const GESPRAECH = [
@@ -640,6 +1198,30 @@ final class Content
         'Welches Ritual von uns würdest du patentieren lassen?',
         'Wenn unsere Beziehung ein Restaurant wäre: Was steht auf der Karte, und was ist das Gericht des Hauses?',
         'Welche Frage wolltest du mir immer schon stellen, hast es aber nie getan? Jetzt ist der Moment.',
+        'Was war dein Lieblingsmoment mit mir in den letzten sieben Tagen?',
+        'Welche Tradition sollten wir erfinden, die es nur bei uns gibt?',
+        'Wobei fühlst du dich von mir am meisten verstanden?',
+        'Welcher Tag von uns verdient ein Remake — exakt gleich, nur nochmal?',
+        'Was hast du durch mich neu lieben gelernt?',
+        'Wenn wir ein Geschäft eröffnen müssten: Was verkaufen wir, und wer steht an der Kasse?',
+        'Welches Kompliment bekommst du zu selten?',
+        'Was war der lustigste Fehlkauf in unserem Haushalt — und warum steht er noch da?',
+        'Welche Fähigkeit von mir würdest du dir für einen Tag ausleihen?',
+        'Was wäre unser Bandname, und wie heißt das erste Album?',
+        'Welchen kleinen Moment von uns würdest du einrahmen, wenn man Momente rahmen könnte?',
+        'Worüber haben wir zu lange nicht mehr geredet?',
+        'Wenn unser Zuhause sprechen könnte: Was würde es über uns verraten?',
+        'Welche Reise sollten wir machen, bevor wir wieder „irgendwann“ sagen?',
+        'Was hat dich zuletzt an uns überrascht?',
+        'Welches Essen beschreibt unsere Beziehung am besten? Begründung bitte in drei Gängen.',
+        'Was wolltest du als Kind unbedingt werden — und wie viel davon steckt noch in dir?',
+        'Bei welchem Song musst du an uns denken, ohne dass ich das je wusste?',
+        'Was ist deine Lieblingserinnerung, in der es geregnet hat?',
+        'Welche drei Wörter würden Freunde über uns sagen? Und welche drei die Nachbarn?',
+        'Was sollten wir dieses Jahr unbedingt zum ersten Mal machen?',
+        'Welcher Alltagsmoment mit mir fühlt sich für dich wie Luxus an?',
+        'Wenn du unserem ersten Date eine Sache zurufen könntest — welche?',
+        'Was macht dich gerade stolz — auf dich, auf mich, auf uns?',
     ];
 
     public const MISSIONEN = [
@@ -661,6 +1243,28 @@ final class Content
         'Mission: Plant 15 Minuten den nächsten Urlaub, als würdet ihr morgen fliegen.',
         'Mission: Jeder wählt einen Song, laut aufdrehen, 3 Minuten Küchen-Disco. Bewertung verboten.',
         'Mission: Einmal heute den anderen ausreden lassen und dann erst widersprechen. Fortgeschrittenen-Level.',
+        'Mission: Heute ein altes Pärchenfoto nachstellen — Pose, Blick, alles. Requisiten erlaubt.',
+        'Mission: Heute den anderen einmal vor Publikum loben. Publikum ab einer Person aufwärts, Haustier zählt.',
+        'Mission: Gemeinsam etwas reparieren, das seit Wochen wartet. Belohnung: das Gefühl. Und Snacks.',
+        'Mission: Heute dreimal den Namen des anderen sagen, einfach weil er gut klingt.',
+        'Mission: 10 Minuten gemeinsames Nichtstun. Wer zuerst zum Handy greift, kocht morgen Kaffee.',
+        'Mission: Heute die Sofaseiten tauschen. Nur für einen Abend. Berichtet euch gegenseitig aus der neuen Welt.',
+        'Mission: Jeder schreibt dem anderen einen Drei-Wörter-Brief und versteckt ihn gut auffindbar.',
+        'Mission: Beim nächsten Lied, das läuft: mitsingen oder mittanzen. Keine Ausnahmen, keine Gnade.',
+        'Mission: Heute einmal gemeinsam laut über einen alten gemeinsamen Fehlschlag lachen. Er hat es sich verdient.',
+        'Mission: Ein Spaziergang, bei dem jeder dem anderen drei Dinge zeigt, die er sonst übersieht.',
+        'Mission: Heute übernimmt jeder eine Mini-Aufgabe des anderen — unaufgefordert, Ansage erst hinterher.',
+        'Mission: Gemeinsam den Wetterbericht für morgen erfinden und feierlich vortragen. Genauigkeit egal, Vortrag zählt.',
+        'Mission: Der nächste Einkaufszettel wird in Reimform geschrieben. Der Supermarkt wird es nie erfahren. Oder doch.',
+        'Mission: Heute Abend fünf Minuten Wochen-Rückblick: Was hat der andere geschafft? Laut würdigen.',
+        'Mission: Ein neues Begrüßungsritual erfinden und ab sofort konsequent durchziehen. Mindesthaltbarkeit: eine Woche.',
+        'Mission: Heute dem anderen einmal wortlos das Lieblingsgetränk hinstellen. Timing ist alles.',
+        'Mission: Gemeinsam drei Dinge aussortieren — jeder entscheidet über eins des anderen. Vertrauensübung deluxe.',
+        'Mission: Heute wird einmal absichtlich zu früh Feierabend gemacht. Der Kosmos übernimmt die Verantwortung.',
+        'Mission: Jeder erzählt heute eine Geschichte von sich, die der andere noch nicht kennt. Es gibt sie noch, versprochen.',
+        'Mission: Ein gemeinsames Ziel für nächste Woche festlegen — so klein, dass es sicher klappt. Erfolg einplanen.',
+        'Mission: Heute beim Abschied und beim Wiedersehen jeweils drei Sekunden länger umarmen. Messbar besserer Tag.',
+        'Mission: Heute einmal „Erzähl das nochmal, aber mit allen Details“ sagen — und die Details genießen.',
     ];
 
     // ------------------------------------------------------ Elementar-Funk (Paar)
@@ -674,51 +1278,91 @@ final class Content
             'Zwei Feuerzeichen, ein Haushalt: Der Kosmos hat vorsorglich die Sprinkleranlage geprüft. Entwarnung — ihr brennt füreinander, nicht gegeneinander.',
             'Doppel-Feuer heute: Wer zuerst „Los jetzt!“ ruft, gewinnt. Ihr ruft gleichzeitig.',
             'Funkenflug im Duett: Heute wird aus einer Mini-Idee ein Großprojekt. Deadline: Sonntag.',
+            'Doppel-Feuer: Eure Begeisterung hat heute Ansteckungsgefahr. Die Umgebung dankt für die Energie-Spende.',
+            'Zwei Flammen, ein Wind: Heute facht ihr euch gegenseitig an — Projekte zittern vor Freude.',
+            'Feuer im Duett: schnelle Entscheidungen, schnelle Versöhnungen, schnelles Nachlegen beim Essen.',
+            'Heute gilt Brandschutzverordnung Paragraf Liebe: gemeinsam lodern, niemanden versengen. Ihr erfüllt alle Auflagen.',
         ],
         'erde+erde' => [
             'Zwei Erdzeichen: Stabilität hoch zwei. Das Sofa meldet Tragkraft-Reserven, eure Pläne haben Fundament.',
             'Doppel-Erde: Ihr seid heute so verlässlich, dass sich Kalender bei euch Termine ausleihen.',
             'Erde trifft Erde: Genuss-Koalition. Heute wird nichts überstürzt — außer vielleicht der Nachtisch.',
+            'Doppel-Erde: Heute wird genossen, was gestern geplant wurde. Das System funktioniert.',
+            'Zwei Erdzeichen: Euer gemeinsamer Rhythmus ist heute so verlässlich, dass sich Uhren nach euch stellen.',
+            'Erde hoch zwei: Während andere reden, habt ihr es schon gemacht — und sitzt längst gemütlich.',
+            'Heute seid ihr das Bollwerk gegen die Hektik der Welt. Einlass nur mit Snacks.',
         ],
         'luft+luft' => [
             'Zwei Luftzeichen: Die Gesprächsstoff-Börse hat durchgehend geöffnet. Beim Einschlafen fällt euch noch ein Thema ein. Mindestens eins.',
             'Doppel-Luft: Ihr wechselt heute dreimal das Thema und bleibt trotzdem beim selben Gefühl.',
             'Luft im Quadrat: Viele Pläne schweben heute. Einer landet — und wird richtig gut.',
+            'Doppel-Luft: Euer Gespräch von heute Morgen läuft immer noch. Es hat nur achtmal das Thema gewechselt.',
+            'Zwei Luftzeichen: Heute entsteht aus einem Witz eine Idee und aus der Idee ein Plan. Der Witz bleibt trotzdem gut.',
+            'Luft im Duett: Ihr denkt heute so schnell, dass das Universum um Protokollpausen bittet.',
+            'Heute weht bei euch ein kreativer Dauerwind. Festhalten müsst ihr nur die besten Einfälle.',
         ],
         'wasser+wasser' => [
             'Zwei Wasserzeichen, eine Welle: Synchronschwimmen ohne Publikum, Gefühlstiefe serienmäßig.',
             'Doppel-Wasser heute: Ihr spürt, was los ist, bevor es losgeht. Praktisch. Gelegentlich unheimlich.',
             'Wasser trifft Wasser: Heute reicht ein Blick als komplettes Gespräch — inklusive Fazit.',
+            'Doppel-Wasser: Heute kommuniziert ihr in Stimmungen. Übersetzung überflüssig, Verbindung glasklar.',
+            'Zwei Wasserzeichen: Eure Empathie-Antennen überlappen heute. Doppelter Empfang, halbes Leid, ganzes Glück.',
+            'Wasser im Duett: Heute tragt ihr euch gegenseitig — wie zwei Wellen, die zusammen Strand machen.',
+            'Gefühlstiefe mal zwei: Andere brauchen Worte, ihr braucht einen Blick und einen Tee.',
         ],
         'erde+feuer' => [
             'Feuer trifft Erde: Tempo trifft Fundament. Einer zündet, einer baut den Kamin drumherum — Arbeitsteilung der Meisterklasse.',
             'Erde und Feuer heute: Der Plan bekommt Schwung, der Schwung bekommt einen Plan. Es gewinnt: ihr.',
             'Feuer auf Erde: Heute wird ein spontaner Einfall solide umgesetzt. Selten. Wertvoll. Feiern.',
+            'Feuer und Erde: Heute wird geträumt UND gemacht. Die Arbeitsteilung regelt sich wie von selbst.',
+            'Erde gibt dem Feuer heute den Rahmen, Feuer gibt der Erde den Anlass. Kunstwerk inklusive.',
+            'Heute zündet einer die Idee, der andere hält die Leiter. Ergebnis: hängt, hält, gefällt.',
+            'Tempo trifft Substanz: Heute entsteht etwas, das schnell UND für immer ist.',
         ],
         'erde+luft' => [
             'Luft trifft Erde: Ideen treffen Machbarkeit. Heute wird aus „man müsste mal“ ein „haben wir gemacht“.',
             'Erde und Luft: Einer denkt in Konzepten, einer in Regalmetern. Zusammen: Möbel mit Vision.',
             'Brise über festem Boden: Heute weht frischer Wind, aber nichts fliegt weg. Ideal.',
+            'Luft bringt heute die Einfälle, Erde die Umsetzung — bis zum Abend steht ein kleines Wunder im Raum. Vermutlich ein Regal.',
+            'Erde und Luft: Einer träumt in Möglichkeiten, einer in Metern. Zusammen: machbar UND magisch.',
+            'Heute wird gebrainstormt und direkt umgesetzt. Effizienz mit Konfetti.',
+            'Bodenständig trifft beflügelt: Ihr seid heute Drachen und Schnur — nur zusammen fliegt es sich sicher.',
         ],
         'erde+wasser' => [
             'Wasser trifft Erde: Gefühl bekommt Fundament, Fundament bekommt Gefühl. Der Kosmos nennt es Bausparen mit Herz.',
             'Erde und Wasser: Heute wächst etwas. Gießen nicht vergessen — Komplimente zählen als Wasser.',
             'Tiefe trifft Halt: Einer fühlt vor, einer hält fest. Beste Besetzung bei jeder Wetterlage.',
+            'Wasser und Erde: Heute wächst Zuversicht wie Kresse auf der Fensterbank — schnell, freundlich, fühlbar.',
+            'Erde hält heute, Wasser fühlt heute. Zusammen seid ihr das, was man „ein Zuhause“ nennt.',
+            'Heute gilt Gärtner-Logik: Einer gießt, einer stützt, beide staunen über die Blüte.',
+            'Tiefe Gefühle auf festem Grund: Bei euch versickert heute nichts, es speichert.',
         ],
         'feuer+luft' => [
             'Feuer trifft Luft: Sauerstoff für jede Idee. Heute reicht ein Funke — Projekt, Reise oder Küchen-Disco.',
             'Luft und Feuer: Ihr schaukelt euch heute gegenseitig hoch. In die gute Richtung. Meistens.',
             'Feuer und Luft: Zündeln erlaubt, gemeinsam glänzen Pflicht. Der Abend wird hell.',
+            'Feuer und Luft: Heute wird gelacht, geplant, gezündet — in wechselnder Reihenfolge, mit steigender Begeisterung.',
+            'Luft facht Feuer an: Aus einem „Was wäre wenn“ wird heute ein „Wann fangen wir an“.',
+            'Heute seid ihr Funke und Sauerstoff. Das Ergebnis nennt der Kosmos: Feuerwerk mit Verstand.',
+            'Euer Duo brennt heute auf Sparflamme genau gar nicht. Volle Leuchtkraft, gute Richtung.',
         ],
         'feuer+wasser' => [
             'Feuer trifft Wasser: Dampf! Heute entsteht Energie aus Gegensätzen — die Sauna wusste es zuerst.',
             'Wasser und Feuer: Einer kocht (vor Begeisterung), einer kühlt (mit Charme). Das Menü: perfekt ausgewogen.',
             'Feuer und Wasser: Offiziell unvereinbar, inoffiziell euer Erfolgsrezept. Der Kosmos macht sich Notizen.',
+            'Feuer und Wasser: Heute wird aus Zischen Dampf und aus Dampf Antrieb. Die Physik ist auf eurer Seite.',
+            'Einer sprüht, einer strömt: Zusammen seid ihr heute ein Geysir mit Charme — pünktlich, beeindruckend, warm.',
+            'Heute beweist ihr wieder: Gegensätze löschen sich nicht, sie temperieren sich. Auf Wohlfühltemperatur.',
+            'Feuer kocht, Wasser würzt — oder umgekehrt. Hauptsache, es dampft versöhnlich aus der Küche.',
         ],
         'luft+wasser' => [
             'Luft trifft Wasser: Wellen mit Rückenwind. Gespräche gehen heute tief und bleiben trotzdem leicht.',
             'Wasser und Luft: Einer fühlt, einer formuliert. Zusammen schreibt ihr heute den besseren Tag.',
             'Brise über dem Meer: perfekte Segelbedingungen für Pläne, Gefühle und ein langes Frühstück.',
+            'Luft und Wasser: Heute werden Gefühle in Worte gefasst, die man sich merken möchte. Einer fühlt vor, einer formuliert nach.',
+            'Über tiefem Wasser weht heute leichte Brise: perfekte Bedingungen für offene Worte ohne Wellengang.',
+            'Heute schreibt ihr gemeinsam Kopfkino: Wasser liefert die Bilder, Luft die Dialoge.',
+            'Brise trifft Strömung: Ihr bewegt euch heute mühelos in dieselbe Richtung — sogar beim Einkaufen.',
         ],
     ];
 
@@ -727,6 +1371,11 @@ final class Content
         'Doppelte {SIGN_PLURAL}-Energie: Der Kosmos hat euch als Original und Kopie angelegt und verrät nicht, wer wer ist.',
         'Zwei {SIGN_PLURAL} unter einem Dach — Selbsterkenntnis im Spiegelformat, täglich, kostenlos.',
         'Gleiches Zeichen, gleiche Tricks: Ihr durchschaut euch heute gegenseitig komplett. Nutzt es für Gutes.',
+        'Zwei {SIGN_PLURAL}: Ihr kennt die Tricks des anderen, weil es eure eigenen sind. Fair Play auf höchstem Niveau.',
+        'Gleiches Zeichen, doppelte Wirkung: Heute versteht ihr euch so gut, dass es fast unheimlich ist. Fast.',
+        'Der Kosmos hat euch im Doppelpack bestellt. Die Rechnung ging auf.',
+        'Zwei {SIGN_PLURAL} synchron: Was der eine denkt, hat der andere schon gesagt.',
+        'Spiegelbild mit eigenem Kopf: gleiche Wellenlänge, eigene Frisur. Beste Kombination.',
     ];
 
     // ----------------------------------------------------------------- Flaggen
@@ -746,6 +1395,24 @@ final class Content
         'Red Flag des Tages: {WER} beginnt einen Satz mit „Nicht böse gemeint, aber“. Die Sterne ducken sich schon mal.',
         'Red Flag des Tages: {WER} öffnet den 43. Browser-Tab und nennt es „aufgeräumt“.',
         'Red Flag des Tages: Einer von euch summt seit Stunden dasselbe Lied. Der Kosmos weiß, wer.',
+        'Red Flag des Tages: {WER} beginnt heute einen Satz mit „Also laut Internet …“ — Faktenlage: kühn.',
+        'Red Flag des Tages: {WER} hat „nur mal geguckt“, und jetzt existiert eine Merkliste mit 14 Einträgen.',
+        'Red Flag des Tages: {WER} sagt „Bin in 5 Minuten fertig“ und beginnt parallel ein neues Projekt.',
+        'Red Flag des Tages: Die Antwort „Nichts“ auf „Was ist los?“ hat heute eine Halbwertszeit von 11 Minuten.',
+        'Red Flag des Tages: {WER} zitiert heute das eigene Horoskop als amtliche Quelle. Moment. Weiter so.',
+        'Red Flag des Tages: {WER} räumt auf, indem Stapel zu anderen Stapeln ziehen. Die Sterne nennen es Stapel-Migration.',
+        'Red Flag des Tages: „Das kann man noch essen“ wird heute über etwas gesagt, das widerspricht.',
+        'Red Flag des Tages: {WER} plant den Abend um eine Sendung herum und nennt es Zufall.',
+        'Red Flag des Tages: {WER} sagt „kein Stress“, atmet aber wie beim Endspurt.',
+        'Red Flag des Tages: Der Satz „Ich hör dir zu“ fällt heute zeitgleich mit Scroll-Geräuschen.',
+        'Red Flag des Tages: {WER} führt heute Selbstgespräche mit dem WLAN-Router. Auf Du und Du.',
+        'Red Flag des Tages: {WER} verteidigt heute ein Kleidungsstück mit den Worten „Das ist eingelaufen wie ein guter Wanderschuh“.',
+        'Red Flag des Tages: „Wir brauchen das“ — gesagt über einen Gegenstand, dessen Funktion unklar bleibt.',
+        'Red Flag des Tages: {WER} verlegt heute Brille, Schlüssel und Handy im 90-Minuten-Takt. Rotierend.',
+        'Red Flag des Tages: {WER} erklärt heute die Handlung eines Films WÄHREND des Films. Mit Ausblick.',
+        'Red Flag des Tages: Beim Wort „Schnäppchen“ leuchten heute verdächtig zwei Augenpaare.',
+        'Red Flag des Tages: {WER} beantwortet eine Ja/Nein-Frage heute mit einer Vorgeschichte in drei Akten.',
+        'Red Flag des Tages: {WER} erklärt den Boden neben dem Bett heute offiziell zur „Ablage in Benutzung“.',
     ];
 
     public const GREEN_FLAGS = [
@@ -763,6 +1430,24 @@ final class Content
         'Green Flag des Tages: Ihr habt heute beide an dasselbe gedacht und gleichzeitig gegrinst. Telepathie-Lizenz verlängert.',
         'Green Flag des Tages: Einer von euch hat heute „Schatz, schau mal, die Sterne“ gesagt und meinte diese App. Rührend.',
         'Green Flag des Tages: {WER} hat {ANDERE} den letzten Bissen überlassen. Das ist keine Geste, das ist Weltfrieden.',
+        'Green Flag des Tages: {WER} hat den letzten Kaffee geteilt, ohne die Teilung zu erwähnen. Bis jetzt.',
+        'Green Flag des Tages: {WER} merkt sich seit Jahren, wie {ANDERE} den Tee trinkt. Präzision einer Raumfahrtbehörde.',
+        'Green Flag des Tages: Einer summt, der andere steigt ein. Küchen-Chor, zweistimmig, ausverkauft.',
+        'Green Flag des Tages: {WER} sagt heute „Erzähl weiter“ und meint es. Nachweislich.',
+        'Green Flag des Tages: Der Abwasch war plötzlich gemacht. Keine Zeugen, ein Verdacht, viel Dankbarkeit.',
+        'Green Flag des Tages: {WER} bringt {ANDERE} heute zum Lachen, obwohl der Tag es nicht vorgesehen hatte.',
+        'Green Flag des Tages: Ihr haltet Händchen beim Fernsehen. Nach all der Zeit. Die Sterne machen ein Foto.',
+        'Green Flag des Tages: {WER} hat den Lieblingssnack von {ANDERE} mitgebracht. Einfach so. Verdacht auf Liebe.',
+        'Green Flag des Tages: Beim Spazieren synchronisiert sich euer Schritt von allein. Die Physik nennt es Kopplung, ihr nennt es normal.',
+        'Green Flag des Tages: {WER} verteidigt {ANDERE} heute in Abwesenheit. Die Sterne haben es gehört.',
+        'Green Flag des Tages: Ihr habt ein Zeichen für „Lass uns gehen“ auf Feiern. Es funktioniert seit Jahren fehlerfrei.',
+        'Green Flag des Tages: {WER} überlässt {ANDERE} heute den besseren Platz. Am Tisch, im Kino, im Leben.',
+        'Green Flag des Tages: Einer erzählt einen Witz zum zwölften Mal, der andere lacht zum zwölften Mal. Ehrlich.',
+        'Green Flag des Tages: Das „Komm gut an“ kommt heute mit Nachdruck und einem Extra-Winken.',
+        'Green Flag des Tages: {WER} stellt heute die entscheidende Frage: „Hast du schon was gegessen?“',
+        'Green Flag des Tages: Ihr plant gerade heimlich gegenseitige Überraschungen. Die Sterne verraten nichts. Aber sie wissen es.',
+        'Green Flag des Tages: {WER} hält heute die Tür auf und wartet auch bei Distanzen über acht Metern. Ehrensache.',
+        'Green Flag des Tages: Beim Gewitter rückt ihr automatisch zusammen. Blitzableiter: Nähe.',
     ];
 
     public const PROPHEZEIUNGEN = [
@@ -782,17 +1467,45 @@ final class Content
         'Ihr werdet bald über einen alten Plan stolpern und feststellen: Jetzt ist der richtige Zeitpunkt.',
         'In naher Zukunft klatscht ihr ein: Ein Vorhaben, das lange liegen blieb, wird einfach erledigt. In 20 Minuten.',
         'Demnächst gibt es einen Abend ohne Bildschirme, aus Versehen. Er landet in den Top 5 des Monats.',
+        'Diese Woche entsteht ein neues Lieblingswort in eurem Privat-Wörterbuch. Es klingt albern und bleibt für immer.',
+        'Bald bringt einer von euch etwas nach Hause, das erst Stirnrunzeln und dann Begeisterung auslöst. In dieser Reihenfolge.',
+        'Kommende Woche gewinnt ihr eine kleine Wette gegeneinander. Beide. Fragt nicht, wie — die Sterne haben es geprüft.',
+        'Jemand wird euch demnächst nach eurem Geheimnis fragen. Antwortet mit einem Lächeln und flunkert etwas Schönes.',
+        'In den nächsten Tagen rettet ein Insider-Witz eine zähe Situation. Er ist älter als euer Sofa.',
+        'Bald findet ihr beim Aufräumen etwas, das euch eine halbe Stunde Erinnerungen schenkt. Die halbe Stunde ist der eigentliche Fund.',
+        'Demnächst schmeckt ein Gericht besser als je zuvor — exakt gleiche Zubereitung, bessere Gesellschaft.',
+        'Diese Woche sagt einer von euch im Halbschlaf etwas herrlich Absurdes. Es wird dokumentiert. Gerecht ist das nicht. Aber lustig.',
+        'Ein Sonnenstrahl, ein Lied oder ein Geruch katapultiert euch bald in einen alten Sommer. Genau richtig so.',
+        'Ihr werdet in Kürze ein Möbelstück verrücken und euch fragen, warum es je woanders stand.',
+        'Bald klingelt es, und es ist etwas Erfreuliches. Kein Paket. Etwas Besseres. Mehr wird nicht verraten.',
+        'Diese Woche stellt einer von euch eine Frage, die ein richtig gutes Gespräch startet. Vermutlich aus diesem Horoskop. Der Kosmos nimmt Lob an.',
+        'Demnächst applaudiert ihr euch gegenseitig für eine Kleinigkeit. Genau so bleibt das Große intakt.',
+        'In naher Zukunft geht ein Plan schief, und das Ersatzprogramm wird legendär. Merkt euch den Tag.',
+        'Bald sitzt ihr irgendwo, schaut euch an und denkt dasselbe: läuft. Der Moment kommt unangekündigt.',
+        'Kommende Woche schließt sich ein kleiner Kreis: Etwas, das ihr vor Langem angefangen habt, findet sein Ende. Feierlich abhaken.',
+        'Einer von euch wird bald zum wiederholten Mal dieselbe Geschichte erzählen — und sie wird besser sein als je zuvor.',
+        'Demnächst regnet es genau dann, wenn ihr drinnen seid. Der Kosmos nennt das Timing, ihr nennt es Glück. Einigt euch auf beides.',
+        'Diese Woche entdeckt ihr eine neue gemeinsame Schwäche. Für etwas Leckeres, etwas Schönes oder etwas herrlich Unnützes.',
+        'Bald fällt der Satz „Weißt du noch?“ — und dann ist der Abend gerettet, egal was vorher war.',
     ];
 
     // -------------------------------------------------------------- Battle-Duell
 
-    /** @var array<int, array{key:string, label:string}> */
+    /**
+     * Kategorien-Pool fürs Duell — der Generator lost daraus täglich 5 aus.
+     * @var array<int, array{key:string, label:string}>
+     */
     public const BATTLE_KATEGORIEN = [
-        ['key' => 'sturheit', 'label' => 'Sturheit'],
-        ['key' => 'charme',   'label' => 'Charme'],
-        ['key' => 'chaos',    'label' => 'Chaos-Toleranz'],
-        ['key' => 'detail',   'label' => 'Detailverliebtheit'],
-        ['key' => 'spontan',  'label' => 'Spontanität'],
+        ['key' => 'sturheit',      'label' => 'Sturheit'],
+        ['key' => 'charme',        'label' => 'Charme'],
+        ['key' => 'chaos',         'label' => 'Chaos-Toleranz'],
+        ['key' => 'detail',        'label' => 'Detailverliebtheit'],
+        ['key' => 'spontan',       'label' => 'Spontanität'],
+        ['key' => 'geduld',        'label' => 'Geduld'],
+        ['key' => 'orientierung',  'label' => 'Orientierungssinn'],
+        ['key' => 'gedaechtnis',   'label' => 'Elefantengedächtnis'],
+        ['key' => 'verhandlung',   'label' => 'Verhandlungskunst'],
+        ['key' => 'improvisation', 'label' => 'Improvisationstalent'],
     ];
 
     public const BATTLE_WIN = [
@@ -800,11 +1513,21 @@ final class Content
         'Punkt für {NAME} — bei {LABEL} macht heute niemand etwas vor.',
         '{NAME} führt bei {LABEL}. Der Pokal steht symbolisch schon im Regal.',
         'Klarer Sieg für {NAME} — {LABEL} ist heute fest in {SIGN}-Hand.',
+        'Bei {LABEL} spielt {NAME} heute in einer eigenen Liga. Die Tabelle wird gar nicht mehr geführt.',
+        '{LABEL}: {NAME} gewinnt souverän und verzichtet großzügig auf eine Siegesrede. Fast.',
+        'Der Tagessieg bei {LABEL} geht an {NAME}. Der Pokal ist unsichtbar, der Stolz nicht.',
+        '{NAME} dominiert heute {LABEL} — die Sterne sprechen von einer Machtdemonstration mit Charme.',
+        'Bei {LABEL} hat {NAME} heute Heimrecht, Bestwert und die Deutungshoheit.',
+        '{LABEL} geht klar an {NAME}. Protest wurde eingereicht und charmant abgewiesen.',
     ];
 
     public const BATTLE_UNENTSCHIEDEN = [
         'Bei {LABEL} herrscht heute Gleichstand. Das Universum verlangt ein Stechen: Schere, Stein, Papier.',
         '{LABEL}: totes Rennen. Ihr seid euch ähnlicher, als ihr zugebt.',
+        '{LABEL} endet heute remis — ihr habt euch gegenseitig zu gut trainiert.',
+        'Gleichstand bei {LABEL}: Die Messgeräte zucken mit den Schultern.',
+        '{LABEL}: Patt. Das Universum schlägt ein Tandem-Team vor — gegen den Rest der Welt.',
+        'Bei {LABEL} trennt euch heute exakt gar nichts. Verdächtig. Schön verdächtig.',
     ];
 
     // ------------------------------------------------------------- Sterne-Extras
@@ -814,5 +1537,155 @@ final class Content
         3 => 'Solide Sternenlage',
         4 => 'Sehr gute Aussichten',
         5 => 'Galaktisch!',
+    ];
+
+    // ============================================== Specials & Eastereggs
+
+    /**
+     * Fixe Kalender-Anlässe: 'MM-DD' => [Emoji, Titel, Textpool].
+     * Rein datumsbasiert und damit deterministisch; Texte pickt der
+     * special-Rng. Ostern (beweglich) und Freitag der 13. laufen separat.
+     *
+     * @var array<string, array{0:string, 1:string, 2:list<string>}>
+     */
+    public const SPECIAL_DATES = [
+        '01-01' => ['🎆', 'Neujahrs-Funk', [
+            'Neues Jahr, gleiche Frequenz: Der Sternenflunk sendet weiter — ihr seid und bleibt die Lieblingssendung.',
+            'Das Jahr ist noch originalverpackt. Auspacken bitte gemeinsam — eine Anleitung liegt nicht bei, ihr braucht auch keine.',
+            'Vorsätze-Amnestie bis übermorgen. Heute zählt nur: gut ankommen im neuen Jahr.',
+        ]],
+        '01-21' => ['🫂', 'Weltknuddeltag', [
+            'Wissenschaftlich empfohlene Dosis: acht Umarmungen. Der Kosmos rundet bei euch großzügig auf.',
+            'Endlich ein Welttag, für den ihr keinerlei Ausrüstung braucht.',
+            'Umarmungen setzen heute doppelte Glückshormone frei. Behauptet der Himmel. Beweist es einfach nach.',
+        ]],
+        '02-14' => ['💘', 'Valentins-Funk', [
+            'Der Kosmos verteilt heute Bonusherzen. Euer Konto war allerdings schon vorher voll.',
+            'Amtliche Mitteilung: Ihr braucht diesen Tag nicht. Aber er steht euch ausgezeichnet.',
+            'Heute ist der Tag der Liebenden. Für euch also: ein ganz normaler Tag mit Blumen-Upgrade.',
+            'Kitsch ist heute nicht nur erlaubt, sondern anerkannte Kunstform.',
+        ]],
+        '02-29' => ['🗓️', 'Schalttag', [
+            'Diesen Tag gibt es nur alle vier Jahre — ein Bonus-Tag außerhalb der Zeitrechnung. Verschwendet ihn weise: zusammen.',
+            'Der Kosmos schenkt euch 24 Extra-Stunden. Kein Umtausch, keine Quittung, nur Gelegenheit.',
+            'Heute ist ein Geschenk-Tag — es gibt ihn offiziell fast nie. Was ihr heute macht, zählt doppelt und verjährt nie.',
+        ]],
+        '03-14' => ['🥧', 'Pi-Tag', [
+            '3,14 — eure Verbindung ist wie Pi: irrational, unendlich und Grundlage für runde Sachen.',
+            'Der Kosmos empfiehlt etwas Rundes zum Nachtisch. Die Mathematik besteht darauf.',
+            'Unendlich viele Nachkommastellen, unendlich viele Gründe, sich heute etwas Süßes zu gönnen.',
+        ]],
+        '04-01' => ['🃏', 'Flunker-Feiertag', [
+            'Heute ist der 1. April — der einzige Tag, an dem der Sternenflunk offiziell die Wahrheit sagt. Oder war es umgekehrt?',
+            '1. April: Hochsaison für Flunkereien. Wir Profis bitten die Amateure um Fairness.',
+            'Aprilscherz-Lage: Traut heute niemandem — außer euch gegenseitig. Und selbst da: einmal nachzählen.',
+        ]],
+        '04-12' => ['🚀', 'Tag der Raumfahrt', [
+            '1961 flog Gagarin einmal um die Erde. Ihr umkreist euch schon viel länger — und landet immer weich.',
+            'Heute vor Jahrzehnten: der erste Mensch im All. Heute bei euch: der erste Kuss nach dem Frühstück. Beides historisch.',
+            'Der Kosmos gratuliert allen, die regelmäßig abheben und trotzdem geerdet bleiben. Euch zum Beispiel.',
+        ]],
+        '05-04' => ['⭐', 'Star-Wars-Tag', [
+            'May the 4th: Möge die Macht mit euch sein. Ist sie — sie heißt bei euch nur anders: Kaffee und Zuneigung.',
+            'Ihr seid das seltenste Duo der Galaxis — zwei auf derselben Seite der Macht.',
+            'Der Todesstern eurer Woche hat eine Schwachstelle: gemeinsames Lachen. Ein Volltreffer genügt.',
+        ]],
+        '05-25' => ['🌌', 'Handtuch-Tag', [
+            'Douglas Adams wusste: Wer sein Handtuch dabei hat, ist auf alles vorbereitet. Ihr habt sogar zwei. Und euch.',
+            'Keine Panik! Die Antwort auf alles bleibt 42, die Antwort auf euch bleibt: ja.',
+            'Der Kosmos empfiehlt, heute per Anhalter durch den Feierabend zu reisen. Daumen raus, Sofa ansteuern.',
+        ]],
+        '06-21' => ['☀️', 'Sommersonnenwende', [
+            'Der längste Tag des Jahres! Der Kosmos schenkt euch Bonusstunden — Verwendungszweck: Sommer.',
+            'Heute ist der hellste Tag im Kalender. Ab morgen wird es wieder mystischer. Beides steht euch.',
+            'Die Sonne gibt heute alles. Nehmt es persönlich — es ist für euch.',
+        ]],
+        '07-06' => ['💋', 'Weltkusstag', [
+            'Der Kosmos verlangt heute mindestens drei Exemplare. Qualität schlägt Quantität. Beides schlägt nichts.',
+            'Endlich mal ein Welttag mit sinnvoller Hausaufgabe.',
+            'Statistisch dauert ein guter Kuss 10 Sekunden. Der Kosmos hat heute Zeit mitgebracht. Ihr auch.',
+        ]],
+        '08-12' => ['🌠', 'Perseiden-Nacht', [
+            'Der Himmel wirft heute Nacht mit Sternschnuppen um sich. Wünsche bitte im Doppelpack vorbereiten!',
+            'Heute Nacht regnet es Sternschnuppen — bis zu 100 pro Stunde. Genug Wünsche für ein ganzes Paar-Jahr.',
+            'Decke raus, Nacken lockern, Wünsche flüstern. Der Himmel liefert die Show, ihr die Gesellschaft.',
+        ]],
+        '10-31' => ['🎃', 'Halloween-Funk', [
+            'Das Gruseligste heute ist der Zustand eures Süßigkeiten-Vorrats um Mitternacht.',
+            'Geister meiden Wohnungen mit so viel guter Energie. Ihr bleibt verschont — die Schokolade nicht.',
+            'Verkleidet euch doch als glückliches Paar. Ach — sitzt ja schon.',
+        ]],
+        '12-06' => ['🎅', 'Nikolaus-Funk', [
+            'Heute lohnt der Blick in die Schuhe. Und ein Dankeschön an alle, die heimlich Gutes tun.',
+            'Die Sterne haben eure Stiefel geprüft. Befund: geputzt genug, würdig sowieso.',
+            'Kleiner Tipp des Kosmos: Mandarine teilen zählt doppelt.',
+        ]],
+        '12-13' => ['🌠', 'Geminiden-Nacht', [
+            'Die zuverlässigste Sternschnuppen-Show des Jahres — der Himmel gibt heute ein Winterkonzert.',
+            'Warm anziehen, hochschauen, wünschen. Der Kosmos hat die Lichtshow schon bezahlt.',
+            'Bis zu 120 Schnuppen pro Stunde über euch. Wunschzettel dürfen heute länger sein.',
+        ]],
+        '12-21' => ['✨', 'Wintersonnenwende', [
+            'Der kürzeste Tag, die längste Nacht — ab morgen kommt das Licht zurück. Versprochen. Astronomisch verbrieft.',
+            'Heute ist der dunkelste Tag des Jahres. Passt schon: Ihr leuchtet ja selbst.',
+            'Ab heute gewinnt das Licht wieder. Gute Zeit für Pläne, die mitwachsen dürfen.',
+        ]],
+        '12-24' => ['🎄', 'Heiligabend', [
+            'Der Kosmos wünscht leise Stunden, warmes Licht und mindestens eine Umarmung unterm Baum.',
+            'Heute zählt nicht, was verpackt ist, sondern wer daneben sitzt.',
+            'Der Himmel hat heute extra früh die Sterne angeknipst. Frohe Weihnachten, ihr zwei.',
+        ]],
+        '12-25' => ['🎄', 'Weihnachts-Funk', [
+            'Erster Weihnachtstag: offizieller Feiertag für Ausschlafen, Reste essen und Nächstenliebe im Bademantel.',
+            'Heute ist Umarmen-Bleiben ausdrücklich systemrelevant.',
+            'Der Kosmos serviert heute Ruhe mit Sternchen. Bitte im Sitzen genießen.',
+        ]],
+        '12-26' => ['🎄', 'Weihnachts-Zugabe', [
+            'Die elegante Verlängerung: Reste, Spaziergang, Sofakonzert — die Reihenfolge bestimmt ihr.',
+            'Heute ist offiziell erlaubt, was gestern schon schön war. Wiederholung auf Wunsch des Publikums.',
+            'Der Kosmos empfiehlt Verdauungsspaziergang mit Händchenhalten. Beides bewährt.',
+        ]],
+        '12-31' => ['🎇', 'Silvester-Funk', [
+            'Der Kosmos zündet heute das große Abschlussfeuerwerk. Ihr wart das Beste am Programm.',
+            'Letzter Tag des Jahres: Zeit, kurz zurückzuschauen, lange anzustoßen und gemeinsam weiterzublättern.',
+            'Um Mitternacht bitte küssen. Das ist keine Tradition, das ist eine Dienstanweisung des Himmels.',
+        ]],
+    ];
+
+    /** Ostersonntag / Ostermontag (beweglich, via Astro::easterSunday). */
+    public const SPECIAL_EASTER_SUNDAY = ['🐣', 'Oster-Funk', [
+        'Der Kosmos hat Eier versteckt — metaphorisch. Die echten findet ihr hoffentlich vor dem Sommer.',
+        'Heute offiziell erlaubt: Schokolade vor dem Frühstück. Der Himmel drückt beide Augen zu und nascht mit.',
+        'Auferstehungswetter für Frühlingsgefühle. Und für das zweite Frühstück.',
+    ]];
+
+    public const SPECIAL_EASTER_MONDAY = ['🐰', 'Oster-Zugabe', [
+        'Der gemütlichste Feiertag im Kalender. Aufgabe: Reste-Schokolade gerecht aufteilen. Viel Erfolg.',
+        'Heute wird der Spaziergang zur Königsdisziplin. Nester-Nachkontrolle inklusive.',
+        'Das Wochenende bekommt heute eine amtliche Verlängerung. Einspruch? Niemand? Gut so.',
+    ]];
+
+    /** Freitag der 13. — der Kosmos hält nichts von Aberglauben. */
+    public const SPECIAL_FRIDAY13 = ['🖤', 'Freitag der 13.', [
+        'Statistisch einer der sichersten Tage — alle passen extra auf. Der Kosmos grinst über den Aberglauben und wünscht viel Glück. Ihr braucht es nicht mal.',
+        'Schwarze Katzen, Leitern, Spiegel — alles harmlos. Das einzig Gefährliche heute: wie gut ihr zusammen ausseht.',
+        'Der Glückstag für alle, die Statistik lesen können. Ihr zwei seid ohnehin versichert: gegenseitig.',
+    ]];
+
+    /** Tages-Meilensteine seit Onboarding ({N} = Tage). */
+    public const SPECIAL_MILESTONES = [100, 200, 300, 365, 500, 730, 1000, 1500, 2000, 2500, 3000, 3650];
+
+    public const SPECIAL_MILESTONE_TEXTS = [
+        'Heute ist Tag {N} eures Sternenflunks! Der Himmel hat kurz applaudiert und dann weitergefunkelt.',
+        'Jubiläum! {N} Tage Sternenflunk für euch zwei. Prognosen-Trefferquote: liebevoll geschätzt. Treue-Quote: amtlich 100 %.',
+        'Tag {N}! Der Sternenflunk gratuliert sich selbst zu euch. Beste Zielgruppe seit Erfindung des Himmels.',
+        '{N} Tage gemeinsamer Sternenfunk — der Kosmos führt euch inzwischen als Stammkundschaft mit Fensterplatz.',
+    ];
+
+    /** Kalendarischer Jahrestag der Erstinstallation ({JAHRE_TEXT} = "einem Jahr"/"2 Jahren"). */
+    public const SPECIAL_ANNIVERSARY_TEXTS = [
+        'Auf den Tag genau seit {JAHRE_TEXT} sendet der Sternenflunk für euch. Die Sterne haben Kerzen angezündet — na gut, die brennen sowieso immer.',
+        'Heute vor {JAHRE_TEXT}: erster Sternenflunk für euch. Seitdem täglich Prophezeiungen, null Kündigungen. Rekordverdächtig, ihr drei.',
+        'Der Sternenflunk funkt heute seit {JAHRE_TEXT} für euch — und hat immer noch Schmetterlinge im Sendemast.',
     ];
 }

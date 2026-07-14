@@ -33,6 +33,12 @@
   --warn: #c98500;
   --bad: #e66767;
 
+  /* Nebel-Schleier des Nachthimmels — Saison/Feiertag verschieben sie dezent.
+     Defaults = das gestimmte Original, bitte nur über die Overrides ändern. */
+  --neb1: rgba(123, 91, 214, 0.22);
+  --neb2: rgba(37, 150, 172, 0.14);
+  --neb3: rgba(199, 68, 104, 0.13);
+
   --radius: 18px;
   --radius-sm: 12px;
 
@@ -53,12 +59,64 @@ body {
   line-height: 1.6;
   color: var(--ink);
   background:
-    radial-gradient(1100px 700px at 85% -10%, rgba(123, 91, 214, 0.22), transparent 60%),
-    radial-gradient(900px 600px at -10% 30%, rgba(37, 150, 172, 0.14), transparent 55%),
-    radial-gradient(800px 700px at 70% 110%, rgba(199, 68, 104, 0.13), transparent 55%),
+    radial-gradient(1100px 700px at 85% -10%, var(--neb1), transparent 60%),
+    radial-gradient(900px 600px at -10% 30%, var(--neb2), transparent 55%),
+    radial-gradient(800px 700px at 70% 110%, var(--neb3), transparent 55%),
     linear-gradient(180deg, var(--bg0), var(--bg1) 60%, #120d2c);
   background-attachment: fixed;
   min-height: 100vh;
+}
+
+/* --------------------------------------------- Saison- & Feiertags-Himmel */
+/* Der Nachthimmel bleibt der Star — die Nebel wechseln nur die Garderobe. */
+
+body[data-season='fruehling'] { --neb2: rgba(105, 190, 130, 0.13); }
+body[data-season='sommer']    { --neb3: rgba(226, 160, 80, 0.15); }
+body[data-season='herbst']    { --neb1: rgba(200, 140, 60, 0.18); }
+body[data-season='winter']    { --neb2: rgba(120, 170, 220, 0.15); }
+
+body[data-holiday='xmas']      { --neb1: rgba(190, 60, 70, 0.16); --neb2: rgba(80, 160, 110, 0.14); }
+body[data-holiday='silvester'] { --neb1: rgba(212, 175, 55, 0.18); }
+body[data-holiday='valentin']  { --neb3: rgba(230, 100, 140, 0.19); }
+body[data-holiday='halloween'] { --neb1: rgba(230, 130, 40, 0.20); --neb2: rgba(110, 70, 160, 0.16); }
+body[data-holiday='ostern']    { --neb2: rgba(150, 200, 120, 0.14); --neb3: rgba(220, 170, 90, 0.13); }
+
+/* Deko-Partikel: Schneefall, Herzenswind, Fledermaus-Patrouille & Co.
+   Reine Zierde — pointer-events aus, bei reduced motion komplett weg. */
+#deco {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.deco-p {
+  position: absolute;
+  top: -6vh;
+  left: var(--x, 50%);
+  font-size: var(--size, 14px);
+  opacity: var(--o, 0.5);
+  will-change: transform;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.12));
+}
+
+.deco-fall { animation: deco-fall var(--dur, 12s) linear var(--delay, 0s) infinite; }
+@keyframes deco-fall {
+  0%   { transform: translate3d(0, -8vh, 0) rotate(0deg); }
+  100% { transform: translate3d(var(--drift, 0px), 112vh, 0) rotate(340deg); }
+}
+
+.deco-rise { top: auto; bottom: -6vh; animation: deco-rise var(--dur, 12s) linear var(--delay, 0s) infinite; }
+@keyframes deco-rise {
+  0%   { transform: translate3d(0, 6vh, 0) scale(0.9); }
+  100% { transform: translate3d(var(--drift, 0px), -112vh, 0) scale(1.15); }
+}
+
+.deco-float { top: var(--y, 20%); animation: deco-float calc(var(--dur, 12s) * 0.7) ease-in-out var(--delay, 0s) infinite alternate; }
+@keyframes deco-float {
+  0%   { transform: translate3d(0, 0, 0) rotate(-7deg); }
+  100% { transform: translate3d(var(--drift, 40px), 4vh, 0) rotate(7deg); }
 }
 
 #starfield {
@@ -183,6 +241,21 @@ body {
   font-size: 0.95rem;
   margin-bottom: 14px;
 }
+
+.special-banner {
+  border: 1px solid rgba(226, 180, 95, 0.5);
+  background: linear-gradient(90deg, rgba(179, 126, 39, 0.18), rgba(123, 91, 214, 0.10));
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+  display: grid;
+  gap: 6px;
+}
+
+.special-row { display: flex; gap: 10px; align-items: baseline; }
+.special-emoji { font-size: 1.15rem; line-height: 1; }
+.special-banner strong { color: var(--gold-soft); }
 
 .astro-ticker {
   display: grid;
@@ -901,6 +974,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+  .deco-p { display: none; }
 }
 
 /* ------------------------------------------------------------ Responsive */

@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.2.0 — 2026-07-15
+
+Die Redaktion hat aufgerüstet: mehr als doppelt so viel Flunk, Feiertage
+im Programm und Konfetti im Quellcode.
+
+- **Textpools massiv erweitert (~450 → ~1030 Einträge, Ø ×2,3):** Mottos,
+  kosmisches Wetter, Klugscheißer-Fakten, alle vier Tageskategorien,
+  Zeichen-Durchsagen (5 → 11 je Zeichen), Frivol-Sektion, Warnungen,
+  Glücksfarben/-bringer, Kompatibilitäts-, Flaggen-, Schiedsspruch- und
+  Prophezeiungs-Texte, Date-Direktiven, Gesprächsstoff, Paar-Missionen,
+  Elementar-Funk (3 → 7 je Kombination) u. v. m. — Tonlage unverändert:
+  liebevoll frotzelnd, Fake-Präzision, nie verletzend.
+- **Specials & Eastereggs:** Neue `special`-Sektion im Tages-JSON
+  (eigener Rng-Seed, deterministisch): Flunk-Meilensteine (Tag 100, 200,
+  365 …), Flunk-Geburtstag (Jahrestag der Erstinstallation), Feiertage
+  (Neujahr, Valentinstag, Ostern via Gauß-Formel, Weltkusstag,
+  Halloween, Nikolaus, Advent-Klassiker, Silvester …), Nerd-Tage
+  (Pi-Tag, Star-Wars-Tag, Handtuch-Tag, Tag der Raumfahrt),
+  Sternschnuppen-Nächte (Perseiden/Geminiden) und Freitag der 13.
+  Anzeige als goldenes Banner unterm Kopfbereich.
+- **Mehr Abwechslung im Maschinenraum:** Tageszahl-Deutungen jetzt mit
+  3 Varianten pro Ziffer; das Duell lost täglich 5 aus 10 Kategorien
+  (neu: Geduld, Orientierungssinn, Elefantengedächtnis,
+  Verhandlungskunst, Improvisationstalent).
+- **Saison- & Feiertags-Deko (CSS):** Die Nachthimmel-Nebel wechseln
+  dezent mit der Jahreszeit des angezeigten Tages; zu Anlässen gibt es
+  Deko-Partikel (Schneefall, Herzen, Fledermäuse, Blüten …) und in
+  Sternschnuppen-Nächten eine erhöhte Schnuppen-Rate im Starfield.
+  Respektiert `prefers-reduced-motion`, funktioniert auch für
+  eingefrorene Alt-Tage (Deko hängt nur am Datum).
+- **Orakel aufgemöbelt:** Antwortpool 26 → 60, plus geheime
+  Spezialantworten auf bestimmte Fragewörter (z. B. Pizza, Kaffee, 42).
+- **UI-Easteregg:** Fünfmal aufs Logo tippen — mehr wird nicht verraten.
+- Determinismus-Garantien unverändert: Kompatibilitätskurve, Seeds und
+  eingefrorene Tage bleiben unangetastet; Pool-Erweiterungen wirken nur
+  auf neu generierte Tage.
+
 ## 1.1.1 — 2026-07-14
 
 Kosmetik fürs Schaufenster.

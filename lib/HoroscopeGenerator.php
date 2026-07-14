@@ -35,7 +35,81 @@ final class HoroscopeGenerator
             'a'                => self::person($date, $key, $a, $b),
             'b'                => self::person($date, $key, $b, $a),
             'couple'           => self::couple($date, $key, $a, $b),
+            'special'          => self::specials($date, $key, $couple),
         ];
+    }
+
+    // --------------------------------------------------------------- Specials
+
+    /**
+     * Eastereggs & Anlässe: Paar-Jubiläen (Tages-Meilensteine + Jahrestag der
+     * Erstinstallation), fixe Kalendertage, Ostern, Freitag der 13.
+     * Eigener Rng-Seed — beeinflusst keine andere Sektion. Rein deterministisch
+     * aus Datum + since + coupleKey. Liefert 0–2 Einträge.
+     *
+     * @return array<int, array{type:string, emoji:string, title:string, text:string}>
+     */
+    private static function specials(string $date, string $key, array $couple): array
+    {
+        $rng = new Rng($date . '|special|' . $key);
+        $out = [];
+
+        // Paar-Jubiläen zuerst — die persönlichste Sorte Feiertag.
+        $since = (string) ($couple['since'] ?? '');
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $since) === 1 && $date > $since) {
+            $days = (int) round((strtotime($date . ' 12:00:00') - strtotime($since . ' 12:00:00')) / 86400);
+
+            if (substr($date, 5) === substr($since, 5)) {
+                $jahre = (int) substr($date, 0, 4) - (int) substr($since, 0, 4);
+                if ($jahre >= 1) {
+                    $jahreText = $jahre === 1 ? 'einem Jahr' : $jahre . ' Jahren';
+                    $out[] = [
+                        'type'  => 'anniversary',
+                        'emoji' => '🎂',
+                        'title' => 'Flunk-Geburtstag',
+                        'text'  => str_replace('{JAHRE_TEXT}', $jahreText, $rng->pick(Content::SPECIAL_ANNIVERSARY_TEXTS)),
+                    ];
+                }
+            } elseif (in_array($days, Content::SPECIAL_MILESTONES, true)) {
+                $out[] = [
+                    'type'  => 'milestone',
+                    'emoji' => '🏅',
+                    'title' => 'Flunk-Meilenstein',
+                    'text'  => str_replace('{N}', (string) $days, $rng->pick(Content::SPECIAL_MILESTONE_TEXTS)),
+                ];
+            }
+        }
+
+        // Kalender-Anlässe: fixe Tage, Ostern (beweglich), Freitag der 13.
+        $mmdd  = substr($date, 5);
+        $year  = (int) substr($date, 0, 4);
+        $anlass = Content::SPECIAL_DATES[$mmdd] ?? null;
+
+        if ($anlass === null) {
+            $easter = Astro::easterSunday($year);
+            if ($date === $easter) {
+                $anlass = Content::SPECIAL_EASTER_SUNDAY;
+            } elseif ($date === date('Y-m-d', strtotime($easter . ' +1 day'))) {
+                $anlass = Content::SPECIAL_EASTER_MONDAY;
+            }
+        }
+        if ($anlass === null
+            && (int) date('N', strtotime($date . ' 12:00:00')) === 5
+            && (int) substr($date, 8) === 13) {
+            $anlass = Content::SPECIAL_FRIDAY13;
+        }
+
+        if ($anlass !== null) {
+            [$emoji, $title, $texts] = $anlass;
+            $out[] = [
+                'type'  => 'calendar',
+                'emoji' => $emoji,
+                'title' => $title,
+                'text'  => $rng->pick($texts),
+            ];
+        }
+
+        return array_slice($out, 0, 2);
     }
 
     // ------------------------------------------------------------------ Astro
@@ -84,7 +158,7 @@ final class HoroscopeGenerator
             'mercury'    => $mercury,
             'weather'    => self::fill($rng->pick(Content::WEATHER), $rng, $sun),
             'fact'       => $rng->pick(Content::FACTS),
-            'numerology' => ['digit' => $digit, 'text' => Content::NUMEROLOGY[$digit]],
+            'numerology' => ['digit' => $digit, 'text' => $rng->pick(Content::NUMEROLOGY[$digit])],
         ];
     }
 
@@ -256,8 +330,9 @@ final class HoroscopeGenerator
             },
         ];
 
+        // Duell: täglich wechselnde 5er-Auswahl aus dem Kategorien-Pool.
         $battle = [];
-        foreach (Content::BATTLE_KATEGORIEN as $kat) {
+        foreach ($rng->sample(Content::BATTLE_KATEGORIEN, 5) as $kat) {
             $aVal = $rng->int(30, 99);
             $bVal = $rng->int(30, 99);
             if (abs($aVal - $bVal) <= 4) {

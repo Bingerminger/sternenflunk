@@ -30,7 +30,107 @@
     'Dieses Horoskop enthält Spuren von Wahrheit.',
     'Von Experten empfohlen, die wir uns ausgedacht haben.',
     'Garantiert frei von echten Planetendaten. Bis auf die echten.',
+    'Geprüft vom TÜV für Herzensangelegenheiten. Plakette abgelaufen, Zuneigung nicht.',
+    'Die Sterne wurden artgerecht gehalten und täglich gebürstet.',
+    'Serviervorschlag: Horoskop kann Spuren von Ironie enthalten.',
+    'Bei Nebenwirkungen wie Dauergrinsen: einfach weitermachen.',
+    'Astrologisch wertlos, emotional unbezahlbar.',
+    'Hergestellt in Handarbeit aus 100 % wiederverwertetem Sternenstaub.',
+    'Der Mond war bei der Erstellung anwesend, hat aber nichts gesagt.',
+    'Prognosen-Genauigkeit: erstaunlich, solange niemand nachmisst.',
+    'Dieses Horoskop wurde klimaneutral geflunkert.',
+    'Für die Richtigkeit übernimmt das Universum die Verantwortung. Es ist groß genug.',
+    'Heute frisch vom Himmelsfeld geerntet, ungespritzt und handverlesen.',
+    'Kein Stern wurde beim Dreh dieser Prophezeiung verletzt.',
+    'Alle Vorhersagen sind frei erfunden. Ähnlichkeiten mit eurem Glück: volle Absicht.',
+    'Amtlich beglaubigt von der Sternwarte hinterm Haus.',
   ];
+
+  // ------------------------------------------------- Saison- & Feiertags-Deko
+
+  // Partikel-Sets: [Emojis, Dichte, Animationsklasse]
+  const DECO_SETS = {
+    xmas:      { emojis: ['❄', '❅', '✦', '❄'], count: 14, mode: 'fall' },
+    silvester: { emojis: ['✨', '🎆', '✦', '⭐'], count: 12, mode: 'fall' },
+    valentin:  { emojis: ['💗', '💘', '💞'], count: 10, mode: 'rise' },
+    halloween: { emojis: ['🦇', '🎃', '🕸️'], count: 8, mode: 'float' },
+    ostern:    { emojis: ['🌷', '🐣', '🌼'], count: 10, mode: 'fall' },
+    meteors:   { emojis: ['🌠', '✦'], count: 6, mode: 'float' },
+    fruehling: { emojis: ['🌸', '🌱'], count: 4, mode: 'fall' },
+    sommer:    { emojis: ['☀️', '✨'], count: 3, mode: 'float' },
+    herbst:    { emojis: ['🍂', '🍁'], count: 5, mode: 'fall' },
+    winter:    { emojis: ['❄'], count: 5, mode: 'fall' },
+  };
+
+  // Ostersonntag (anonyme Gauß-Formel) — Spiegel der PHP-Seite.
+  function easterSunday(year) {
+    const a = year % 19, b = Math.floor(year / 100), c = year % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day = ((h + l - 7 * m + 114) % 31) + 1;
+    return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  }
+
+  function holidayFor(dateStr) {
+    const mmdd = dateStr.slice(5);
+    if (mmdd >= '12-01' && mmdd <= '12-26') return 'xmas';
+    if (mmdd === '12-31' || mmdd === '01-01') return 'silvester';
+    if (mmdd === '02-14') return 'valentin';
+    if (mmdd === '10-31') return 'halloween';
+    if (mmdd === '08-12' || mmdd === '12-13') return 'meteors';
+    const easter = easterSunday(Number(dateStr.slice(0, 4)));
+    const monday = new Date(easter + 'T12:00:00');
+    monday.setDate(monday.getDate() + 1);
+    if (dateStr === easter || dateStr === monday.toISOString().slice(0, 10)) return 'ostern';
+    return null;
+  }
+
+  function seasonFor(dateStr) {
+    const m = Number(dateStr.slice(5, 7));
+    if (m >= 3 && m <= 5) return 'fruehling';
+    if (m >= 6 && m <= 8) return 'sommer';
+    if (m >= 9 && m <= 11) return 'herbst';
+    return 'winter';
+  }
+
+  let decoKey = null;
+  function applyDeco(dateStr) {
+    const season = seasonFor(dateStr);
+    const holiday = holidayFor(dateStr);
+    document.body.dataset.season = season;
+    if (holiday) {
+      document.body.dataset.holiday = holiday;
+    } else {
+      delete document.body.dataset.holiday;
+    }
+
+    const key = holiday || season;
+    if (key === decoKey) return;
+    decoKey = key;
+
+    const set = DECO_SETS[key];
+    const deco = $('#deco');
+    deco.replaceChildren();
+    if (!set) return;
+    for (let i = 0; i < set.count; i++) {
+      const s = document.createElement('span');
+      s.className = `deco-p deco-${set.mode}`;
+      s.textContent = set.emojis[i % set.emojis.length];
+      s.style.setProperty('--x', `${Math.random() * 100}%`);
+      s.style.setProperty('--y', `${5 + Math.random() * 65}%`);
+      s.style.setProperty('--dur', `${9 + Math.random() * 14}s`);
+      s.style.setProperty('--delay', `${-Math.random() * 20}s`);
+      s.style.setProperty('--size', `${11 + Math.random() * 11}px`);
+      s.style.setProperty('--drift', `${(Math.random() - 0.5) * 120}px`);
+      s.style.setProperty('--o', `${0.3 + Math.random() * 0.35}`);
+      deco.appendChild(s);
+    }
+  }
 
   const state = {
     meta: null,          // { serverToday, epoch, version, configured, couple, signs }
@@ -273,6 +373,7 @@
   // ------------------------------------------------------------- Rendering
 
   function render(day) {
+    applyDeco(day.date);
     renderHeader(day);
     renderTicker(day);
     renderTabs();
@@ -303,6 +404,21 @@
       banner.textContent = `⚠️ ${day.astro.mercury.text}`;
     } else {
       banner.hidden = true;
+    }
+
+    // Specials: Jubiläen, Feiertage, Sternschnuppen-Nächte, Freitag der 13. …
+    // (ältere eingefrorene Tage kennen das Feld noch nicht — defensiv rendern)
+    const specials = Array.isArray(day.special) ? day.special : [];
+    const specialEl = $('#specialBanner');
+    if (specials.length > 0) {
+      specialEl.hidden = false;
+      specialEl.innerHTML = specials.map((s) => `
+        <div class="special-row">
+          <span class="special-emoji" aria-hidden="true">${esc(s.emoji)}</span>
+          <span><strong>${esc(s.title)}:</strong> ${esc(s.text)}</span>
+        </div>`).join('');
+    } else {
+      specialEl.hidden = true;
     }
 
     const idx = Math.floor(new Date(day.date + 'T12:00:00').getTime() / 86400000);
@@ -653,6 +769,21 @@
     $('#nextDay').addEventListener('click', () => shiftDay(1));
     $('#shareBtn').addEventListener('click', () => share(state.cache.get(state.date)));
     $('#adminBtn').addEventListener('click', openAdmin);
+
+    // Easteregg: Wer das Logo fünfmal hintereinander antippt,
+    // findet den Flunk-Kern. Belohnung: Konfetti, natürlich.
+    let brandTaps = 0;
+    let brandTimer = null;
+    document.querySelector('.brand').addEventListener('click', () => {
+      brandTaps++;
+      clearTimeout(brandTimer);
+      brandTimer = setTimeout(() => { brandTaps = 0; }, 2500);
+      if (brandTaps >= 5) {
+        brandTaps = 0;
+        SFWidgets.confettiBurst($('#confetti'));
+        SFWidgets.toast('Flunk-Kern gefunden! Geheimlevel freigeschaltet: einfach weiter füreinander da sein. 🛸');
+      }
+    });
 
     document.querySelectorAll('.tab').forEach((tab) => {
       tab.addEventListener('click', () => {

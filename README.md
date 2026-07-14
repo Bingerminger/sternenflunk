@@ -59,7 +59,18 @@ wie Schicksal anfühlt.
   (Standort konfigurierbar), Tierkreis-Saison mit Heimspiel-Logik,
   Merkur-Retrograde-Banner. Die Deutung ist geflunkert, die Daten nicht.
 - **Liebesorakel:** 3 Ja/Nein-Fragen pro Tag. Antworten von „Definitiv."
-  bis „Die Antwort liegt im Kühlschrank. Ernsthaft, schau nach."
+  bis „Die Antwort liegt im Kühlschrank. Ernsthaft, schau nach." — und auf
+  bestimmte Fragewörter reagiert es … anders. (Tipp: Pizza.)
+- **Specials & Eastereggs:** Flunk-Meilensteine (Tag 100, 365 …),
+  Flunk-Geburtstag zum Jahrestag der Erstinstallation, Feiertags-Banner
+  von Valentinstag bis Silvester, Nerd-Tage (Pi-Tag, Star-Wars-Tag,
+  Handtuch-Tag), Sternschnuppen-Nächte und Freitag der 13. — alles
+  deterministisch, nichts davon verschiebt eure Zeitlinie.
+- **Saison- & Feiertags-Deko:** Der Nachthimmel färbt sich dezent mit der
+  Jahreszeit des angezeigten Tages; zu Anlässen schneit, funkelt oder
+  flattert es (respektiert `prefers-reduced-motion`).
+- **Über 1000 Textbausteine:** liebevoll frotzelnd, unverschämt präzise
+  (87,3 %) und garantiert wiederholungsarm.
 - **Keine Datenbank, kein Build, kein Framework:** PHP + Vanilla JS +
   zwei JSON-Dateien. Läuft auf jedem Hoster mit PHP — auch auf dem NAS im Flur.
 
