@@ -77,10 +77,11 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
 
 ## Deployment
 
-| Ziel | Skript | Pfad | URL |
-|---|---|---|---|
-| ACC | `bash tools/deploy-acc.sh` | `***REMOVED***/sternenflunk-acc` | http://***REMOVED***/sternenflunk-acc |
-| PROD | `bash tools/deploy-prod.sh` | `***REMOVED***/sternenflunk` | http://***REMOVED***/sternenflunk |
+- Deploy-Skripte: `bash tools/deploy-acc.sh` (ACC) bzw.
+  `bash tools/deploy-prod.sh` (PROD). Die Skripte liegen NUR lokal
+  (gitignored, `tools/deploy-*.sh`) — sie enthalten private Pfade/URLs
+  der Ziel-Synology und gehören nicht ins Repo. In einem frischen Clone
+  fehlen sie daher; die konkreten Ziele kennt der Betreiber.
 
 - Eigenständiges Git-Repo (`~/Code/sternenflunk`, GitHub:
   `Bingerminger/sternenflunk`, privat) — KEIN Teil des Mono-Repos,
@@ -88,8 +89,8 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
 - Re-Deploys schonen `data/` am Ziel (Stammdaten + eingefrorene Tage
   überleben). Erstdeploy nimmt das `data/`-Gerüst ohne JSONs mit
   (frisches Onboarding am Ziel).
-- PROD-Deploy legt vorher `***REMOVED***/sternenflunk-backup-<TS>` an
-  (rsync -rl, SMB-kompatibel) — **PROD nur auf ausdrücklichen Wunsch.**
+- PROD-Deploy legt vorher ein Backup `…-backup-<TS>` neben dem Zielordner
+  an (rsync -rl, SMB-kompatibel) — **PROD nur auf ausdrücklichen Wunsch.**
 - Historie: Sternenflunk hat am 14.07.2026 das alte „Sternenfunk"
   (Hendrik/Nora-Spezialversion, Repo `~/Code/horoskopgenerator` im Mono-Repo)
   abgelöst — die Synology-Ordner `horoskop`/`horoskop-acc` wurden entfernt.
