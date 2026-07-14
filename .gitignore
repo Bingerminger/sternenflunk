@@ -1,0 +1,6 @@
+.DS_Store
+data/couple.json
+data/days/*.json
+data/days/*.tmp.*
+.playwright-mcp/
+.claude/settings.local.json

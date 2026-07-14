@@ -1,0 +1,12 @@
+{
+  "name": "Sternenflunk — das geflunkerte Paar-Horoskop",
+  "short_name": "Sternenflunk",
+  "description": "Täglich frisch geflunkert. Emotional treffsicher.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0820",
+  "theme_color": "#0b0820",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
