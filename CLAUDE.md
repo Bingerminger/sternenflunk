@@ -84,8 +84,9 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
   fehlen sie daher; die konkreten Ziele kennt der Betreiber.
 
 - Eigenständiges Git-Repo (`~/Code/sternenflunk`, GitHub:
-  `Bingerminger/sternenflunk`, privat) — KEIN Teil des Mono-Repos,
-  normal committen und pushen.
+  `Bingerminger/sternenflunk`, öffentlich) — KEIN Teil des Mono-Repos,
+  normal committen und pushen. Öffentliches Repo: keine privaten
+  Infrastruktur-Details (IPs, Mounts, Hostnamen) einchecken.
 - Re-Deploys schonen `data/` am Ziel (Stammdaten + eingefrorene Tage
   überleben). Erstdeploy nimmt das `data/`-Gerüst ohne JSONs mit
   (frisches Onboarding am Ziel).
