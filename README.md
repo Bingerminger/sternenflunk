@@ -165,6 +165,13 @@ inklusive frischer PIN. Die Sterne verzeihen alles, sie vergessen ja auch alles.
 
 ## Lizenz & Ernsthaftigkeit
 
-Privates Spaßprojekt. Keine Sterne wurden für diese App befragt.
-Alle Prognosen sind frei erflunkert — Ähnlichkeiten mit eurem tatsächlichen
-Dienstag sind rein kosmetisch, aber statistisch erstaunlich häufig.
+**Der Code** steht unter der [MIT-Lizenz](LICENSE) — nimm ihn, forke ihn,
+flunk selbst. Kurzfassung: mach damit, was du willst, lass nur den
+Copyright-Hinweis mitreisen. Und falls der Flunk behauptet, heute sei ein
+Jackpot-Tag: dafür haftet niemand — das steht sogar in Großbuchstaben drin.
+
+**Die Prognosen** laufen weiter unter der Flunk-Lizenz™ (unwiderruflich,
+galaxieweit, noch nie vor Gericht bestätigt): Privates Spaßprojekt. Keine
+Sterne wurden für diese App befragt. Alle Prognosen sind frei erflunkert —
+Ähnlichkeiten mit eurem tatsächlichen Dienstag sind rein kosmetisch, aber
+statistisch erstaunlich häufig.
