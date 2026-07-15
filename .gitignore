@@ -5,4 +5,6 @@ data/couple.json
 data/days/*.json
 data/days/*.tmp.*
 .playwright-mcp/
-.claude/settings.local.json
+# Claude-Arbeitsverzeichnis: lokale Skills (mit privaten Deploy-Zielen) + Settings.
+.claude/
+graphify-out/

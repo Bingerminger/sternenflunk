@@ -71,6 +71,9 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
 
 - Onboarding zurücksetzen: `rm data/couple.json` (Archiv zusätzlich:
   `rm data/days/*.json`).
+- Wissensgraph: `graphify query "<frage>"` für Codebase-Fragen
+  (`graphify-out/` ist gitignored, nur lokal); nach Code-Änderungen
+  `graphify update .` (AST-only, kostenlos).
 - Selbsttest-Muster (Determinismus, Platzhalter-Reste über alle 144 Kombis,
   Kompatibilitäts-Statistik) siehe Git-History bzw. Session-Scratchpad —
   bei Content-/Generator-Änderungen neu durchlaufen lassen.
@@ -92,12 +95,17 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
   (frisches Onboarding am Ziel).
 - PROD-Deploy legt vorher ein Backup `…-backup-<TS>` neben dem Zielordner
   an (rsync -rl, SMB-kompatibel) — **PROD nur auf ausdrücklichen Wunsch.**
+- **Dieses Verzeichnis ist der einzige Entwicklungsort.** Workflow:
+  hier entwickeln → `/git-commit-acc` (Commit + Push + ACC) → nach Freigabe
+  `/git-commit-prod` (Commit + Push + PROD-Deploy mit Backup). Die beiden
+  Skills liegen lokal in `.claude/skills/` (gitignored, enthalten die
+  privaten Synology-Ziele).
 - Historie: Sternenflunk hat am 14.07.2026 das alte „Sternenfunk"
-  (Hendrik/Nora-Spezialversion, Repo `~/Code/horoskopgenerator` im Mono-Repo)
-  abgelöst — die Synology-Ordner `horoskop`/`horoskop-acc` wurden entfernt.
-  Der alte Quellcode bleibt im Mono-Repo erhalten, wird aber nicht mehr
-  deployt; dessen Skills `/git-commit-acc`/`/git-commit-prod` nicht mehr
-  benutzen.
+  (Hendrik/Nora-Spezialversion) abgelöst — Synology-Ordner
+  `horoskop`/`horoskop-acc` damals entfernt. Am 15.07.2026 wurde auch der
+  alte Projektordner `~/Code/horoskopgenerator` gelöscht; der Quellcode
+  bleibt in der Historie des lokalen Mono-Repos `~/Code` abrufbar
+  (`git -C ~/Code log -- horoskopgenerator/`).
 
 ## Important Notes
 
