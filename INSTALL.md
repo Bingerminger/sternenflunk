@@ -62,6 +62,10 @@ chmod -R u+rwX sternenflunk/data
   Achtung: Namens- oder Zeichenänderung erzeugt eine neue Zeitlinie — alle
   Tage werden rückwirkend neu geflunkert (die Sterne erinnern sich eh an
   nichts). Ein reiner PIN-Wechsel lässt die Horoskope unangetastet.
+- **Tagesbericht als PDF:** Der ⤓-Knopf neben dem Zahnrad lädt den gerade
+  angezeigten Tag (auch Archiv-Tage) als mehrseitigen PDF-Bericht herunter.
+  Der entsteht komplett im Browser — der Server merkt davon nichts, das NAS
+  bleibt entspannt. Ein halbwegs aktueller Browser genügt.
 - **PIN vergessen / Werksreset:** `data/couple.json` löschen → beim nächsten
   Aufruf kommt wieder das Onboarding (inklusive neuer PIN). Wer auch das
   Archiv leeren will, löscht zusätzlich `data/days/*.json` (passiert bei
