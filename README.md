@@ -55,6 +55,12 @@ wie Schicksal anfühlt.
   Tages-Kompatibilität. An Jackpot-Tagen (≥ 96 %): Konfetti.
 - **Charts, handgerollt in SVG:** Radar, Energie-Kurven mit gemeinsamem
   Energiefenster (Hover-Tooltip!), Battle-Duell, Meter. Keine Bibliotheken.
+- **Amtlicher Tagesbericht als PDF ⤓:** Ein Klick neben dem Zahnrad bannt
+  den angezeigten Tag — auch jeden Archiv-Tag — auf fünf A4-Seiten im
+  App-Look: Cover mit kosmischer Großwetterlage, Paar-Protokoll, beide
+  Personen, sämtliche Charts, Nachthimmel inklusive. Entsteht komplett im
+  Browser (handgerollter PDF-Writer, natürlich ohne Bibliotheken) — zum
+  Ausdrucken, Verschicken oder feierlichen Abheften.
 - **Echte Astronomie, ehrlich gemischt:** Mondphase, Sonnenauf-/-untergang
   (Standort konfigurierbar), Tierkreis-Saison mit Heimspiel-Logik,
   Merkur-Retrograde-Banner. Die Deutung ist geflunkert, die Daten nicht.
@@ -125,7 +131,7 @@ lib/Couple.php              Stammdaten: laden, validieren, speichern, coupleKey
 lib/Astro.php               Mond, Sonne, Saison, Merkur, Numerologie
 lib/Content.php             Alle Textpools (die Flunk-Redaktion)
 lib/HoroscopeGenerator.php  Baut den Tag aus Pools + Astronomie + Paar
-assets/                     CSS (Cosmic Dark) + JS (Charts, Widgets, App)
+assets/                     CSS (Cosmic Dark) + JS (Charts, Widgets, PDF-Writer, Tagesbericht, App)
 data/couple.json            Stammdaten des Paares (entsteht beim Onboarding)
 data/days/                  Eingefrorene Tage (YYYY-MM-DD.json)
 tools/deploy-acc.sh         Deploy → Synology ACC (+ Smoke-Check)
