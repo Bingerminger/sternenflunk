@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.3.0 — 2026-07-17
+
+Der Sternenflunk bekommt ein Amtsblatt: den Tagesbericht als PDF.
+
+- **PDF-Tagesbericht (⤓ neben dem Zahnrad):** Ein Klick lädt den gerade
+  angezeigten Tag — auch rückwärts navigierte Archiv-Tage — als
+  mehrseitiges PDF im Look der App: Cover mit kosmischer
+  Großwetterlage, Teil 1 Gemeinsam, Teil 2 & 3 für beide Personen.
+  Alle Inhalte des Tages inklusive Orbit-Duett, Radar-, Energie- und
+  Duell-Charts, Nachthimmel samt Saison-Nebeln und Sternenfeld.
+- **Komplett hausgemacht, ohne Bibliotheken:** `assets/js/pdf.js` ist
+  ein handgerollter Mini-PDF-Writer (Core-Fonts, Vektorpfade,
+  Transparenz, Bilder mit Alphamaske); `assets/js/report.js` baut den
+  Bericht, rastert Emojis per Canvas und bettet die Original-SVG-Charts
+  1:1 ein. Läuft komplett im Browser, kein Server-Roundtrip.
+- Der bisherige Teilen-Button (im Heimnetz ohne HTTPS funktionslos)
+  weicht dem Bericht-Button.
+- Bonus: `Beziehungswetter` und der Mond-Kommentar aus dem Tages-JSON
+  sind erstmals sichtbar — auf dem Cover des Berichts.
+
 ## 1.2.0 — 2026-07-15
 
 Die Redaktion hat aufgerüstet: mehr als doppelt so viel Flunk, Feiertage

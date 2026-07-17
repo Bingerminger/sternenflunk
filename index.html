@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="assets/css/styles.css?v=1.2.0">
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.3.0">
 </head>
 <body>
   <canvas id="starfield" aria-hidden="true"></canvas>
@@ -32,7 +32,7 @@
           <span class="date-cal" aria-hidden="true">📅</span>
         </button>
         <button id="nextDay" class="icon-btn" type="button" aria-label="Nächster Tag">›</button>
-        <button id="shareBtn" class="icon-btn share-btn" type="button" aria-label="Diesen Tag teilen">↗</button>
+        <button id="reportBtn" class="icon-btn" type="button" aria-label="Tagesbericht als PDF laden" title="Tagesbericht (PDF)">⤓</button>
         <button id="adminBtn" class="icon-btn" type="button" aria-label="Stammdaten des Paares ändern" title="Stammdaten">⚙</button>
       </nav>
     </header>
@@ -112,8 +112,10 @@
   <div id="toast" class="toast" role="status" hidden></div>
   <canvas id="confetti" aria-hidden="true"></canvas>
 
-  <script src="assets/js/charts.js?v=1.2.0"></script>
-  <script src="assets/js/widgets.js?v=1.2.0"></script>
-  <script src="assets/js/app.js?v=1.2.0"></script>
+  <script src="assets/js/charts.js?v=1.3.0"></script>
+  <script src="assets/js/widgets.js?v=1.3.0"></script>
+  <script src="assets/js/pdf.js?v=1.3.0"></script>
+  <script src="assets/js/report.js?v=1.3.0"></script>
+  <script src="assets/js/app.js?v=1.3.0"></script>
 </body>
 </html>

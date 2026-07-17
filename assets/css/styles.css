@@ -216,7 +216,11 @@ body[data-holiday='ostern']    { --neb2: rgba(150, 200, 120, 0.14); --neb3: rgba
   justify-content: center;
 }
 
-.share-btn { font-size: 1.05rem; }
+/* PDF-Bericht wird gerade geflunkert: Button pulsiert dezent. */
+.icon-btn.busy { animation: btn-busy 1s ease-in-out infinite; pointer-events: none; }
+@keyframes btn-busy {
+  50% { opacity: 0.35; }
+}
 
 .date-btn {
   height: 42px;
