@@ -150,6 +150,9 @@
 
   const de = (num) => String(num).replace('.', ',');
 
+  const disclaimerFor = (date) =>
+    DISCLAIMERS[Math.floor(new Date(date + 'T12:00:00').getTime() / 86400000) % DISCLAIMERS.length];
+
   // Tierkreis-Glyphen als Text-Glyphe erzwingen (kein Emoji-Kachel-Look).
   const glyphText = (g) => g + '︎';
 
@@ -421,8 +424,7 @@
       specialEl.hidden = true;
     }
 
-    const idx = Math.floor(new Date(day.date + 'T12:00:00').getTime() / 86400000);
-    $('#disclaimer').textContent = DISCLAIMERS[idx % DISCLAIMERS.length];
+    $('#disclaimer').textContent = disclaimerFor(day.date);
     $('#appVersion').textContent = state.meta.version;
   }
 
@@ -708,20 +710,28 @@
     SFWidgets.confettiBurst($('#confetti'));
   }
 
-  async function share(day) {
-    const k = day.couple.kompatibilitaet;
-    const text = `🔮 Sternenflunk — ${day.displayDate}\n` +
-      `${day.a.glyph} ${day.a.name}: ${day.a.stars}/5 · ${day.a.starsLabel}\n` +
-      `${day.b.glyph} ${day.b.name}: ${day.b.stars}/5 · ${day.b.starsLabel}\n` +
-      `💞 Kompatibilität: ${de(k.pct)} %`;
+  // Tagesbericht des angezeigten Tages als PDF — komplett clientseitig
+  // (SFReport rastert Charts & Emojis, SFPdf schreibt das Dokument).
+  async function downloadReport() {
+    const day = state.cache.get(state.date);
+    if (!day) return;
+    const btn = $('#reportBtn');
+    btn.disabled = true;
+    btn.classList.add('busy');
     try {
-      if (navigator.share) {
-        await navigator.share({ title: 'Sternenflunk', text, url: location.href });
-      } else {
-        await navigator.clipboard.writeText(`${text}\n${location.href}`);
-        SFWidgets.toast('In die Zwischenablage kopiert. ✨');
-      }
-    } catch { /* abgebrochen — kein Drama */ }
+      await SFReport.download(day, {
+        version: state.meta.version,
+        disclaimer: disclaimerFor(day.date),
+        season: document.body.dataset.season,
+        holiday: document.body.dataset.holiday || null,
+      });
+      SFWidgets.toast('Tagesbericht gebeamt. 📄✨');
+    } catch (err) {
+      SFWidgets.toast(`Der Bericht klemmt im Kosmos: ${err.message}`);
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('busy');
+    }
   }
 
   function shiftDay(delta) {
@@ -767,7 +777,7 @@
     // Navigation
     $('#prevDay').addEventListener('click', () => shiftDay(-1));
     $('#nextDay').addEventListener('click', () => shiftDay(1));
-    $('#shareBtn').addEventListener('click', () => share(state.cache.get(state.date)));
+    $('#reportBtn').addEventListener('click', downloadReport);
     $('#adminBtn').addEventListener('click', openAdmin);
 
     // Easteregg: Wer das Logo fünfmal hintereinander antippt,
