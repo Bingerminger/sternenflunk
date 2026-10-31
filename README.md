@@ -7,6 +7,9 @@
 **Das tägliche Paar-Flunkoskop für euch zwei. Ja, genau euch.**
 Täglich frisch geflunkert. Emotional treffsicher.
 
+**▶ [Live-Demo ausprobieren](https://bingerminger.github.io/sternenflunk/)** — mit dem Beispielpaar
+Kim & Alex, täglich neu geflunkert, ganz ohne Installation.
+
 Sternenflunk ist eine selbstgehostete Mini-Web-App für genau ein Paar: Beim
 ersten Start tragt ihr zwei Namen und zwei Sternzeichen ein — ab dann sendet
 der Flunk jeden Tag ein Flunkoskop pro Person plus ein gemeinsames
@@ -181,6 +184,8 @@ assets/js/widgets.js        Sternenhimmel, Kalender, Orakel, Konfetti, Countdown
 assets/js/pdf.js, report.js PDF-Writer + Tagesbericht (komplett im Browser)
 data/couple.json            Stammdaten des Paares (entsteht beim Onboarding)
 data/days/                  Eingefrorene Tage (YYYY-MM-DD.json)
+tools/build-demo.sh         Öffentliche Demo als statische Seite (GitHub Pages)
+.github/workflows/pages.yml Baut + veröffentlicht die Demo (Release, täglich, von Hand)
 tools/deploy-acc.sh         Deploy → Synology ACC (+ Smoke-Check)
 tools/deploy-prod.sh        Deploy → Synology PROD (mit Backup)
 ```

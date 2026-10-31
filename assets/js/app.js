@@ -184,8 +184,20 @@
 
   // ------------------------------------------------------------------- API
 
+  // Öffentliche Demo (GitHub Pages, kein PHP): tools/build-demo.sh legt die
+  // API-Antworten unter demo-api/ ab und setzt data-demo an <html>. Eine
+  // normale Installation führt diesen Zweig nie aus.
+  const DEMO = document.documentElement.hasAttribute('data-demo');
+  const DEMO_MSG = 'In der Demo bleiben Kim & Alex unter sich — eigene Installation: siehe GitHub. 🔭';
+
+  function apiUrl(action, date) {
+    if (!DEMO) return date ? `${API}?action=${action}&date=${date}` : `${API}?action=${action}`;
+    if (action === 'meta') return 'demo-api/meta.json';
+    return `demo-api/day/${date || state.meta.serverToday}.json`;
+  }
+
   async function fetchMeta() {
-    const res = await fetch(`${API}?action=meta`, { cache: 'no-store' });
+    const res = await fetch(apiUrl('meta'), { cache: 'no-store' });
     const json = await res.json();
     if (!json.ok) throw new Error(json.error?.message || 'Der Kosmos antwortet nicht.');
     state.meta = json;
@@ -194,8 +206,8 @@
 
   async function fetchDay(date) {
     if (state.cache.has(date)) return state.cache.get(date);
-    const url = date ? `${API}?action=day&date=${date}` : `${API}?action=day`;
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await fetch(apiUrl('day', date), { cache: 'no-store' });
+    if (DEMO && !res.ok) throw new Error('Dieser Tag liegt außerhalb der Demo — das Archiv reicht 60 Tage zurück. 🔭');
     const json = await res.json();
     if (!json.ok) {
       const err = new Error(json.error?.message || 'Der Kosmos antwortet nicht.');
@@ -208,6 +220,7 @@
   }
 
   async function postSetup(payload) {
+    if (DEMO) throw new Error(DEMO_MSG);
     const res = await fetch(`${API}?action=setup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -331,6 +344,7 @@
   }
 
   function openAdmin() {
+    if (DEMO) { SFWidgets.toast(DEMO_MSG, 5000); return; }
     const modal = $('#adminModal');
     const prefill = {
       a: { name: state.meta.couple.a.name, sign: state.meta.couple.a.signKey },
@@ -1120,8 +1134,18 @@
     });
   }
 
+  function demoBanner() {
+    const bar = document.createElement('div');
+    bar.className = 'demo-banner';
+    bar.innerHTML = '🔭 <strong>Demo</strong> mit dem Beispielpaar Kim &amp; Alex — täglich frisch geflunkert, '
+      + 'nichts wird gespeichert. <a href="https://github.com/Bingerminger/sternenflunk" target="_blank" rel="noopener">'
+      + 'Eigenes Flunkoskop installieren ›</a>';
+    document.querySelector('.topbar').after(bar);
+  }
+
   async function init() {
     SFWidgets.starfield($('#starfield'));
+    if (DEMO) demoBanner();
 
     try {
       await fetchMeta();

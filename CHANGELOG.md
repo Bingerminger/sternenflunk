@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.2.0 — 2026-10-31
+
+Zum Ausprobieren, ohne etwas zu installieren: die Live-Demo.
+
+- **Öffentliche Demo auf GitHub Pages** —
+  <https://bingerminger.github.io/sternenflunk/> mit dem Beispielpaar Kim
+  (Löwe) & Alex (Fische): alle vier Ansichten, Vorspann, Spielwiese mit
+  Sonntagsrätsel, PDF-Bericht und ein Archiv der letzten 60 Tage. Speichern
+  ist in der Demo gesperrt, ein Banner verlinkt die eigene Installation.
+- **Wie im Energietracker gebaut:** `tools/build-demo.sh` startet den echten
+  PHP-Server mit frischem Datenverzeichnis, ruft `meta` und jeden Tag über
+  die normale API ab und legt die Antworten unter `demo-api/` ab. Im Browser
+  liest `app.js` im Demo-Modus (`data-demo` an `<html>`) aus diesem Abzug —
+  eine normale Installation führt diesen Zweig nie aus.
+- **Workflow `.github/workflows/pages.yml`:** baut die Demo aus dem neuesten
+  Release-Tag, bei jedem Release, täglich (frisches Flunkoskop) und von Hand.
+
 ## 2.1.0 — 2026-10-31
 
 Sonntags wird gerätselt.

@@ -8,3 +8,6 @@ data/days/*.tmp.*
 # Claude-Arbeitsverzeichnis: lokale Skills (mit privaten Deploy-Zielen) + Settings.
 .claude/
 graphify-out/
+
+# Öffentliche Demo (tools/build-demo.sh) — wird von GitHub Actions gebaut, nicht eingecheckt.
+dist/
