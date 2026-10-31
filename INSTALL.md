@@ -61,11 +61,18 @@ chmod -R u+rwX sternenflunk/data
   Admin-PIN verlangt. Dort lässt sich (optional) auch eine neue PIN setzen.
   Achtung: Namens- oder Zeichenänderung erzeugt eine neue Zeitlinie — alle
   Tage werden rückwirkend neu geflunkert (die Sterne erinnern sich eh an
-  nichts). Ein reiner PIN-Wechsel lässt die Horoskope unangetastet.
+  nichts). Ein reiner PIN-Wechsel lässt die Flunkoskope unangetastet.
 - **Tagesbericht als PDF:** Der ⤓-Knopf neben dem Zahnrad lädt den gerade
   angezeigten Tag (auch Archiv-Tage) als mehrseitigen PDF-Bericht herunter.
   Der entsteht komplett im Browser — der Server merkt davon nichts, das NAS
   bleibt entspannt. Ein halbwegs aktueller Browser genügt.
+- **Vorspann:** läuft einmal pro Tag und Gerät beim ersten Öffnen; Antippen
+  überspringt, „▶ Vorspann nochmal abspielen“ im Footer startet ihn erneut.
+- **Spielwiese (vierter Tab):** Rubbellose, Fingerzeig-Duell,
+  Entscheidungsrad, Liebes-Funkspruch und Orakel. Spielstände merkt sich nur
+  das jeweilige Gerät.
+- **Sofa-Modus:** Im Tab der angeschlagenen Person auf „Heute angeschlagen?“
+  tippen. Gilt für diesen Tag auf diesem Gerät; erneutes Tippen schaltet ab.
 - **PIN vergessen / Werksreset:** `data/couple.json` löschen → beim nächsten
   Aufruf kommt wieder das Onboarding (inklusive neuer PIN). Wer auch das
   Archiv leeren will, löscht zusätzlich `data/days/*.json` (passiert bei
@@ -87,7 +94,7 @@ Backup an).
 | „Falsche PIN" trotz richtiger PIN | Feststelltaste/Autokorrektur prüfen — die PIN besteht nur aus Ziffern. Im Zweifel: Werksreset (siehe oben). |
 | „Die Zukunft bleibt versiegelt" für heute | Server-Zeitzone ≠ eure Zeitzone → `APP_TIMEZONE` in `config.php` prüfen (Standard: Europe/Berlin). |
 | Sonnenzeiten passen nicht | `GEO_LAT`/`GEO_LON`/`GEO_NAME` in `config.php` auf euren Ort stellen (Standard: Leipzig). |
-| Horoskope ändern sich nach Code-Update rückwirkend | Passiert nur bei Tagen, die nie ausgeliefert wurden. Ausgelieferte Tage sind in `data/days/` eingefroren und bleiben stabil. |
+| Flunkoskope ändern sich nach Code-Update rückwirkend | Passiert nur bei Tagen, die nie ausgeliefert wurden. Ausgelieferte Tage sind in `data/days/` eingefroren und bleiben stabil. |
 
 ## 8. Sicherheitsmodell (ehrlich beschriftet)
 
@@ -96,7 +103,10 @@ Backup an).
   scherzhaften Änderungen durch Mitbewohner. Es gibt bewusst kein
   Rate-Limiting, keine Sessions, kein HTTPS-Erzwingen — die App ist für den
   Betrieb im Heimnetz oder hinter einem Reverse-Proxy-Schutz gedacht.
-- Die Horoskope selbst sind ohne PIN lesbar (es ist ein Horoskop, kein
+- Die Flunkoskope selbst sind ohne PIN lesbar (es ist ein Flunkoskop, kein
   Bankkonto).
 - Keine Cookies, kein Tracking, keine externen Requests. Der Browser merkt
-  sich lediglich lokal die zuletzt gewählte Ansicht und den Orakel-Zähler.
+  sich lediglich lokal die zuletzt gewählte Ansicht, ob der Vorspann heute
+  schon lief, den Orakel-Zähler, freigerubbelte Lose, den Stand des
+  Fingerzeig-Duells und den Sofa-Modus — alles pro Gerät, nichts davon
+  verlässt den Browser.

@@ -17,28 +17,29 @@
     gold: '#b37e27',
     goldSoft: '#e2b45f',
     bad: '#e66767',
+    violet: '#a58bf0',
   };
 
   const DISCLAIMERS = [
-    'Keine Sterne wurden für dieses Horoskop befragt.',
+    'Keine Sterne wurden für dieses Flunkoskop befragt.',
     '100 % handgelesen aus Kaffeesatz und JSON.',
     'Täglich frisch geflunkert. Emotional treffsicher.',
     'Alle Angaben ohne Gewähr. Und ohne Teleskop.',
     'Wissenschaftlicher Beirat: ein Webserver im Flur.',
     'Zu Risiken und Nebenwirkungen küssen Sie Ihre bessere Hälfte.',
     'Ähnlichkeiten mit tatsächlichen Schicksalen sind rein kosmetisch.',
-    'Dieses Horoskop enthält Spuren von Wahrheit.',
+    'Dieses Flunkoskop enthält Spuren von Wahrheit.',
     'Von Experten empfohlen, die wir uns ausgedacht haben.',
     'Garantiert frei von echten Planetendaten. Bis auf die echten.',
     'Geprüft vom TÜV für Herzensangelegenheiten. Plakette abgelaufen, Zuneigung nicht.',
     'Die Sterne wurden artgerecht gehalten und täglich gebürstet.',
-    'Serviervorschlag: Horoskop kann Spuren von Ironie enthalten.',
+    'Serviervorschlag: Flunkoskop kann Spuren von Ironie enthalten.',
     'Bei Nebenwirkungen wie Dauergrinsen: einfach weitermachen.',
     'Astrologisch wertlos, emotional unbezahlbar.',
     'Hergestellt in Handarbeit aus 100 % wiederverwertetem Sternenstaub.',
     'Der Mond war bei der Erstellung anwesend, hat aber nichts gesagt.',
     'Prognosen-Genauigkeit: erstaunlich, solange niemand nachmisst.',
-    'Dieses Horoskop wurde klimaneutral geflunkert.',
+    'Dieses Flunkoskop wurde klimaneutral geflunkert.',
     'Für die Richtigkeit übernimmt das Universum die Verantwortung. Es ist groß genug.',
     'Heute frisch vom Himmelsfeld geerntet, ungespritzt und handverlesen.',
     'Kein Stern wurde beim Dreh dieser Prophezeiung verletzt.',
@@ -60,7 +61,30 @@
     sommer:    { emojis: ['☀️', '✨'], count: 3, mode: 'float' },
     herbst:    { emojis: ['🍂', '🍁'], count: 5, mode: 'fall' },
     winter:    { emojis: ['❄'], count: 5, mode: 'fall' },
+    sofa:      { emojis: ['☕', '💛', '🫖', '✨', '🧦'], count: 10, mode: 'rise' },
   };
+
+  // ------------------------------------------------------------ Sofa-Modus
+  // Wer angeschlagen ist, bekommt die Genesungs-Edition. Gilt pro Tag und
+  // Person, lebt nur auf diesem Gerät (localStorage) und vergisst sich selbst.
+
+  function sofaStore() {
+    try { return JSON.parse(localStorage.getItem('sflunk_sofa') || '{}'); } catch { return {}; }
+  }
+
+  function sofaOn(date, slot) {
+    return Boolean(sofaStore()[date]?.includes(slot));
+  }
+
+  function sofaToggle(date, slot) {
+    const store = sofaStore();
+    const list = new Set(store[date] || []);
+    if (list.has(slot)) list.delete(slot); else list.add(slot);
+    store[date] = [...list];
+    for (const d of Object.keys(store).sort().slice(0, -14)) delete store[d];
+    try { localStorage.setItem('sflunk_sofa', JSON.stringify(store)); } catch { /* egal */ }
+    return list.has(slot);
+  }
 
   // Ostersonntag (anonyme Gauß-Formel) — Spiegel der PHP-Seite.
   function easterSunday(year) {
@@ -102,14 +126,16 @@
   function applyDeco(dateStr) {
     const season = seasonFor(dateStr);
     const holiday = holidayFor(dateStr);
+    const sofa = sofaOn(dateStr, 'a') || sofaOn(dateStr, 'b');
     document.body.dataset.season = season;
     if (holiday) {
       document.body.dataset.holiday = holiday;
     } else {
       delete document.body.dataset.holiday;
     }
+    document.body.classList.toggle('is-sofa', sofa);
 
-    const key = holiday || season;
+    const key = sofa ? 'sofa' : (holiday || season);
     if (key === decoKey) return;
     decoKey = key;
 
@@ -330,7 +356,7 @@
       '<span class="brand-spark">✦</span>' +
       `<span class="glyph-b">${glyphText(b.glyph)}</span>`;
 
-    document.title = `Sternenflunk — das geflunkerte Horoskop für ${a.name} & ${b.name}`;
+    document.title = `Sternenflunk — das Flunkoskop für ${a.name} & ${b.name}`;
 
     const setTab = (id, glyph, name, sub) => {
       const tab = $(id);
@@ -345,7 +371,7 @@
   // ---------------------------------------------------------------- Router
 
   function parseHash() {
-    const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})(?:\/(a|b|paar))?$/);
+    const m = location.hash.match(/^#(\d{4}-\d{2}-\d{2})(?:\/(a|b|paar|spiel))?$/);
     return m ? { date: m[1], view: m[2] || state.view } : null;
   }
 
@@ -384,11 +410,19 @@
 
     if (state.view === 'paar') {
       renderCouple(day);
+    } else if (state.view === 'spiel') {
+      renderSpiel(day);
     } else {
       renderPerson(day[state.view], day);
     }
 
+    SFMotion.reveal(viewEl);
     maybeConfetti(day);
+  }
+
+  /** Re-Render ohne Netz (Sofa-Schalter, Sprung-Links, Vorspann-Wiederholung). */
+  function rerender() {
+    render(state.cache.get(state.date));
   }
 
   function renderHeader(day) {
@@ -431,8 +465,9 @@
   function renderTicker(day) {
     const a = day.astro;
     $('#astroTicker').innerHTML = `
-      <div class="astro-chip">${a.moon.emoji} <strong>${esc(a.moon.name)}</strong><br>
-        <span class="mono">${a.moon.illumination} % beleuchtet</span></div>
+      <div class="astro-chip astro-chip--moon">${SFMotion.moonSvg(a.moon.illumination, a.moon.group)}
+        <div><strong>${esc(a.moon.name)}</strong><br>
+        <span class="mono">${a.moon.illumination} % beleuchtet</span></div></div>
       <div class="astro-chip">☀️ <strong>${esc(a.sun.location)}</strong> <span class="mono">${a.sun.rise}–${a.sun.set}</span><br>
         ${esc(a.sun.trendText)}</div>
       <div class="astro-chip">${a.season.glyph}︎ <strong>${esc(a.season.sign)}-Saison</strong><br>
@@ -460,18 +495,58 @@
     const color = isA ? COLOR.pa : COLOR.pb;
     const softColor = isA ? COLOR.paSoft : COLOR.pbSoft;
 
-    const catRows = p.categories.map((c) => `
-      <div class="cat-row">
+    const catRows = p.categories.map((c, i) => `
+      <div class="cat-row" style="--ci:${i}">
         <span class="cat-icon" aria-hidden="true">${c.icon}</span>
         <span class="cat-title">${esc(c.title)}</span>
-        <span class="cat-score">${c.score}</span>
-        <span class="cat-bar"><i style="width:${c.score}%"></i></span>
+        <span class="cat-score" data-count="${c.score}">${c.score}</span>
+        <span class="cat-bar"><i style="--w:${c.score}%"></i></span>
         <p class="cat-text">${esc(c.text)}</p>
       </div>`).join('');
 
-    viewEl.innerHTML = `
+    // Sofa-Modus: Genesungs-Edition (ältere eingefrorene Tage ohne pflege → kein Schalter)
+    const pflege = day.pflege?.[p.slot];
+    const sofa = Boolean(pflege) && sofaOn(day.date, p.slot);
+    const sofaBtn = pflege
+      ? `<button type="button" class="sofa-toggle${sofa ? ' is-on' : ''}" aria-pressed="${sofa}" id="sofaToggle">
+           <span aria-hidden="true">🛋️</span> ${sofa ? 'Sofa-Modus an' : 'Heute angeschlagen?'}</button>`
+      : '';
+    const sofaCard = sofa ? `
+      <section class="card card--sofa s12 sofa-card">
+        <div class="sofa-cup" aria-hidden="true">
+          <span class="steam s1"></span><span class="steam s2"></span><span class="steam s3"></span>
+          <span class="cup">☕</span>
+        </div>
+        <div class="sofa-body">
+          <div class="eyebrow">Sofa-Edition · Genesungs-Flunkoskop für ${esc(p.name)}</div>
+          <p class="sofa-prognose">${esc(pflege.prognose)}</p>
+          <div class="sofa-grid">
+            <div class="sofa-rezept">
+              <div class="sofa-sub">Sternen-Apotheke verordnet</div>
+              <ul>${pflege.rezept.map((r, i) => `<li style="--ri:${i}">${esc(r)}</li>`).join('')}</ul>
+              <p class="sofa-tee">Tee des Tages: <strong>${esc(pflege.tee)}</strong></p>
+            </div>
+            <div class="sofa-werte">
+              <div class="meter">
+                <div class="meter-head"><span>🫂 Kuschelbedarf</span><span class="val"><span data-count="${pflege.kuschelBedarf}" data-dec="1">${de(pflege.kuschelBedarf)}</span> %</span></div>
+                <div class="meter-track"><div class="meter-fill" style="--fill:${COLOR.goldSoft};--w:${pflege.kuschelBedarf}%"></div></div>
+              </div>
+              <div class="sofa-cups" aria-label="Tee-Dosis: ${pflege.tassen} Tassen">
+                <span class="sofa-sub">Tee-Dosis</span>
+                <span>${Array.from({ length: pflege.tassen }, (_, i) => `<i style="--ti:${i}">☕</i>`).join('')}</span>
+              </div>
+              <p class="sofa-g">Sofa-Gravitation heute: <strong class="mono">${de(Number(pflege.sofaG).toFixed(1))} g</strong></p>
+            </div>
+          </div>
+          <p class="sofa-auftrag">📋 <strong>Pflegeauftrag:</strong> ${esc(pflege.auftrag)}</p>
+          <p class="sofa-note">Das Flunkoskop ersetzt keinen Arztbesuch — aber gute Laune verordnet es trotzdem. Gute Besserung, ${esc(p.name)}! 💛</p>
+        </div>
+      </section>` : '';
+
+    viewEl.innerHTML = `${sofaCard}
       <section class="card ${cls} s8 hero">
         <div class="eyebrow">Tagesprotokoll · ${glyphText(p.glyph)} ${esc(p.sign)}</div>
+        ${sofaBtn}
         <p class="hero-motto">${esc(p.motto)}</p>
         <div class="stars-row">
           ${starsMarkup(p.stars)}
@@ -483,7 +558,7 @@
       <section class="card ${cls} s4">
         <div class="eyebrow">Laborwerte · Glück</div>
         <div class="gluck-grid">
-          <div class="gluck-cell"><span class="big">${p.glueck.zahl}</span><span class="label">Glückszahl</span></div>
+          <div class="gluck-cell"><span class="big" data-count="${p.glueck.zahl}">${p.glueck.zahl}</span><span class="label">Glückszahl</span></div>
           <div class="gluck-cell"><span class="emoji-big">${p.glueck.emoji}</span><span class="label">Glücks-Emoji</span></div>
           <div class="gluck-cell">
             <span class="swatch" style="background:${esc(p.glueck.farbe.hex)}"></span>
@@ -521,8 +596,8 @@
         <div class="eyebrow">Nachtprotokoll · streng vertraulich</div>
         <h3>Bettgeflüster-Barometer</h3>
         <div class="meter">
-          <div class="meter-head"><span>Knisterfaktor</span><span class="val">${p.spice.pct} %</span></div>
-          <div class="meter-track"><div class="meter-fill" style="--fill:${softColor};width:${p.spice.pct}%"></div></div>
+          <div class="meter-head"><span>Knisterfaktor</span><span class="val"><span data-count="${p.spice.pct}">${p.spice.pct}</span> %</span></div>
+          <div class="meter-track"><div class="meter-fill" style="--fill:${softColor};--w:${p.spice.pct}%"></div></div>
         </div>
         <p style="margin-top:10px">${esc(p.spice.text)}</p>
       </section>
@@ -542,6 +617,16 @@
       series: [{ name: p.name, color, points: p.energie.points, peak: p.energie.peakZeit }],
       note: `Hoch um <strong class="mono">${p.energie.peakZeit} Uhr</strong> — ${esc(p.energie.peakText)} ` +
             `Tagestief: <span class="mono">${p.energie.tiefZeit} Uhr</span> (eingeplant, kein Grund zur Sorge).`,
+    });
+
+    $('#sofaToggle')?.addEventListener('click', () => {
+      const on = sofaToggle(day.date, p.slot);
+      decoKey = null; // Deko neu würfeln (Tee & Herzen statt Saison)
+      rerender();
+      window.scrollTo({ top: viewEl.offsetTop - 90, behavior: SFMotion.reducedMotion() ? 'auto' : 'smooth' });
+      SFWidgets.toast(on
+        ? `Sofa-Modus für ${p.name} aktiviert. Decke, Tee, Schonung — der Kosmos hat übernommen. 💛`
+        : `Willkommen zurück im Normalbetrieb, ${p.name}! ✨`);
     });
   }
 
@@ -571,11 +656,11 @@
         <div class="battle-bars">
           <span class="battle-side left">
             <span class="battle-val">${row.a}${aWin ? ' <span class="battle-win">★</span>' : ''}</span>
-            <span class="battle-track"><i style="width:${row.a}%"></i></span>
+            <span class="battle-track"><i style="--w:${row.a}%"></i></span>
           </span>
           <span class="battle-vs">vs</span>
           <span class="battle-side right">
-            <span class="battle-track"><i style="width:${row.b}%"></i></span>
+            <span class="battle-track"><i style="--w:${row.b}%"></i></span>
             <span class="battle-val">${bWin ? '<span class="battle-win">★</span> ' : ''}${row.b}</span>
           </span>
         </div>
@@ -589,14 +674,61 @@
       universum: 'Das Universum 🌌',
     }[c.recht.wer];
 
-    viewEl.innerHTML = `
+    // Sofa-Modus aktiv? Dann bekommt die andere Hälfte einen Pflegeauftrag.
+    const pflegeCards = ['a', 'b']
+      .filter((slot) => day.pflege?.[slot] && sofaOn(day.date, slot))
+      .map((slot) => {
+        const sick = day[slot];
+        const carer = day[slot === 'a' ? 'b' : 'a'];
+        return `
+      <section class="card card--sofa s12 pflege-card">
+        <div class="eyebrow">Sofa-Modus · Pflegeauftrag an ${esc(carer.name)}</div>
+        <p class="lead">🛋️ ${esc(day.pflege[slot].auftrag)}</p>
+        <button type="button" class="link-btn" data-goto="${slot}">→ Zur Sofa-Edition von ${esc(sick.name)}</button>
+      </section>`;
+      }).join('');
+
+    // Beziehungs-Puls: Kuschel-Index treibt den Herzschlag, Streit macht ihn nervös.
+    const bpm = Math.round(62 + c.kuschelIndex * 0.38 + c.streitRisiko * 0.12);
+    const pulsLabel = bpm >= 100 ? 'Herzklopfen deluxe'
+      : bpm >= 90 ? 'frisch verknallt'
+        : bpm >= 80 ? 'stabil verliebt'
+          : 'tiefenentspannt';
+
+    // Teaser zählt, welche Lose heute noch unter der Folie liegen.
+    let rubbel = {};
+    try { rubbel = JSON.parse(localStorage.getItem('sflunk_rubbel') || '{}'); } catch { rubbel = {}; }
+    const offen = ['a', 'b'].filter((s) => !rubbel[`${day.date}-${s}`]).length;
+    const teaserTitle = offen === 2 ? 'Zwei Rubbellose warten auf euch.'
+      : (offen === 1 ? 'Ein Rubbellos liegt noch unter der Folie.' : 'Alle Lose gerubbelt — jetzt wird eingelöst!');
+
+    const sb = day.sternbild;
+    const sternbildCard = sb ? `
+      <section class="card card--c s12 sternbild-card">
+        <div class="sternbild-grid">
+          <div class="sternbild-stage" id="sternbildStage"></div>
+          <div>
+            <div class="eyebrow">Sternwarte · Euer Sternbild des Tages</div>
+            <h3 class="sternbild-name">${esc(sb.name)}</h3>
+            <p>${esc(sb.text)}</p>
+            <dl class="sternbild-facts">
+              <div><dt>Helligkeit</dt><dd class="mono">${de(Number(sb.helligkeit).toFixed(1))} mag</dd></div>
+              <div><dt>Entfernung</dt><dd class="mono">${sb.entfernung} Lj</dd></div>
+              <div><dt>Sichtbar ab</dt><dd class="mono">${esc(sb.sichtbarAb)} Uhr</dd></div>
+            </dl>
+            <p class="sternbild-legend"><span style="color:${COLOR.paSoft}">●</span> ${esc(pa.name)} &nbsp; <span style="color:${COLOR.pbSoft}">●</span> ${esc(pb.name)} — euer Doppelstern, amtlich eingetragen.</p>
+          </div>
+        </div>
+      </section>` : '';
+
+    viewEl.innerHTML = `${pflegeCards}
       <section class="card card--c s12">
         <div class="orbit-card">
           <div class="orbit-stage" id="orbitStage"></div>
           <div>
             <div class="eyebrow">Paar-Protokoll · Orbit-Duett</div>
             ${badge}
-            <div class="orbit-value">${de(k.pct)}<small> %</small></div>
+            <div class="orbit-value${k.special === 'chaos' ? ' is-chaos' : ''}${k.special === 'jackpot' ? ' is-jackpot' : ''}"><span data-count="${k.pct}" data-dec="1">${de(k.pct)}</span><small> %</small></div>
             <div class="orbit-label">Kompatibilität heute</div>
             <p class="orbit-text">${esc(k.text)}</p>
           </div>
@@ -606,12 +738,16 @@
       <section class="card card--c s6">
         <div class="eyebrow">Klimadaten · Beziehung</div>
         <div class="meter">
-          <div class="meter-head"><span>🫂 Kuschel-Index</span><span class="val">${c.kuschelIndex} %</span></div>
-          <div class="meter-track"><div class="meter-fill" style="--fill:${COLOR.goldSoft};width:${c.kuschelIndex}%"></div></div>
+          <div class="meter-head"><span>🫂 Kuschel-Index</span><span class="val"><span data-count="${c.kuschelIndex}">${c.kuschelIndex}</span> %</span></div>
+          <div class="meter-track"><div class="meter-fill" style="--fill:${COLOR.goldSoft};--w:${c.kuschelIndex}%"></div></div>
         </div>
         <div class="meter">
-          <div class="meter-head"><span>🌩️ Streit-Risiko</span><span class="val">${c.streitRisiko} %</span></div>
-          <div class="meter-track"><div class="meter-fill" style="--fill:${COLOR.bad};width:${c.streitRisiko}%"></div></div>
+          <div class="meter-head"><span>🌩️ Streit-Risiko</span><span class="val"><span data-count="${c.streitRisiko}">${c.streitRisiko}</span> %</span></div>
+          <div class="meter-track"><div class="meter-fill" style="--fill:${COLOR.bad};--w:${c.streitRisiko}%"></div></div>
+        </div>
+        <div class="puls">
+          <div class="meter-head"><span><span class="puls-heart" style="--beat:${(60 / bpm).toFixed(3)}s">❤</span> Beziehungs-Puls</span><span class="val"><span data-count="${bpm}">${bpm}</span> bpm · ${pulsLabel}</span></div>
+          <div id="pulsLine" class="puls-line"></div>
         </div>
         <p class="meter-note">Wahrscheinlichster Auslöser laut Sternen: <strong>${esc(c.streitThema)}</strong>.</p>
       </section>
@@ -619,9 +755,11 @@
       <section class="card card--c s6">
         <div class="eyebrow">Schiedsspruch des Tages</div>
         <h3>Wer hat heute recht?</h3>
-        <p class="lead" style="font-size:1.3rem;margin:6px 0 8px">${rechtName}</p>
+        <p class="lead recht-name">${rechtName}</p>
         <p>${esc(c.recht.text)}</p>
       </section>
+
+      ${sternbildCard}
 
       <section class="card card--c s12">
         <div class="eyebrow">Synchronlauf · Beide Kurven</div>
@@ -677,7 +815,18 @@
         <p class="prophecy">${esc(c.prophezeiung)}</p>
       </section>
 
-      <section class="card card--c s12" id="oracleCard"></section>`;
+      ${day.spiel ? `
+      <section class="card card--g s12 teaser-card">
+        <div class="eyebrow">Spielwiese · heute geöffnet</div>
+        <div class="teaser">
+          <div class="teaser-icons" aria-hidden="true"><span>🎟️</span><span>🎡</span><span>👉</span><span>💌</span><span>🔮</span></div>
+          <div>
+            <h3>${teaserTitle}</h3>
+            <p>Plus Entscheidungsrad, Fingerzeig-Duell, Liebes-Funkspruch und das Orakel. Täglich frisch, garantiert unnütz, nachweislich lustig.</p>
+          </div>
+          <button type="button" class="btn btn--violet" data-goto="spiel">Zur Spielwiese ›</button>
+        </div>
+      </section>` : '<section class="card card--c s12" id="oracleCard"></section>'}`;
 
     state.orbitCtrl = SFCharts.orbit($('#orbitStage'), {
       pct: k.pct,
@@ -696,10 +845,109 @@
       note: `Gemeinsames Energiefenster: <strong class="mono">${c.fenster.von}–${c.fenster.bis} Uhr</strong> — ${esc(c.fenster.text)}`,
     });
 
+    SFMotion.pulse($('#pulsLine'), { bpm, color: COLOR.pbSoft });
+
+    if (sb) {
+      SFCharts.constellation($('#sternbildStage'), {
+        form: sb.form,
+        seed: sb.seed,
+        aColor: COLOR.paSoft,
+        bColor: COLOR.pbSoft,
+        aLabel: pa.name.slice(0, 1).toUpperCase(),
+        bLabel: pb.name.slice(0, 1).toUpperCase(),
+      });
+    }
+
+    if ($('#oracleCard')) SFWidgets.mountOracle($('#oracleCard'), state.meta.serverToday);
+  }
+
+  // ------------------------------------------------------------- Spielwiese
+
+  function renderSpiel(day) {
+    const pa = day.a;
+    const pb = day.b;
+    const sp = day.spiel;
+
+    if (!sp) {
+      // Uralter eingefrorener Tag ohne Spielwiese (sollte api.php nachrüsten)
+      viewEl.innerHTML = '<section class="card card--g s12" id="oracleCard"></section>';
+      SFWidgets.mountOracle($('#oracleCard'), state.meta.serverToday);
+      return;
+    }
+
+    viewEl.innerHTML = `
+      <section class="card card--g s12 spiel-head">
+        <div class="eyebrow">Spielwiese · ${esc(day.displayDate)}</div>
+        <h3>Heute im Programm: Rubbeln, Drehen, Zeigen, Funken.</h3>
+        <p>Alles für zwei, alles auf einem Gerät. Der Sternenflunk übernimmt keine Haftung für Lachfalten.</p>
+      </section>
+
+      <section class="card card--a s6" id="rubbelA"></section>
+      <section class="card card--b s6" id="rubbelB"></section>
+
+      <section class="card card--g s12" id="werCard"></section>
+
+      <section class="card card--g s6" id="wheelCard"></section>
+      <section class="card card--g s6" id="funkCard"></section>
+
+      <section class="card card--c s12" id="oracleCard"></section>`;
+
+    const burst = () => SFWidgets.confettiBurst($('#confetti'), [COLOR.goldSoft, COLOR.paSoft, COLOR.pbSoft, '#efeafd']);
+
+    SFGames.scratch($('#rubbelA'), {
+      id: `${day.date}-a`, from: pb.name, to: pa.name, text: sp.gutschein.a, accent: COLOR.paSoft, onReveal: burst,
+    });
+    SFGames.scratch($('#rubbelB'), {
+      id: `${day.date}-b`, from: pa.name, to: pb.name, text: sp.gutschein.b, accent: COLOR.pbSoft, onReveal: burst,
+    });
+    SFGames.werVonUns($('#werCard'), {
+      id: day.date, fragen: sp.werVonUns.fragen, fazit: sp.werVonUns.fazit, a: pa.name, b: pb.name,
+    });
+    SFGames.wheel($('#wheelCard'), { a: pa.name, b: pb.name, aColor: COLOR.paSoft, bColor: COLOR.pbSoft });
+    SFGames.funk($('#funkCard'), {
+      a: pa.name, b: pb.name, funkA: sp.funk.a, funkB: sp.funk.b, aColor: COLOR.paSoft, bColor: COLOR.pbSoft,
+    });
     SFWidgets.mountOracle($('#oracleCard'), state.meta.serverToday);
   }
 
+  // Sprung-Links innerhalb der Ansichten (Teaser, Pflegeauftrag)
+  function wireGoto() {
+    viewEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-goto]');
+      if (!btn) return;
+      state.view = btn.dataset.goto;
+      localStorage.setItem('sflunk_view', state.view);
+      writeHash();
+      rerender();
+      window.scrollTo({ top: Math.max(0, $('#tabs').offsetTop - 12), behavior: SFMotion.reducedMotion() ? 'auto' : 'smooth' });
+    });
+  }
+
   // ----------------------------------------------------------- Extras
+
+  /**
+   * Sendestart-Vorspann: einmal pro Tag und Gerät beim ersten Öffnen von
+   * „heute“ — oder auf Wunsch über den Footer-Knopf.
+   */
+  async function maybeIntro(day, force = false) {
+    if (!force) {
+      if (day.date !== state.meta.serverToday) return;
+      try { if (localStorage.getItem('sflunk_intro') === day.date) return; } catch { return; }
+    }
+    try { localStorage.setItem('sflunk_intro', day.date); } catch { /* egal */ }
+    const sp = Array.isArray(day.special) && day.special[0] ? `${day.special[0].emoji} ${day.special[0].title}` : '';
+    const k = day.couple.kompatibilitaet;
+    viewEl.innerHTML = '';
+    await SFMotion.intro({
+      a: { name: day.a.name, glyph: glyphText(day.a.glyph) },
+      b: { name: day.b.name, glyph: glyphText(day.b.glyph) },
+      pct: k.pct,
+      dateLabel: day.displayDate,
+      special: sp,
+      jackpot: k.special === 'jackpot',
+      chaos: k.special === 'chaos',
+    });
+  }
 
   function maybeConfetti(day) {
     const k = day.couple.kompatibilitaet;
@@ -768,11 +1016,22 @@
     } else {
       state.date = day.date;
       writeHash();
+      await maybeIntro(day);
       render(day);
     }
 
     if (state.booted) return;
     state.booted = true;
+
+    SFMotion.glare(viewEl);
+    wireGoto();
+    $('#replayIntro').addEventListener('click', async () => {
+      const current = state.cache.get(state.date);
+      if (!current) return;
+      window.scrollTo({ top: 0 });
+      await maybeIntro(current, true);
+      rerender();
+    });
 
     // Navigation
     $('#prevDay').addEventListener('click', () => shiftDay(-1));

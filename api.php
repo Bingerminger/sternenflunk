@@ -141,6 +141,7 @@ if ($date < $epoch) {
 $file      = DAYS_DIR . '/' . $date . '.json';
 $coupleKey = Couple::key($couple);
 $day       = null;
+$freeze    = false;
 
 if (is_file($file)) {
     $raw     = file_get_contents($file);
@@ -149,12 +150,23 @@ if (is_file($file)) {
         && ($decoded['date'] ?? null) === $date
         && ($decoded['coupleKey'] ?? null) === $coupleKey) {
         $day = $decoded;
+
+        // Nachrüsten: Tage aus der Zeit vor 2.0 bekommen die neuen Sektionen
+        // dazu. `+=` ergänzt nur fehlende Schlüssel — Eingefrorenes bleibt,
+        // wie es war (die neuen Sektionen haben ohnehin eigene Seeds).
+        if (array_diff_key(array_flip(HoroscopeGenerator::ADDON_KEYS), $day) !== []) {
+            $day   += HoroscopeGenerator::day($date, $couple);
+            $freeze = true;
+        }
     }
 }
 
 if ($day === null) {
-    $day = HoroscopeGenerator::day($date, $couple);
+    $day    = HoroscopeGenerator::day($date, $couple);
+    $freeze = true;
+}
 
+if ($freeze) {
     // Einfrieren — best effort: ohne Schreibrechte einfach weitersenden.
     if (is_dir(DAYS_DIR) || @mkdir(DAYS_DIR, 0775, true)) {
         $tmp = $file . '.tmp.' . getmypid();

@@ -1,7 +1,7 @@
 {
-  "name": "Sternenflunk — das geflunkerte Paar-Horoskop",
+  "name": "Sternenflunk — das tägliche Paar-Flunkoskop",
   "short_name": "Sternenflunk",
-  "description": "Täglich frisch geflunkert. Emotional treffsicher.",
+  "description": "Das tägliche Flunkoskop. Emotional treffsicher.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0b0820",

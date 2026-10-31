@@ -360,6 +360,17 @@ const SFReport = (() => {
     });
     ctrl.destroy();
     B.charts.orbit = await grab(3);
+
+    // 2.0: Sternbild des Tages (ältere Tage ohne Sektion → kein Bild)
+    if (day.sternbild) {
+      SFCharts.constellation(host, {
+        form: day.sternbild.form, seed: day.sternbild.seed,
+        aColor: PA_SOFT, bColor: PB_SOFT,
+        aLabel: day.a.name.slice(0, 1).toUpperCase(),
+        bLabel: day.b.name.slice(0, 1).toUpperCase(),
+      });
+      B.charts.sternbild = await grab(3);
+    }
   }
 
   // ------------------------------------------------------- Bausteine
@@ -752,6 +763,35 @@ const SFReport = (() => {
       return yy - y;
     }));
 
+    // Sternbild des Tages (2.0) — wird hinter dem Synchronlauf einsortiert,
+    // damit es die Lücke unten auf Seite 2 füllt statt den Chart zu verdrängen.
+    const sb = day.sternbild;
+    const sternbildCard = !(sb && B.charts.sternbild) ? null
+      : card(12, GOLD_SOFT, (B2, p, x, y, w) => {
+        const img = B2.charts.sternbild;
+        const imgW = Math.min(150, w * 0.3);
+        const imgH = (imgW * img.h) / img.w;
+        const tx = x + imgW + 16;
+        const tw = w - imgW - 16;
+        const textBlock = (pp, ty) => {
+          let yy = ty;
+          yy += eyebrow(B2, pp, tx, yy, tw, 'Sternwarte · Euer Sternbild des Tages', GOLD_SOFT) + 1;
+          yy += para(B2, pp, sb.name, tx, yy, tw, { font: 'TBI', size: 13, color: INK }) + 4;
+          yy += para(B2, pp, sb.text, tx, yy, tw, { font: 'H', size: 9, color: INK2, lh: 1.5 }) + 5;
+          yy += para(B2, pp,
+            `Helligkeit ${de(Number(sb.helligkeit).toFixed(1))} mag · Entfernung ${sb.entfernung} Lichtjahre · sichtbar ab ${sb.sichtbarAb} Uhr`,
+            tx, yy, tw, { font: 'H', size: 7.8, color: INK3, lh: 1.45 });
+          return yy - ty;
+        };
+        const th = textBlock(null, y);
+        const rowH = Math.max(th, imgH);
+        if (p) {
+          textBlock(p, y + Math.max(0, (rowH - th) / 2));
+          p.image(img.ref, x, y + (rowH - imgH) / 2, imgW, imgH);
+        }
+        return rowH;
+      });
+
     // Synchronlauf
     cards.push(card(12, GOLD_SOFT, (B2, p, x, y, w) => {
       let yy = y + eyebrow(B2, p, x, y, w, 'Synchronlauf · Beide Kurven', GOLD_SOFT) + 2;
@@ -765,6 +805,8 @@ const SFReport = (() => {
         x, yy, w, { font: 'H', size: 8.5, color: INK2, lh: 1.45 });
       return yy - y;
     }));
+
+    if (sternbildCard) cards.push(sternbildCard);
 
     // Duell des Tages
     const duell = c.battle.reduce((best, row) =>

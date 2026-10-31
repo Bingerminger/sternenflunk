@@ -1,5 +1,63 @@
 # Changelog
 
+## 2.0.0 — 2026-10-31
+
+Aus dem Horoskop wird das **Flunkoskop** — mit Vorspann, Bewegung und
+einer Spielwiese für zwei.
+
+- **Lizenzwechsel auf AGPL-3.0:** Ab 2.0 steht der Code unter der GNU
+  Affero General Public License v3.0 (vorher MIT). Wer eine veränderte
+  Fassung weitergibt oder als Web-App betreibt, muss den Quellcode offenlegen;
+  die App verlinkt dazu im Footer auf ihren Quellcode. Bis 1.3.0
+  veröffentlichte Versionen bleiben MIT.
+- **Flunkoskop:** Neuer Name für das, was der Sternenflunk schon immer
+  war. Titel, Claim, Footer, Onboarding, Manifest und Texte sprechen jetzt
+  vom Flunkoskop.
+- **Sendestart-Vorspann:** Beim ersten Öffnen des Tages fliegen eure
+  beiden Zeichen ins Bild, umkreisen sich, ein Sternen-Burst mit Schockwelle,
+  dann Namen, Datum, Anlass und die Tages-Kompatibilität zum Hochzählen.
+  Antippen überspringt, der Footer-Knopf spielt ihn erneut ab.
+- **Motion Graphics überall:** Karten schweben gestaffelt ein, Zahlen
+  zählen hoch, Balken füllen sich mit Lichtreflex, Energie-Kurven zeichnen
+  sich selbst, das Radar wächst aus der Mitte. Dazu driftende Nebel,
+  schwebende Marken-Glyphen, ein Lichtfleck, der der Maus über die Karten
+  folgt, und eine echte Mondphasen-Silhouette im Ticker.
+- **Orbit-Duett 2.0:** Kometenschweife, pulsierende Funkverbindung mit
+  wanderndem Signal, Puls-Ring im Baryzentrum. Am Jackpot-Tag wird die
+  Bahn zum Herz (mit aufsteigenden Herzchen und Gold-Schimmer), an
+  Chaos-Tagen taumelt sie und die Prozentzahl hat Empfangsstörungen.
+- **Beziehungs-Puls:** scrollendes EKG in den Klimadaten, Herzschlag aus
+  Kuschel-Index und Streit-Risiko.
+- **Sternbild des Tages:** Täglich ein neues Paar-Sternbild
+  („Die Kuschelnde Kaffeetasse“) aus 20 Formen und 34 Adjektiven, das sich
+  Stern für Stern selbst zeichnet — mit eurem Doppelstern und fingierten
+  Messdaten. Auch im PDF-Bericht.
+- **Neuer Tab „Spielwiese“:**
+  - **Kosmisches Rubbellos:** je ein Gutschein füreinander unter
+    Goldfolie, mit Finger oder Maus freirubbeln (57 Gutscheine).
+  - **Fingerzeig-Duell „Wer von euch?“:** drei Fragen täglich, 3-2-1-
+    Countdown, gleichzeitig zeigen, Einigkeit wird ausgewertet (78 Fragen).
+  - **Entscheidungsrad:** „Wer kocht heute?“ und 15 weitere Fragen (oder
+    eine eigene) — mit Zeiger-Ticken, Joker und Beide-Feld.
+  - **Liebes-Funkspruch:** Umschlag mit Siegel öffnen, der Brief tippt sich
+    selbst; per Teilen-Dialog oder Zwischenablage verschicken.
+  - Das **Liebesorakel** zieht von „Gemeinsam“ auf die Spielwiese um.
+- **Sofa-Modus:** Wer angeschlagen ist, tippt im eigenen Tab auf
+  „Heute angeschlagen?“ — und bekommt die Sofa-Edition: Genesungs-
+  Prognose, Sternen-Apotheke, Tee des Tages, Kuschelbedarf, Tee-Dosis und
+  einen Pflegeauftrag für die andere Hälfte (auch oben in „Gemeinsam“).
+  Die Deko wechselt auf Tee und Herzen. Gilt pro Tag und Gerät.
+- **Mobil:** Ticker als wischbares Karussell, vier Tabs passen aufs
+  Telefon, und das Orbit-Duett ist auf schmalen Bildschirmen wieder sichtbar
+  (die Bühne war dort bisher 0 px breit).
+- **Technik:** Neue Sektionen `sternbild`, `spiel`, `pflege` mit eigenen
+  Rng-Seeds — die bestehende Zeitlinie bleibt bitgenau gleich
+  (Regressionsanker 88,1 % hält). Bereits eingefrorene Tage bekommen die
+  neuen Sektionen beim nächsten Abruf nachgerüstet, ohne dass sich
+  Eingefrorenes ändert. Neue Dateien `assets/js/motion.js` und
+  `assets/js/games.js`, weiterhin ohne Bibliotheken. Alles respektiert
+  `prefers-reduced-motion`.
+
 ## 1.3.0 — 2026-07-17
 
 Der Sternenflunk bekommt ein Amtsblatt: den Tagesbericht als PDF.
