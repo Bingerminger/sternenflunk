@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.2.1 — 2026-10-31
+
+Wer mag, kann der Flunk-Redaktion jetzt einen Kaffee spendieren.
+
+- **Unterstützen — wie im Energietracker:** In der Fußzeile steht neben
+  „Quellcode (AGPL-3.0)" ein freiwilliger Link „☕ Kaffee für die
+  Flunk-Redaktion" (Buy Me a Coffee, öffnet einen neuen Tab ohne
+  Herkunftsangabe). Dazu ein Abzeichen und der Abschnitt „Unterstützen" in
+  der README sowie der Sponsor-Knopf auf der GitHub-Seite
+  (`.github/FUNDING.yml`). Das Flunkoskop flunkert für alle gleich gut —
+  nichts in der App hängt daran.
+
 ## 2.2.0 — 2026-10-31
 
 Zum Ausprobieren, ohne etwas zu installieren: die Live-Demo.
