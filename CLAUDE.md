@@ -127,6 +127,12 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
   `/git-commit-prod` (Commit + Push + PROD-Deploy mit Backup). Die beiden
   Skills liegen lokal in `.claude/skills/` (gitignored, enthalten die
   privaten Synology-Ziele).
+- **Releases:** Jede Version hat einen annotierten Tag `vX.Y.Z` und ein
+  GitHub-Release mit dem CHANGELOG-Abschnitt als Text (seit 2.1.0; ältere
+  Versionen am 31.10.2026 rückwirkend getaggt). `/git-commit-prod` legt beides
+  nach grünem PROD-Deploy selbst an (idempotent, nur bei Versionssprung).
+  Voraussetzung: Abschnitt `## X.Y.Z — JJJJ-MM-TT` in `CHANGELOG.md` —
+  dessen Datum ist das maßgebliche Release-Datum.
 - Historie: Sternenflunk hat am 14.07.2026 das alte „Sternenfunk"
   (Hendrik/Nora-Spezialversion) abgelöst — Synology-Ordner
   `horoskop`/`horoskop-acc` damals entfernt. Am 15.07.2026 wurde auch der
