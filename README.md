@@ -10,6 +10,8 @@ Täglich frisch geflunkert. Emotional treffsicher.
 **▶ [Live-Demo ausprobieren](https://bingerminger.github.io/sternenflunk/)** — mit dem Beispielpaar
 Kim & Alex, täglich neu geflunkert, ganz ohne Installation.
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-ffdd00.svg)](https://buymeacoffee.com/bingerminger)
+
 Sternenflunk ist eine selbstgehostete Mini-Web-App für genau ein Paar: Beim
 ersten Start tragt ihr zwei Namen und zwei Sternzeichen ein — ab dann sendet
 der Flunk jeden Tag ein Flunkoskop pro Person plus ein gemeinsames
@@ -220,6 +222,16 @@ sich. Kein Tracking, keine Cloud, keine Cookies außer dem Tab-Gedächtnis.
 **PIN vergessen?**
 `data/couple.json` auf dem Server löschen → das Onboarding kommt wieder,
 inklusive frischer PIN. Die Sterne verzeihen alles, sie vergessen ja auch alles.
+
+## Unterstützen
+
+Sternenflunk ist ein privates Spaßprojekt: keine Firma dahinter, keine Werbung,
+kein Tracking — die Sterne arbeiten hier ohnehin ehrenamtlich. Wenn euch der
+Flunk ein Grinsen beschert und ihr etwas zurückgeben möchtet, könnt ihr der
+Flunk-Redaktion [einen Kaffee spendieren](https://buymeacoffee.com/bingerminger) —
+ganz freiwillig, das Flunkoskop flunkert für alle gleich gut. GitHub-Sterne (die
+einzigen, die hier wirklich befragt werden), Fehlermeldungen und Weitersagen
+helfen genauso.
 
 ## Lizenz & Ernsthaftigkeit
 
