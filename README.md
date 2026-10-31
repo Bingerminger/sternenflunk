@@ -4,15 +4,19 @@
 
 # ✶ Sternenflunk
 
-**Das tägliche Paar-Horoskop für euch zwei. Ja, genau euch.**
+**Das tägliche Paar-Flunkoskop für euch zwei. Ja, genau euch.**
 Täglich frisch geflunkert. Emotional treffsicher.
 
 Sternenflunk ist eine selbstgehostete Mini-Web-App für genau ein Paar: Beim
 ersten Start tragt ihr zwei Namen und zwei Sternzeichen ein — ab dann sendet
-der Flunk jeden Tag ein Horoskop pro Person plus ein gemeinsames
-Paar-Protokoll. Mit Orbit-Duett, Energie-Kurven, Liebesorakel, echten
-Astronomie-Daten und einem Archiv aller vergangenen Tage. Die Zukunft bleibt
-versiegelt. 🔮
+der Flunk jeden Tag ein Flunkoskop pro Person plus ein gemeinsames
+Paar-Protokoll. Mit Kino-Vorspann, Orbit-Duett, Sternbild des Tages,
+Energie-Kurven, einer Spielwiese voller Rubbellose und Fingerzeig-Duelle,
+echten Astronomie-Daten und einem Archiv aller vergangenen Tage. Die Zukunft
+bleibt versiegelt. 🔮
+
+> **Flunkoskop, das:** Ein Horoskop, das zugibt, dass es flunkert — und
+> gerade deshalb stimmt.
 
 > *„Endlich sagt mir jemand täglich, wann ich recht habe."*
 > — Person Eins ★★★★★
@@ -40,7 +44,22 @@ wie Schicksal anfühlt.
   der beim Onboarding festgelegten Admin-PIN (4–8 Ziffern). Eine leichte
   Barriere, damit Mitbewohner-Hände nichts verstellen. Achtung: Neue
   Stammdaten = neue Zeitlinie, alles wird rückwirkend neu geflunkert.
-- **Drei Ansichten:** Person Eins · Gemeinsam (Paar-Protokoll) · Person Zwei
+- **Vier Ansichten:** Person Eins · Gemeinsam (Paar-Protokoll) · Person Zwei
+  · Spielwiese
+- **Sendestart-Vorspann:** Einmal am Tag fliegen eure Zeichen ins Bild,
+  umkreisen sich, Sternen-Burst — dann Namen, Datum und die Kompatibilität
+  des Tages. Danach schweben die Karten ein, Zahlen zählen hoch, Kurven
+  zeichnen sich selbst. Motion Graphics komplett in Canvas, SVG und CSS.
+- **Sternbild des Tages:** täglich ein neues Paar-Sternbild — „Die
+  Kuschelnde Kaffeetasse“, „Der Verschlafene Papierflieger“ —, das sich Stern
+  für Stern zeichnet, inklusive eures Doppelsterns.
+- **Spielwiese:** zwei Rubbellose mit Gutscheinen füreinander,
+  Fingerzeig-Duell „Wer von euch?“ mit 3-2-1-Countdown, Entscheidungsrad
+  („Wer kocht heute?“), Liebes-Funkspruch im Umschlag zum Verschicken und
+  das Liebesorakel. Alles auf einem Gerät, alles für zwei.
+- **Sofa-Modus:** Wer angeschlagen ist, schaltet die Sofa-Edition ein —
+  Genesungs-Prognose, Sternen-Apotheke, Tee des Tages und ein Pflegeauftrag
+  für die andere Hälfte.
 - **Täglich neu, für immer reproduzierbar:** deterministischer Generator,
   geseedet aus Datum + Paar-Fingerabdruck. Ausgelieferte Tage werden als
   JSON eingefroren und ändern sich nie wieder.
@@ -51,8 +70,9 @@ wie Schicksal anfühlt.
   von „Dampf!" (Feuer + Wasser) bis „Synchronschwimmen ohne Publikum"
   (Wasser + Wasser).
 - **Orbit-Duett** (Signatur-Element): zwei Himmelskörper mit euren
-  Zeichen-Glyphen kreisen umeinander — Abstand und Tempo entsprechen der
-  Tages-Kompatibilität. An Jackpot-Tagen (≥ 96 %): Konfetti.
+  Zeichen-Glyphen und Kometenschweifen kreisen umeinander — Abstand und Tempo
+  entsprechen der Tages-Kompatibilität. An Jackpot-Tagen (≥ 96 %) wird die
+  Bahn zum Herz (plus Konfetti), an Chaos-Tagen taumelt sie.
 - **Charts, handgerollt in SVG:** Radar, Energie-Kurven mit gemeinsamem
   Energiefenster (Hover-Tooltip!), Battle-Duell, Meter. Keine Bibliotheken.
 - **Amtlicher Tagesbericht als PDF ⤓:** Ein Klick neben dem Zahnrad bannt
@@ -64,7 +84,7 @@ wie Schicksal anfühlt.
 - **Echte Astronomie, ehrlich gemischt:** Mondphase, Sonnenauf-/-untergang
   (Standort konfigurierbar), Tierkreis-Saison mit Heimspiel-Logik,
   Merkur-Retrograde-Banner. Die Deutung ist geflunkert, die Daten nicht.
-- **Liebesorakel:** 3 Ja/Nein-Fragen pro Tag. Antworten von „Definitiv."
+- **Liebesorakel (auf der Spielwiese):** 3 Ja/Nein-Fragen pro Tag. Antworten von „Definitiv."
   bis „Die Antwort liegt im Kühlschrank. Ernsthaft, schau nach." — und auf
   bestimmte Fragewörter reagiert es … anders. (Tipp: Pizza.)
 - **Specials & Eastereggs:** Flunk-Meilensteine (Tag 100, 365 …),
@@ -75,7 +95,7 @@ wie Schicksal anfühlt.
 - **Saison- & Feiertags-Deko:** Der Nachthimmel färbt sich dezent mit der
   Jahreszeit des angezeigten Tages; zu Anlässen schneit, funkelt oder
   flattert es (respektiert `prefers-reduced-motion`).
-- **Über 1000 Textbausteine:** liebevoll frotzelnd, unverschämt präzise
+- **Über 1400 Textbausteine:** liebevoll frotzelnd, unverschämt präzise
   (87,3 %) und garantiert wiederholungsarm.
 - **Keine Datenbank, kein Build, kein Framework:** PHP + Vanilla JS +
   zwei JSON-Dateien. Läuft auf jedem Hoster mit PHP — auch auf dem NAS im Flur.
@@ -86,7 +106,7 @@ wie Schicksal anfühlt.
 |---|---|
 | ![Onboarding](docs/screenshots/onboarding.png) | ![Paar-Ansicht](docs/screenshots/paar.png) |
 
-| Personen-Horoskop | Admin mit PIN | Mobil |
+| Personen-Flunkoskop | Admin mit PIN | Mobil |
 |---|---|---|
 | ![Personen-Ansicht](docs/screenshots/person.png) | ![Admin-Modal](docs/screenshots/admin.png) | ![Mobile](docs/screenshots/mobile.png) |
 
@@ -107,15 +127,15 @@ Ausführliche Anleitung (Webserver, Synology, Rechte, Troubleshooting):
 | Aufruf | Antwort |
 |---|---|
 | `api.php?action=meta` | Grenzen, Stammdaten, Zeichen-Katalog (`configured: false` vor dem Onboarding) |
-| `api.php?action=day` | Horoskop von heute (Server-Zeit) |
-| `api.php?action=day&date=2026-07-15` | Horoskop dieses Tages — nur Vergangenheit/heute |
+| `api.php?action=day` | Flunkoskop von heute (Server-Zeit) |
+| `api.php?action=day&date=2026-07-15` | Flunkoskop dieses Tages — nur Vergangenheit/heute |
 | `api.php?action=setup` (POST) | Stammdaten speichern: `{"a":{"name":"Kim","sign":"loewe"},"b":{"name":"Alex","sign":"fische"},"pin":"2411"}` — bei Änderungen ist `pin` die bestehende PIN, optional `newPin` zum Wechseln |
 
 Regeln: kein Setup → `409 setup_required`, falsche PIN → `403 wrong_pin`,
 Zukunft → `403 future_locked`, vor der Einrichtung → `404 before_epoch`,
 kaputtes Datum → `422 bad_date`. Die PIN wird nur gehasht gespeichert
 (`password_hash`) und ist bewusst nicht Teil des coupleKey — ein PIN-Wechsel
-lässt alle Horoskope in Ruhe.
+lässt alle Flunkoskope in Ruhe.
 Ohne Schreibrechte auf `data/` läuft die Auslieferung trotzdem — der
 Generator ist deterministisch, Persistenz ist nur Einfrieren.
 
@@ -140,8 +160,8 @@ tools/deploy-prod.sh        Deploy → Synology PROD (mit Backup)
 
 ## Die Flunk-Physik (Determinismus)
 
-Jedes Horoskop ist eine reine Funktion aus **Datum + coupleKey** (Hash aus
-Namen + Zeichen). Gleicher Tag, gleiches Paar ⇒ exakt dasselbe Horoskop, für
+Jedes Flunkoskop ist eine reine Funktion aus **Datum + coupleKey** (Hash aus
+Namen + Zeichen). Gleicher Tag, gleiches Paar ⇒ exakt dasselbe Flunkoskop, für
 immer — ganz ohne Datenbank. Einmal ausgelieferte Tage werden zusätzlich in
 `data/days/` eingefroren. Ändert ihr die Stammdaten, ändert sich der
 coupleKey: alte Einfrierungen werden verworfen und die gesamte Zeitlinie neu
@@ -158,7 +178,7 @@ Nein. Es ist bessere.
 Der Aszendent wurde in einer frühen Version berücksichtigt und hat sich
 unmöglich benommen. Er sitzt jetzt draußen.
 
-**Kann ich dem Horoskop vertrauen?**
+**Kann ich dem Flunkoskop vertrauen?**
 Zu 87,3 %. Der Wert wurde nach demselben Verfahren ermittelt wie alle anderen.
 
 **Was passiert mit unseren Daten?**
@@ -171,10 +191,16 @@ inklusive frischer PIN. Die Sterne verzeihen alles, sie vergessen ja auch alles.
 
 ## Lizenz & Ernsthaftigkeit
 
-**Der Code** steht unter der [MIT-Lizenz](LICENSE) — nimm ihn, forke ihn,
-flunk selbst. Kurzfassung: mach damit, was du willst, lass nur den
-Copyright-Hinweis mitreisen. Und falls der Flunk behauptet, heute sei ein
-Jackpot-Tag: dafür haftet niemand — das steht sogar in Großbuchstaben drin.
+**Der Code** steht seit Version 2.0 unter der
+[GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0),
+Copyright © 2026 Bingerminger. Nimm ihn, forke ihn, flunk selbst — aber
+was du daraus machst, bleibt genauso offen: Wer eine veränderte Fassung
+weitergibt **oder als Web-App für andere betreibt**, muss den eigenen
+Quellcode unter derselben Lizenz zugänglich machen. Deshalb verlinkt die App
+im Footer auf ihren Quellcode. Versionen bis 1.3.0 wurden unter der
+MIT-Lizenz veröffentlicht und bleiben für alle, die sie schon haben, MIT.
+Und falls der Flunk behauptet, heute sei ein Jackpot-Tag: dafür haftet
+niemand — auch das steht in der Lizenz, sogar in Großbuchstaben.
 
 **Die Prognosen** laufen weiter unter der Flunk-Lizenz™ (unwiderruflich,
 galaxieweit, noch nie vor Gericht bestätigt): Privates Spaßprojekt. Keine

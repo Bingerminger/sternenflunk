@@ -5,7 +5,9 @@ Hinweise für Claude Code (oder andere AI-Agents) zur Arbeit mit diesem Reposito
 ## Project Overview
 
 **Sternenflunk** ist die generalisierte Schwester von „Sternenfunk": ein
-tägliches Paar-Horoskop für **ein beliebiges Paar**. Beim Onboarding werden
+tägliches Paar-**Flunkoskop** (seit 2.0 der offizielle Begriff in allen
+sichtbaren Texten — „Horoskop“ nur noch, wo echte Horoskope gemeint sind)
+für **ein beliebiges Paar**. Beim Onboarding werden
 zwei Namen + zwei Sternzeichen erfasst (jede Konstellation: m/w, w/w, m/m,
 gleiches Zeichen doppelt — alles gleichwertig). Humorvoll, liebevoll
 frotzelnd, leicht frivol, Fake-Präzision als Humor-Werkzeug.
@@ -55,9 +57,28 @@ frotzelnd, leicht frivol, Fake-Präzision als Humor-Werkzeug.
   (+ `SAME_SIGN`-Texte bei Zeichengleichheit).
 - Neue Pool-Einträge in `Content.php` sind jederzeit ok (Sektionen haben
   eigene Rngs; bereits eingefrorene Tage bleiben unberührt).
+- **2.0-Sektionen** `sternbild`, `spiel` (Gutscheine, Wer-von-uns, Funk),
+  `pflege` (Sofa-Modus) haben eigene Seeds (`|sternbild|`, `|gutschein|`,
+  `|wervonuns|`, `|funk-a|`, `|pflege-a|` …). Neue Top-Level-Sektionen in
+  `HoroscopeGenerator::ADDON_KEYS` eintragen: api.php rüstet sie in
+  eingefrorenen Alt-Tagen per `$day +=` nach (nur fehlende Schlüssel,
+  Eingefrorenes bleibt unverändert) und friert neu ein.
+- **Sternbild-Formen** gibt es doppelt: Artikel/Nomen in
+  `HoroscopeGenerator::STERNBILD_FORMEN`, Geometrie (100er-Raster) in
+  `SHAPES` in `assets/js/charts.js` — immer beide Seiten pflegen.
 - Charts sind handgerollte SVGs (`assets/js/charts.js`). Personen-Akzente
   fix: Person A `#2596ac`, Person B `#c74468`, Gold `#b37e27`
-  (Chart-validiert fürs Dark-Band).
+  (Chart-validiert fürs Dark-Band). Spielwiese-Akzent: Violett `#a58bf0`.
+- **Motion (`assets/js/motion.js`):** Sendestart-Vorspann (Canvas, einmal pro
+  Tag/Gerät, `sflunk_intro`), Karten-Reveal per IntersectionObserver —
+  Animationen hängen per CSS an `.reveal-ready .card.is-in`. Chart-Animationen
+  NUR über CSS-Klassen (`sf-draw`, `sf-grow`, `cst-line` …), nie über
+  SVG-Attribute: `report.js` rastert dieselben SVGs fürs PDF, dort greift
+  kein CSS ⇒ Charts erscheinen dort vollständig. Alles respektiert
+  `prefers-reduced-motion`.
+- **Spielwiese (`assets/js/games.js`):** Spielstände nur im localStorage
+  (`sflunk_rubbel`, `sflunk_wer`, `sflunk_sofa`, `sflunk_oracle`), keine
+  Server-Writes.
 - Cache-Busting: Asset-Links in `index.html` tragen `?v=<VERSION>` — bei
   Asset-Änderungen Version in `config.php`, `VERSION` und `index.html` anheben.
 - ♈–♓ rendern browserabhängig als Emoji-Kachel oder Textglyphe — die App

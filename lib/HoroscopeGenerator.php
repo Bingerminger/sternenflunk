@@ -36,6 +36,136 @@ final class HoroscopeGenerator
             'b'                => self::person($date, $key, $b, $a),
             'couple'           => self::couple($date, $key, $a, $b),
             'special'          => self::specials($date, $key, $couple),
+            'sternbild'        => self::sternbild($date, $key, $a, $b),
+            'spiel'            => self::spiel($date, $key, $a, $b),
+            'pflege'           => [
+                'a' => self::pflege($date, $key, $a, $b),
+                'b' => self::pflege($date, $key, $b, $a),
+            ],
+        ];
+    }
+
+    /**
+     * Sektionen ab 2.0. Ältere eingefrorene Tage kennen sie noch nicht —
+     * api.php rüstet fehlende Schlüssel nach (eigene Seeds ⇒ Bestehendes
+     * bleibt bitgenau unangetastet).
+     */
+    public const ADDON_KEYS = ['sternbild', 'spiel', 'pflege'];
+
+    // ------------------------------------------------- 2.0: Sternbild des Tages
+
+    /**
+     * Form-Schlüssel ⇒ [Artikel, Nomen]. Die Geometrie (Sterne + Linien)
+     * liegt in assets/js/charts.js (SFCharts.constellation) unter demselben
+     * Schlüssel — neue Formen bitte immer auf beiden Seiten ergänzen.
+     */
+    private const STERNBILD_FORMEN = [
+        'herz'          => ['Das', 'Herz'],
+        'tasse'         => ['Die', 'Kaffeetasse'],
+        'katze'         => ['Die', 'Katze'],
+        'rakete'        => ['Die', 'Rakete'],
+        'sofa'          => ['Das', 'Sofa'],
+        'pizza'         => ['Das', 'Pizzastück'],
+        'schluessel'    => ['Der', 'Schlüssel'],
+        'krone'         => ['Die', 'Krone'],
+        'fisch'         => ['Der', 'Fisch'],
+        'haus'          => ['Das', 'Häuschen'],
+        'ballon'        => ['Der', 'Heißluftballon'],
+        'teekanne'      => ['Die', 'Teekanne'],
+        'schirm'        => ['Der', 'Regenschirm'],
+        'socke'         => ['Die', 'Socke'],
+        'pfeil'         => ['Der', 'Amorpfeil'],
+        'eis'           => ['Die', 'Eistüte'],
+        'papierflieger' => ['Der', 'Papierflieger'],
+        'anker'         => ['Der', 'Anker'],
+        'kerze'         => ['Die', 'Kerze'],
+        'unendlich'     => ['Die', 'Endlosschleife'],
+    ];
+
+    private static function sternbild(string $date, string $key, array $a, array $b): array
+    {
+        $rng  = new Rng($date . '|sternbild|' . $key);
+        $sun  = Astro::sun($date);
+        $form = (string) $rng->pick(array_keys(self::STERNBILD_FORMEN));
+        [$artikel, $nomen] = self::STERNBILD_FORMEN[$form];
+
+        return [
+            'form'       => $form,
+            'name'       => $artikel . ' ' . $rng->pick(Content::STERNBILD_ADJEKTIVE) . ' ' . $nomen,
+            'text'       => self::fill($rng->pick(Content::STERNBILD_TEXTE), $rng, $sun, ['{A}' => $a['name'], '{B}' => $b['name']]),
+            'helligkeit' => round($rng->float(1.2, 6.4), 1),   // scheinbare Helligkeit in mag
+            'entfernung' => $rng->int(12, 980),                // Lichtjahre, frei erfunden
+            'sichtbarAb' => $sun['set'],
+            'seed'       => $rng->int(1, 999_999),             // Zitter-Seed fürs Frontend
+        ];
+    }
+
+    // ------------------------------------------------------ 2.0: Spielwiese
+
+    /**
+     * Rubbellose (je eins FÜR a und FÜR b), drei „Wer von euch?“-Fragen samt
+     * Fazit je Einigkeits-Stand und drei Funksprüche pro Richtung.
+     * Jede Teil-Sektion hat einen eigenen Seed.
+     */
+    private static function spiel(string $date, string $key, array $a, array $b): array
+    {
+        $names = ['{A}' => $a['name'], '{B}' => $b['name']];
+
+        $rngG       = new Rng($date . '|gutschein|' . $key);
+        [$gA, $gB]  = $rngG->sample(Content::GUTSCHEINE, 2);
+
+        $rngW   = new Rng($date . '|wervonuns|' . $key);
+        $fragen = $rngW->sample(Content::WER_VON_UNS, 3);
+        $fazit  = [];
+        foreach ([0, 1, 2, 3] as $n) {
+            $fazit[] = strtr($rngW->pick(Content::WER_FAZIT[$n]), $names);
+        }
+
+        return [
+            'gutschein' => ['a' => $gA, 'b' => $gB],      // 'a' = Gutschein FÜR a (von b)
+            'werVonUns' => ['fragen' => $fragen, 'fazit' => $fazit],
+            'funk'      => [                              // 'a' = Funksprüche VON a an b
+                'a' => self::funk($date, $key, $a, $b),
+                'b' => self::funk($date, $key, $b, $a),
+            ],
+        ];
+    }
+
+    /** @return list<string> */
+    private static function funk(string $date, string $key, array $from, array $to): array
+    {
+        $rng = new Rng($date . '|funk-' . $from['slot'] . '|' . $key);
+        $out = [];
+        foreach ($rng->sample(Content::FUNK_KERN, 3) as $kern) {
+            $out[] = strtr(
+                $rng->pick(Content::FUNK_ANREDE) . ' ' . $kern . ' ' . $rng->pick(Content::FUNK_GRUSS),
+                ['{PARTNER}' => $to['name'], '{NAME}' => $from['name']]
+            );
+        }
+
+        return $out;
+    }
+
+    // ------------------------------------------------------- 2.0: Sofa-Modus
+
+    /**
+     * Genesungs-Edition für Tage, an denen jemand angeschlagen ist. Wird
+     * immer mitgeneriert; ob sie erscheint, entscheidet das Paar im Frontend.
+     */
+    private static function pflege(string $date, string $key, array $p, array $partner): array
+    {
+        $rng = new Rng($date . '|pflege-' . $p['slot'] . '|' . $key);
+        $sun = Astro::sun($date);
+        $ctx = ['{NAME}' => $p['name'], '{PARTNER}' => $partner['name']];
+
+        return [
+            'prognose'      => self::fill($rng->pick(Content::PFLEGE_PROGNOSE), $rng, $sun, $ctx),
+            'rezept'        => $rng->sample(Content::PFLEGE_REZEPT, 3),
+            'auftrag'       => self::fill($rng->pick(Content::PFLEGE_AUFTRAG), $rng, $sun, $ctx),
+            'tee'           => $rng->pick(Content::PFLEGE_TEE),
+            'kuschelBedarf' => round($rng->float(92.0, 99.9), 1),
+            'tassen'        => $rng->int(3, 7),
+            'sofaG'         => round($rng->float(1.8, 4.2), 1),
         ];
     }
 
