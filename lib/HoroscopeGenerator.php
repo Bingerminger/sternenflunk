@@ -7,6 +7,7 @@ require_once __DIR__ . '/Astro.php';
 require_once __DIR__ . '/Zodiac.php';
 require_once __DIR__ . '/Couple.php';
 require_once __DIR__ . '/Content.php';
+require_once __DIR__ . '/Crossword.php';
 
 /**
  * Baut das komplette Tages-Horoskop — deterministisch geseedet aus Datum
@@ -42,6 +43,7 @@ final class HoroscopeGenerator
                 'a' => self::pflege($date, $key, $a, $b),
                 'b' => self::pflege($date, $key, $b, $a),
             ],
+            'raetsel'          => self::raetsel($date, $key, $a, $b),
         ];
     }
 
@@ -50,7 +52,76 @@ final class HoroscopeGenerator
      * api.php rüstet fehlende Schlüssel nach (eigene Seeds ⇒ Bestehendes
      * bleibt bitgenau unangetastet).
      */
-    public const ADDON_KEYS = ['sternbild', 'spiel', 'pflege'];
+    public const ADDON_KEYS = ['sternbild', 'spiel', 'pflege', 'raetsel'];
+
+    // ------------------------------------------------- 2.1: Sonntagsrätsel
+
+    /** @var array<string, array|null> Wochen-Cache: ein Rätsel gilt für sieben Tage */
+    private static array $raetselCache = [];
+
+    /**
+     * Kreuzworträtsel der Woche: erscheint sonntags, gilt bis Samstag.
+     * Seed = Sonntag der Woche + coupleKey ⇒ alle sieben Tage identisch.
+     * Bis zu zwei persönliche Begriffe (Sternzeichen/Vornamen) mischen mit.
+     */
+    private static function raetsel(string $date, string $key, array $a, array $b): ?array
+    {
+        $ts     = strtotime($date . ' 12:00:00');
+        $sunday = date('Y-m-d', strtotime('-' . date('w', $ts) . ' days', $ts));
+        $cacheKey = $sunday . '|' . $key;
+        if (array_key_exists($cacheKey, self::$raetselCache)) {
+            return self::$raetselCache[$cacheKey];
+        }
+
+        $rng = new Rng($sunday . '|raetsel|' . $key);
+
+        $pool = [];
+        foreach (Content::RAETSEL_WOERTER as [$answer, $clue]) {
+            $n = Crossword::normalize($answer);
+            if (strlen($n) >= 3 && strlen($n) <= 9) {
+                $pool[] = [$n, $clue];
+            }
+        }
+
+        // Persönliches: Sternzeichen beider (einmal bei Zeichengleichheit) und
+        // Vornamen — Letztere nur, wenn sie ohne Sonderzeichen ins Gitter passen.
+        $personal = [];
+        foreach ([$a, $b] as $p) {
+            $n = Crossword::normalize($p['sign']);
+            if (strlen($n) >= 3 && strlen($n) <= 10 && !in_array($n, array_column($personal, 0), true)) {
+                $personal[] = [$n, str_replace('{NAME}', $p['name'], $rng->pick(Content::RAETSEL_FRAGE_ZEICHEN))];
+            }
+        }
+        foreach ([[$a, $b], [$b, $a]] as [$p, $other]) {
+            $n = Crossword::normalize($p['name']);
+            if (preg_match('/^[A-Za-zÄÖÜäöüß]+$/u', $p['name']) === 1 && strlen($n) >= 3 && strlen($n) <= 9
+                && !in_array($n, array_column($personal, 0), true)) {
+                $personal[] = [$n, str_replace('{PARTNER}', $other['name'], $rng->pick(Content::RAETSEL_FRAGE_NAME))];
+            }
+        }
+        $personal = $rng->sample($personal, 2);
+
+        $solutions = [];
+        foreach ($rng->sample(Content::RAETSEL_LOESUNGEN, count(Content::RAETSEL_LOESUNGEN)) as [$word, $reward]) {
+            $n = Crossword::normalize($word);
+            if (strlen($n) >= 5 && strlen($n) <= 9) {
+                $solutions[$n] = $reward;
+            }
+        }
+
+        $puzzle = Crossword::build($rng, $pool, $personal, array_keys($solutions));
+        if ($puzzle !== null) {
+            $names = ['{A}' => $a['name'], '{B}' => $b['name']];
+            $puzzle += [
+                'woche'      => $sunday,
+                'wocheLabel' => Astro::displayDate($sunday),
+                'belohnung'  => strtr($solutions[$puzzle['loesung']['wort']], $names),
+                'lob'        => strtr($rng->pick(Content::RAETSEL_LOB), $names),
+            ];
+        }
+
+        return self::$raetselCache[$cacheKey] = $puzzle;
+    }
 
     // ------------------------------------------------- 2.0: Sternbild des Tages
 

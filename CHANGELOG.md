@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.1.0 — 2026-10-31
+
+Sonntags wird gerätselt.
+
+- **Sonntagsrätsel:** Jeden Sonntag erscheint auf der Spielwiese ein
+  kleines Kreuzworträtsel mit Lösungswort (8–10 Begriffe, höchstens 11×11
+  Felder), lösbar bis Samstag. Bis zu zwei Begriffe drehen sich um euch
+  (Sternzeichen, Vornamen). Ist das Lösungswort geknackt, gibt es Konfetti
+  und eine Belohnung.
+- **Bedienung fürs Handy:** Feld antippen, nochmal tippen wechselt die
+  Richtung. Eine eigene QWERTZ-Bildschirmtastatur verdeckt das Gitter nicht;
+  am Rechner geht die echte Tastatur samt Pfeiltasten, Leertaste und Enter.
+  Dazu „Prüfen“ (falsche Buchstaben wackeln rot), „Buchstabe aufdecken“ und
+  die Fragenliste zum Antippen. Der Fortschritt bleibt pro Woche auf dem
+  Gerät gespeichert.
+- **Hinweise:** Sonntags blinkt die Spielwiese, solange das Rätsel ungelöst
+  ist, und der Teaser in „Gemeinsam“ kündigt es an.
+- **Technik:** Neuer Generator `lib/Crossword.php`, deterministisch aus
+  Sonntag + coupleKey (alle Tage einer Woche zeigen dasselbe Rätsel); neue
+  Sektion `raetsel`, wird in eingefrorenen Tagen nachgerüstet. Begriffe,
+  Lösungswörter und Belohnungen in `Content.php`.
+
 ## 2.0.0 — 2026-10-31
 
 Aus dem Horoskop wird das **Flunkoskop** — mit Vorspann, Bewegung und

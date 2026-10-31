@@ -550,5 +550,292 @@ const SFGames = (() => {
     });
   }
 
-  return { scratch, wheel, werVonUns, funk };
+  // ------------------------------------------------------ Sonntagsrätsel (2.1)
+
+  /**
+   * Kleines Kreuzworträtsel mit Lösungswort. Feld antippen = auswählen,
+   * nochmal antippen = Richtung wechseln. Eigene Bildschirmtastatur (die
+   * System-Tastatur würde das halbe Gitter verdecken), am Rechner geht
+   * auch die echte Tastatur. Fortschritt pro Woche im localStorage.
+   */
+  function crossword(container, { puzzle, a, b, onSolved }) {
+    const P = puzzle;
+    const key = P.woche;
+    const all = load('sflunk_xw', {});
+    const st = all[key] || { letters: {}, hints: 0, start: null, solved: null, revealed: {} };
+    const persist = () => { all[key] = st; save('sflunk_xw', prune(all, 12)); };
+
+    const at = (r, c) => P.grid[r]?.[c] ?? '#';
+    const isCell = (r, c) => at(r, c) !== '#';
+    const id = (r, c) => `${r},${c}`;
+    const wordsAt = (r, c) => P.words.filter((w) => (w.dir === 'a'
+      ? w.r === r && c >= w.c && c < w.c + w.len
+      : w.c === c && r >= w.r && r < w.r + w.len));
+    const cellsOf = (w) => Array.from({ length: w.len }, (_, i) => (w.dir === 'a' ? [w.r, w.c + i] : [w.r + i, w.c]));
+    const solIndex = new Map(P.loesung.felder.map(([r, c], i) => [id(r, c), i]));
+    const starts = new Map();
+    P.words.forEach((w) => starts.set(id(w.r, w.c), w.nr));
+
+    let cur = { r: P.words[0].r, c: P.words[0].c, dir: P.words[0].dir };
+    let picked = false; // erst nach einer echten Auswahl wechselt Doppeltippen die Richtung
+    const touch = window.matchMedia('(pointer: coarse)').matches;
+
+    // ---- Markup
+    const cellsHtml = [];
+    for (let r = 0; r < P.rows; r++) {
+      for (let c = 0; c < P.cols; c++) {
+        if (!isCell(r, c)) { cellsHtml.push('<span class="xw-void"></span>'); continue; }
+        const nr = starts.get(id(r, c));
+        const si = solIndex.get(id(r, c));
+        cellsHtml.push(`<button type="button" class="xw-cell${si !== undefined ? ' is-sol' : ''}" data-r="${r}" data-c="${c}"
+          style="--d:${(r + c) * 35}ms" aria-label="Feld ${r + 1}/${c + 1}">
+          ${nr ? `<span class="xw-num">${nr}</span>` : ''}${si !== undefined ? `<span class="xw-si">${si + 1}</span>` : ''}
+          <span class="xw-letter"></span></button>`);
+      }
+    }
+    const clueList = (dir) => P.words.filter((w) => w.dir === dir).map((w) => `
+      <li data-w="${P.words.indexOf(w)}"><button type="button"><b>${w.nr}</b> ${esc(w.frage)} <span class="xw-len">(${w.len})</span></button></li>`).join('');
+    const KEYS = ['QWERTZUIOP', 'ASDFGHJKL', 'YXCVBNM'];
+
+    container.innerHTML = `
+      <div class="eyebrow">Sonntagsrätsel · ${esc(P.wocheLabel)}</div>
+      <div class="xw${st.solved ? ' is-solved' : ''}${touch ? ' is-touch' : ''}">
+        <div class="xw-main">
+          <div class="xw-clue">
+            <button type="button" class="xw-nav" data-step="-1" aria-label="Vorige Frage">‹</button>
+            <div class="xw-clue-text" aria-live="polite"></div>
+            <button type="button" class="xw-nav" data-step="1" aria-label="Nächste Frage">›</button>
+          </div>
+          <div class="xw-board" tabindex="0" role="grid" aria-label="Kreuzworträtsel"
+               style="--cols:${P.cols};--rows:${P.rows}">${cellsHtml.join('')}</div>
+          <div class="xw-solution" aria-label="Lösungswort">
+            <span class="xw-sol-label">Lösungswort</span>
+            <span class="xw-sol-boxes">${P.loesung.felder.map((_, i) => `<span class="xw-sol-box" style="--i:${i}"><small>${i + 1}</small><b></b></span>`).join('')}</span>
+          </div>
+          ${touch ? `<div class="xw-kbd">${KEYS.map((row, i) => `<div class="xw-krow">${row.split('').map((k) => `<button type="button" data-k="${k}">${k}</button>`).join('')}${i === 2 ? '<button type="button" data-k="DEL" class="xw-kwide" aria-label="Löschen">⌫</button>' : ''}</div>`).join('')}</div>` : '<p class="xw-hint">Feld anklicken und lostippen · Pfeiltasten wandern · Leertaste wechselt die Richtung</p>'}
+          <div class="xw-tools">
+            <button type="button" class="btn xw-check">✓ Prüfen</button>
+            <button type="button" class="btn xw-reveal">💡 Buchstabe aufdecken</button>
+            <button type="button" class="btn xw-flip">⇄ Richtung</button>
+          </div>
+          <p class="xw-note">Umlaute wie im Zeitschriften-Rätsel: Ä = AE, Ö = OE, Ü = UE, ß = SS.</p>
+        </div>
+        <div class="xw-side">
+          <div class="xw-col"><div class="xw-col-head">Waagerecht →</div><ol>${clueList('a')}</ol></div>
+          <div class="xw-col"><div class="xw-col-head">Senkrecht ↓</div><ol>${clueList('d')}</ol></div>
+        </div>
+        <div class="xw-done" ${st.solved ? '' : 'hidden'}></div>
+      </div>`;
+
+    const root = container.querySelector('.xw');
+    const board = container.querySelector('.xw-board');
+    const clueText = container.querySelector('.xw-clue-text');
+    const solBoxes = [...container.querySelectorAll('.xw-sol-box b')];
+    const done = container.querySelector('.xw-done');
+    const cellEl = new Map([...board.querySelectorAll('.xw-cell')].map((n) => [id(+n.dataset.r, +n.dataset.c), n]));
+
+    function currentWord() {
+      const ws = wordsAt(cur.r, cur.c);
+      return ws.find((w) => w.dir === cur.dir) || ws[0];
+    }
+
+    function paint() {
+      const w = currentWord();
+      if (w) cur.dir = w.dir;
+      const inWord = new Set(w ? cellsOf(w).map(([r, c]) => id(r, c)) : []);
+      for (const [k, n] of cellEl) {
+        n.querySelector('.xw-letter').textContent = st.letters[k] || '';
+        n.classList.toggle('is-word', inWord.has(k));
+        n.classList.toggle('is-cur', k === id(cur.r, cur.c) && !st.solved);
+        n.classList.toggle('is-revealed', Boolean(st.revealed[k]));
+      }
+      P.loesung.felder.forEach(([r, c], i) => { solBoxes[i].textContent = st.letters[id(r, c)] || ''; });
+      if (w) {
+        clueText.innerHTML = `<span class="xw-clue-nr">${w.nr} ${w.dir === 'a' ? '→' : '↓'}</span> ${esc(w.frage)} <span class="xw-len">(${w.len})</span>`;
+      }
+      container.querySelectorAll('.xw-side li').forEach((li) => {
+        const lw = P.words[+li.dataset.w];
+        li.classList.toggle('is-cur', lw === w);
+        li.classList.toggle('is-filled', cellsOf(lw).every(([r, c]) => st.letters[id(r, c)]));
+      });
+    }
+
+    function select(r, c, dir) {
+      cur = { r, c, dir: dir || cur.dir };
+      paint();
+    }
+
+    function move(step) {
+      const w = currentWord();
+      if (!w) return;
+      const cells = cellsOf(w);
+      const i = cells.findIndex(([r, c]) => r === cur.r && c === cur.c);
+      const j = Math.max(0, Math.min(cells.length - 1, i + step));
+      [cur.r, cur.c] = cells[j];
+    }
+
+    function isComplete() {
+      for (let r = 0; r < P.rows; r++) {
+        for (let c = 0; c < P.cols; c++) {
+          if (isCell(r, c) && st.letters[id(r, c)] !== at(r, c)) return false;
+        }
+      }
+      return true;
+    }
+
+    function celebrate(first) {
+      root.classList.add('is-solved');
+      const mins = st.start ? Math.max(1, Math.round((st.solved - st.start) / 60000)) : null;
+      done.hidden = false;
+      done.innerHTML = `
+        <div class="xw-done-word">${P.loesung.wort.split('').map((ch, i) => `<span style="--i:${i}">${ch}</span>`).join('')}</div>
+        <p class="xw-done-lob">${esc(P.lob)}</p>
+        <p class="xw-done-reward">🎁 ${esc(P.belohnung)}</p>
+        <p class="xw-done-meta mono">${mins ? `gelöst in ${mins} Min.` : 'gelöst'} · ${st.hints === 0 ? 'ohne Tipp — Respekt!' : `${st.hints} ${st.hints === 1 ? 'Tipp' : 'Tipps'}`}</p>`;
+      if (first) {
+        buzz([20, 60, 20, 60, 40]);
+        if (onSolved) onSolved();
+        done.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'center' });
+      }
+    }
+
+    function afterInput() {
+      persist();
+      paint();
+      if (!st.solved && isComplete()) {
+        st.solved = Date.now();
+        persist();
+        paint();
+        celebrate(true);
+      }
+    }
+
+    function typeLetter(L) {
+      if (st.solved) return;
+      if (!st.start) st.start = Date.now();
+      for (const ch of L) { // Ä → AE belegt zwei Felder
+        st.letters[id(cur.r, cur.c)] = ch;
+        const n = cellEl.get(id(cur.r, cur.c));
+        n.classList.remove('pop');
+        void n.offsetWidth;
+        n.classList.add('pop');
+        move(1);
+      }
+      afterInput();
+    }
+
+    function erase() {
+      if (st.solved) return;
+      const k = id(cur.r, cur.c);
+      if (st.letters[k]) {
+        delete st.letters[k];
+      } else {
+        move(-1);
+        delete st.letters[id(cur.r, cur.c)];
+      }
+      afterInput();
+    }
+
+    function stepClue(step) {
+      const w = currentWord();
+      const i = P.words.indexOf(w);
+      const nw = P.words[(i + step + P.words.length) % P.words.length];
+      const free = cellsOf(nw).find(([r, c]) => !st.letters[id(r, c)]) || [nw.r, nw.c];
+      select(free[0], free[1], nw.dir);
+    }
+
+    // ---- Ereignisse
+    board.addEventListener('click', (e) => {
+      const n = e.target.closest('.xw-cell');
+      if (!n) return;
+      const r = +n.dataset.r;
+      const c = +n.dataset.c;
+      if (picked && r === cur.r && c === cur.c && wordsAt(r, c).length > 1) {
+        cur.dir = cur.dir === 'a' ? 'd' : 'a';
+        paint();
+      } else {
+        const ws = wordsAt(r, c);
+        select(r, c, ws.some((w) => w.dir === cur.dir) ? cur.dir : ws[0].dir);
+      }
+      picked = true;
+      if (!touch) board.focus({ preventScroll: true });
+    });
+
+    container.querySelector('.xw-kbd')?.addEventListener('click', (e) => {
+      const k = e.target.closest('[data-k]')?.dataset.k;
+      if (!k) return;
+      buzz(4);
+      if (k === 'DEL') erase(); else typeLetter(k);
+    });
+
+    board.addEventListener('keydown', (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const map = { 'Ä': 'AE', 'Ö': 'OE', 'Ü': 'UE', 'ß': 'SS' };
+      const up = e.key.length === 1 ? e.key.toUpperCase() : e.key;
+      if (/^[A-Z]$/.test(up)) { typeLetter(up); e.preventDefault(); return; }
+      if (map[e.key.toUpperCase()] || map[e.key]) { typeLetter(map[e.key.toUpperCase()] || map[e.key]); e.preventDefault(); return; }
+      if (e.key === 'Backspace' || e.key === 'Delete') { erase(); e.preventDefault(); return; }
+      if (e.key === ' ' && wordsAt(cur.r, cur.c).length > 1) { cur.dir = cur.dir === 'a' ? 'd' : 'a'; paint(); e.preventDefault(); return; }
+      if (e.key === 'Enter' || e.key === 'Tab') { stepClue(e.shiftKey ? -1 : 1); e.preventDefault(); return; }
+      const arrows = { ArrowRight: [0, 1, 'a'], ArrowLeft: [0, -1, 'a'], ArrowDown: [1, 0, 'd'], ArrowUp: [-1, 0, 'd'] };
+      if (arrows[e.key]) {
+        const [dr, dc, dir] = arrows[e.key];
+        e.preventDefault();
+        if (wordsAt(cur.r, cur.c).some((w) => w.dir === dir) && cur.dir !== dir) { cur.dir = dir; paint(); return; }
+        let r = cur.r + dr;
+        let c = cur.c + dc;
+        while (r >= 0 && c >= 0 && r < P.rows && c < P.cols && !isCell(r, c)) { r += dr; c += dc; }
+        if (isCell(r, c)) select(r, c, wordsAt(r, c).some((w) => w.dir === dir) ? dir : undefined);
+      }
+    });
+
+    container.querySelectorAll('.xw-nav').forEach((btn) => btn.addEventListener('click', () => stepClue(+btn.dataset.step)));
+    container.querySelector('.xw-flip').addEventListener('click', () => {
+      if (wordsAt(cur.r, cur.c).length > 1) { cur.dir = cur.dir === 'a' ? 'd' : 'a'; paint(); }
+    });
+    container.querySelector('.xw-side').addEventListener('click', (e) => {
+      const li = e.target.closest('li[data-w]');
+      if (!li) return;
+      const w = P.words[+li.dataset.w];
+      select(w.r, w.c, w.dir);
+      board.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'nearest' });
+    });
+
+    container.querySelector('.xw-check').addEventListener('click', () => {
+      if (st.solved) return;
+      let wrong = 0;
+      let empty = 0;
+      for (const [k, n] of cellEl) {
+        const [r, c] = k.split(',').map(Number);
+        if (!st.letters[k]) { empty++; continue; }
+        if (st.letters[k] !== at(r, c)) {
+          wrong++;
+          n.classList.remove('is-wrong');
+          void n.offsetWidth;
+          n.classList.add('is-wrong');
+          setTimeout(() => n.classList.remove('is-wrong'), 1800);
+        }
+      }
+      SFWidgets.toast(wrong
+        ? `${wrong} ${wrong === 1 ? 'Buchstabe flunkert' : 'Buchstaben flunkern'} noch — rot markiert. 🔎`
+        : (empty ? `Bisher alles richtig! Noch ${empty} ${empty === 1 ? 'Feld' : 'Felder'} frei. ✨` : 'Alles richtig!'));
+    });
+
+    container.querySelector('.xw-reveal').addEventListener('click', () => {
+      if (st.solved) return;
+      const k = id(cur.r, cur.c);
+      if (st.letters[k] === at(cur.r, cur.c)) { move(1); paint(); return; }
+      st.hints++;
+      st.revealed[k] = true;
+      if (!st.start) st.start = Date.now();
+      st.letters[k] = at(cur.r, cur.c);
+      move(1);
+      afterInput();
+    });
+
+    paint();
+    if (st.solved) celebrate(false);
+  }
+
+  return { scratch, wheel, werVonUns, funk, crossword };
 })();

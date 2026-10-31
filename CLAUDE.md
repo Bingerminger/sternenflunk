@@ -77,8 +77,14 @@ frotzelnd, leicht frivol, Fake-Präzision als Humor-Werkzeug.
   kein CSS ⇒ Charts erscheinen dort vollständig. Alles respektiert
   `prefers-reduced-motion`.
 - **Spielwiese (`assets/js/games.js`):** Spielstände nur im localStorage
-  (`sflunk_rubbel`, `sflunk_wer`, `sflunk_sofa`, `sflunk_oracle`), keine
-  Server-Writes.
+  (`sflunk_rubbel`, `sflunk_wer`, `sflunk_sofa`, `sflunk_oracle`,
+  `sflunk_xw`), keine Server-Writes.
+- **Sonntagsrätsel (2.1, `lib/Crossword.php`):** freies Kreuzworträtsel,
+  Seed `"$sonntag|raetsel|$coupleKey"` ⇒ eine Woche (So–Sa) = ein Rätsel
+  (statischer Wochen-Cache im Generator). Regeln: Wörter berühren sich nur an
+  Kreuzungen, max. 11×11. Antworten in Kreuzworträtsel-Schreibweise
+  (`Crossword::normalize`: Ä→AE, Ö→OE, Ü→UE, ß→SS). Lösungswörter nur aus
+  häufigen Buchstaben, sonst findet der Generator keine Felder dafür.
 - Cache-Busting: Asset-Links in `index.html` tragen `?v=<VERSION>` — bei
   Asset-Änderungen Version in `config.php`, `VERSION` und `index.html` anheben.
 - ♈–♓ rendern browserabhängig als Emoji-Kachel oder Textglyphe — die App
