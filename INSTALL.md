@@ -71,6 +71,10 @@ chmod -R u+rwX sternenflunk/data
 - **Spielwiese (vierter Tab):** Rubbellose, Fingerzeig-Duell,
   Entscheidungsrad, Liebes-Funkspruch und Orakel. Spielstände merkt sich nur
   das jeweilige Gerät.
+- **Sonntagsrätsel:** erscheint jeden Sonntag auf der Spielwiese und bleibt
+  bis Samstag lösbar. Feld antippen, nochmal tippen wechselt die Richtung;
+  Umlaute wie im Zeitschriften-Rätsel als AE, OE, UE. Der Fortschritt bleibt
+  auf dem Gerät gespeichert — wer am Handy anfängt, macht am Handy weiter.
 - **Sofa-Modus:** Im Tab der angeschlagenen Person auf „Heute angeschlagen?“
   tippen. Gilt für diesen Tag auf diesem Gerät; erneutes Tippen schaltet ab.
 - **PIN vergessen / Werksreset:** `data/couple.json` löschen → beim nächsten
@@ -108,5 +112,6 @@ Backup an).
 - Keine Cookies, kein Tracking, keine externen Requests. Der Browser merkt
   sich lediglich lokal die zuletzt gewählte Ansicht, ob der Vorspann heute
   schon lief, den Orakel-Zähler, freigerubbelte Lose, den Stand des
-  Fingerzeig-Duells und den Sofa-Modus — alles pro Gerät, nichts davon
+  Fingerzeig-Duells, den Rätsel-Fortschritt und den Sofa-Modus — alles pro
+  Gerät, nichts davon
   verlässt den Browser.

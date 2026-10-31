@@ -53,6 +53,9 @@ wie Schicksal anfühlt.
 - **Sternbild des Tages:** täglich ein neues Paar-Sternbild — „Die
   Kuschelnde Kaffeetasse“, „Der Verschlafene Papierflieger“ —, das sich Stern
   für Stern zeichnet, inklusive eures Doppelsterns.
+- **Sonntagsrätsel:** jeden Sonntag ein kleines Kreuzworträtsel mit
+  Lösungswort — mit eigener Bildschirmtastatur fürs Handy, Prüfen-Knopf,
+  Buchstaben-Joker und ein, zwei Fragen, die nur ihr beantworten könnt.
 - **Spielwiese:** zwei Rubbellose mit Gutscheinen füreinander,
   Fingerzeig-Duell „Wer von euch?“ mit 3-2-1-Countdown, Entscheidungsrad
   („Wer kocht heute?“), Liebes-Funkspruch im Umschlag zum Verschicken und

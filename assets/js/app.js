@@ -480,6 +480,9 @@
     document.querySelectorAll('.tab').forEach((tab) => {
       tab.setAttribute('aria-selected', String(tab.dataset.view === state.view));
     });
+    // Sonntags blinkt die Spielwiese, solange das Rätsel ungelöst ist.
+    const day = state.cache.get(state.date);
+    $('#tab-spiel').classList.toggle('has-news', Boolean(day && isSunday(day.date) && !raetselSolved(day)));
   }
 
   // ------------------------------------------------------------ Personen-Ansicht
@@ -699,8 +702,10 @@
     let rubbel = {};
     try { rubbel = JSON.parse(localStorage.getItem('sflunk_rubbel') || '{}'); } catch { rubbel = {}; }
     const offen = ['a', 'b'].filter((s) => !rubbel[`${day.date}-${s}`]).length;
-    const teaserTitle = offen === 2 ? 'Zwei Rubbellose warten auf euch.'
-      : (offen === 1 ? 'Ein Rubbellos liegt noch unter der Folie.' : 'Alle Lose gerubbelt — jetzt wird eingelöst!');
+    const teaserTitle = (day.raetsel && isSunday(day.date) && !raetselSolved(day))
+      ? '🧩 Das Sonntagsrätsel ist da — mit Lösungswort!'
+      : (offen === 2 ? 'Zwei Rubbellose warten auf euch.'
+        : (offen === 1 ? 'Ein Rubbellos liegt noch unter der Folie.' : 'Alle Lose gerubbelt — jetzt wird eingelöst!'));
 
     const sb = day.sternbild;
     const sternbildCard = sb ? `
@@ -822,7 +827,7 @@
           <div class="teaser-icons" aria-hidden="true"><span>🎟️</span><span>🎡</span><span>👉</span><span>💌</span><span>🔮</span></div>
           <div>
             <h3>${teaserTitle}</h3>
-            <p>Plus Entscheidungsrad, Fingerzeig-Duell, Liebes-Funkspruch und das Orakel. Täglich frisch, garantiert unnütz, nachweislich lustig.</p>
+            <p>Plus ${day.raetsel ? 'Sonntagsrätsel, ' : ''}Entscheidungsrad, Fingerzeig-Duell, Liebes-Funkspruch und das Orakel. Täglich frisch, garantiert unnütz, nachweislich lustig.</p>
           </div>
           <button type="button" class="btn btn--violet" data-goto="spiel">Zur Spielwiese ›</button>
         </div>
@@ -878,12 +883,16 @@
     viewEl.innerHTML = `
       <section class="card card--g s12 spiel-head">
         <div class="eyebrow">Spielwiese · ${esc(day.displayDate)}</div>
-        <h3>Heute im Programm: Rubbeln, Drehen, Zeigen, Funken.</h3>
+        <h3>Heute im Programm: ${day.raetsel && isSunday(day.date) ? 'Rätseln, ' : ''}Rubbeln, Drehen, Zeigen, Funken.</h3>
         <p>Alles für zwei, alles auf einem Gerät. Der Sternenflunk übernimmt keine Haftung für Lachfalten.</p>
       </section>
 
+      ${day.raetsel && isSunday(day.date) ? '<section class="card card--c s12 xw-card" id="xwCard"></section>' : ''}
+
       <section class="card card--a s6" id="rubbelA"></section>
       <section class="card card--b s6" id="rubbelB"></section>
+
+      ${day.raetsel && !isSunday(day.date) ? '<section class="card card--c s12 xw-card" id="xwCard"></section>' : ''}
 
       <section class="card card--g s12" id="werCard"></section>
 
@@ -907,7 +916,31 @@
     SFGames.funk($('#funkCard'), {
       a: pa.name, b: pb.name, funkA: sp.funk.a, funkB: sp.funk.b, aColor: COLOR.paSoft, bColor: COLOR.pbSoft,
     });
+    if (day.raetsel) {
+      SFGames.crossword($('#xwCard'), {
+        puzzle: day.raetsel,
+        a: pa.name,
+        b: pb.name,
+        onSolved: () => {
+          SFWidgets.confettiBurst($('#confetti'), [COLOR.goldSoft, COLOR.paSoft, COLOR.pbSoft, COLOR.violet]);
+          renderTabs();
+        },
+      });
+    }
     SFWidgets.mountOracle($('#oracleCard'), state.meta.serverToday);
+  }
+
+  // ---------------------------------------------------------- Sonntagsrätsel
+
+  const isSunday = (date) => new Date(`${date}T12:00:00`).getDay() === 0;
+
+  function raetselSolved(day) {
+    if (!day?.raetsel) return true;
+    try {
+      return Boolean(JSON.parse(localStorage.getItem('sflunk_xw') || '{}')[day.raetsel.woche]?.solved);
+    } catch {
+      return false;
+    }
   }
 
   // Sprung-Links innerhalb der Ansichten (Teaser, Pflegeauftrag)
