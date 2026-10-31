@@ -7,7 +7,7 @@ declare(strict_types=1);
  */
 
 const APP_NAME    = 'Sternenflunk';
-const APP_VERSION = '2.2.0';
+const APP_VERSION = '2.2.1';
 
 // Zeitzone für "heute" und alle Tagesgrenzen.
 const APP_TIMEZONE = 'Europe/Berlin';
