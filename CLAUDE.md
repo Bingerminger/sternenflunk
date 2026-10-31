@@ -127,6 +127,13 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
   `/git-commit-prod` (Commit + Push + PROD-Deploy mit Backup). Die beiden
   Skills liegen lokal in `.claude/skills/` (gitignored, enthalten die
   privaten Synology-Ziele).
+- **Öffentliche Demo (seit 2.2.0):** https://bingerminger.github.io/sternenflunk/
+  — `tools/build-demo.sh` ruft die echte API (Beispielpaar Kim & Alex, 60 Tage
+  Archiv) ab und legt die Antworten unter `demo-api/` ab; `app.js` liest im
+  Demo-Modus (`data-demo` an `<html>`, `DEMO`/`apiUrl()`) daraus, Speichern
+  ist gesperrt. `.github/workflows/pages.yml` baut aus dem neuesten
+  Release-Tag (bei Release, täglich 03:17 UTC, von Hand). Neue API-Aktionen
+  oder Lesewege müssen auch im Demo-Abzug landen.
 - **Releases:** Jede Version hat einen annotierten Tag `vX.Y.Z` und ein
   GitHub-Release mit dem CHANGELOG-Abschnitt als Text (seit 2.1.0; ältere
   Versionen am 31.10.2026 rückwirkend getaggt). `/git-commit-prod` legt beides
