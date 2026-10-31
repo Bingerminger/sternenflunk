@@ -79,7 +79,7 @@ wie Schicksal anfühlt.
 - **Charts, handgerollt in SVG:** Radar, Energie-Kurven mit gemeinsamem
   Energiefenster (Hover-Tooltip!), Battle-Duell, Meter. Keine Bibliotheken.
 - **Amtlicher Tagesbericht als PDF ⤓:** Ein Klick neben dem Zahnrad bannt
-  den angezeigten Tag — auch jeden Archiv-Tag — auf fünf A4-Seiten im
+  den angezeigten Tag — auch jeden Archiv-Tag — auf mehreren A4-Seiten im
   App-Look: Cover mit kosmischer Großwetterlage, Paar-Protokoll, beide
   Personen, sämtliche Charts, Nachthimmel inklusive. Entsteht komplett im
   Browser (handgerollter PDF-Writer, natürlich ohne Bibliotheken) — zum
@@ -105,13 +105,30 @@ wie Schicksal anfühlt.
 
 ## Screenshots
 
-| Onboarding — „Wer flunkt hier?" | Paar-Protokoll mit Orbit-Duett |
-|---|---|
-| ![Onboarding](docs/screenshots/onboarding.png) | ![Paar-Ansicht](docs/screenshots/paar.png) |
+**Sendestart** — der tägliche Vorspann: Zeichen fliegen ein, umkreisen sich,
+Sternen-Burst, dann eure Namen und die Kompatibilität des Tages.
 
-| Personen-Flunkoskop | Admin mit PIN | Mobil |
-|---|---|---|
-| ![Personen-Ansicht](docs/screenshots/person.png) | ![Admin-Modal](docs/screenshots/admin.png) | ![Mobile](docs/screenshots/mobile.png) |
+![Vorspann](docs/screenshots/vorspann.png)
+
+| Paar-Protokoll mit Orbit-Duett & Sternbild | Spielwiese |
+|---|---|
+| ![Paar-Ansicht](docs/screenshots/paar.png) | ![Spielwiese](docs/screenshots/spielwiese.png) |
+
+| Sonntagsrätsel mit Lösungswort | Sofa-Modus |
+|---|---|
+| ![Sonntagsrätsel](docs/screenshots/raetsel.png) | ![Sofa-Modus](docs/screenshots/sofa.png) |
+
+| Personen-Flunkoskop | Mobil |
+|---|---|
+| ![Personen-Ansicht](docs/screenshots/person.png) | ![Mobile](docs/screenshots/mobile.png) |
+
+| Onboarding — „Wer flunkt hier?" | Admin mit PIN |
+|---|---|
+| ![Onboarding](docs/screenshots/onboarding.png) | ![Admin-Modal](docs/screenshots/admin.png) |
+
+*Alle Screenshots mit dem Referenzpaar Kim (Löwe) & Alex (Fische) vom 31.10.2026 (Halloween, daher die
+Fledermäuse) — der Generator ist deterministisch, dieselben Stammdaten ergeben am selben Tag exakt
+dieselben Bilder.*
 
 ## Schnellstart
 
@@ -154,7 +171,14 @@ lib/Couple.php              Stammdaten: laden, validieren, speichern, coupleKey
 lib/Astro.php               Mond, Sonne, Saison, Merkur, Numerologie
 lib/Content.php             Alle Textpools (die Flunk-Redaktion)
 lib/HoroscopeGenerator.php  Baut den Tag aus Pools + Astronomie + Paar
-assets/                     CSS (Cosmic Dark) + JS (Charts, Widgets, PDF-Writer, Tagesbericht, App)
+lib/Crossword.php           Sonntagsrätsel: freies Kreuzworträtsel mit Lösungswort
+assets/css/styles.css       Cosmic Dark, Motion (Reveal, Nebel, Rätsel-Papier)
+assets/js/app.js            State, Router, Rendering der vier Ansichten, Sofa-Modus
+assets/js/charts.js         Handgerollte SVGs: Radar, Energie, Orbit-Duett, Sternbild
+assets/js/motion.js         Sendestart-Vorspann, Karten-Reveal, Hochzähler, Mond, Puls
+assets/js/games.js          Spielwiese: Rubbellos, Rad, Wer-von-euch, Funkspruch, Rätsel
+assets/js/widgets.js        Sternenhimmel, Kalender, Orakel, Konfetti, Countdown
+assets/js/pdf.js, report.js PDF-Writer + Tagesbericht (komplett im Browser)
 data/couple.json            Stammdaten des Paares (entsteht beim Onboarding)
 data/days/                  Eingefrorene Tage (YYYY-MM-DD.json)
 tools/deploy-acc.sh         Deploy → Synology ACC (+ Smoke-Check)
