@@ -10,6 +10,7 @@ Täglich frisch geflunkert. Emotional treffsicher.
 **▶ [Projektseite](https://bingerminger.github.io/sternenflunk/)** · **▶ [Live-Demo ausprobieren](https://bingerminger.github.io/sternenflunk/demo/)** — mit dem Beispielpaar
 Kim & Alex, täglich neu geflunkert, ganz ohne Installation.
 
+[![Version](https://img.shields.io/github/v/release/Bingerminger/sternenflunk?label=version&color=blue)](CHANGELOG.md)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-ffdd00.svg)](https://buymeacoffee.com/bingerminger)
 
 Sternenflunk ist eine selbstgehostete Mini-Web-App für genau ein Paar: Beim
