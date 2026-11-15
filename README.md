@@ -7,7 +7,7 @@
 **Das tägliche Paar-Flunkoskop für euch zwei. Ja, genau euch.**
 Täglich frisch geflunkert. Emotional treffsicher.
 
-**▶ [Live-Demo ausprobieren](https://bingerminger.github.io/sternenflunk/)** — mit dem Beispielpaar
+**▶ [Projektseite](https://bingerminger.github.io/sternenflunk/)** · **▶ [Live-Demo ausprobieren](https://bingerminger.github.io/sternenflunk/demo/)** — mit dem Beispielpaar
 Kim & Alex, täglich neu geflunkert, ganz ohne Installation.
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-ffdd00.svg)](https://buymeacoffee.com/bingerminger)

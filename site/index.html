@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sternenflunk — das tägliche Paar-Flunkoskop für euch zwei</title>
+<meta name="description" content="Selbstgehostete Mini-Web-App für genau ein Paar: jeden Tag ein Flunkoskop pro Person und ein gemeinsames Paar-Protokoll — mit Kino-Vorspann, Sternbild des Tages, Spielwiese und Sonntagsrätsel. PHP + Vanilla JS, keine Datenbank.">
+<meta name="theme-color" content="#120d2b">
+<link rel="canonical" href="https://bingerminger.github.io/sternenflunk/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sternenflunk — das tägliche Paar-Flunkoskop">
+<meta property="og:description" content="Wir flunkern. Die Sterne nicken dazu. Täglich frisch geflunkert, emotional treffsicher — für euch zwei.">
+<meta property="og:url" content="https://bingerminger.github.io/sternenflunk/">
+<meta property="og:image" content="https://bingerminger.github.io/sternenflunk/assets/paar.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#0f0b24;--bg2:#160f33;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.1);--text:#f3eefc;--muted:#bfb5d8;--dim:#8f86ab;
+  --gold:#f5c76b;--pink:#ff8fb1;--violet:#a98bff;--r:16px;--max:1120px;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Segoe UI,Roboto,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;
+  background:radial-gradient(1100px 700px at 80% -10%,#3a1f6e 0%,transparent 60%),radial-gradient(900px 600px at -10% 40%,#2a1550 0%,transparent 55%),var(--bg)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;z-index:0;
+  background-image:radial-gradient(1.2px 1.2px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 33% 72%,#fff 50%,transparent 51%),
+  radial-gradient(1.4px 1.4px at 58% 26%,#ffe9b0 50%,transparent 51%),radial-gradient(1px 1px at 76% 64%,#fff 50%,transparent 51%),
+  radial-gradient(1.2px 1.2px at 88% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 22% 88%,#ffd6e4 50%,transparent 51%),
+  radial-gradient(1.3px 1.3px at 46% 48%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 93% 82%,#fff 50%,transparent 51%)}
+main,header,footer{position:relative;z-index:1}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);background:rgba(15,11,36,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);position:sticky;top:0;z-index:10}
+header.top .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.logo{font-weight:800;font-size:20px;color:var(--text);white-space:nowrap}
+.logo span{color:var(--gold)}
+nav.links{display:flex;gap:18px;margin-left:auto;font-size:15px}
+nav.links a{color:var(--muted)}
+nav.links a:hover{color:var(--text);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:700;font-size:16px;border:1px solid var(--line);color:var(--text);background:var(--card)}
+.btn:hover{text-decoration:none;border-color:rgba(255,255,255,.25)}
+.btn.primary{background:linear-gradient(135deg,var(--gold),#ffb36b);border-color:transparent;color:#2a1a05}
+.hero{padding:70px 0 30px}
+.hero .grid2{display:grid;gap:40px;grid-template-columns:1.05fr .95fr;align-items:center}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;color:var(--gold);background:rgba(245,199,107,.1);border:1px solid rgba(245,199,107,.3);padding:5px 11px;border-radius:999px;margin-bottom:18px}
+h1{font-size:clamp(36px,5.6vw,62px);line-height:1.05;letter-spacing:-1.2px;margin:0 0 16px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);margin:0 0 26px;max-width:56ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.phone{justify-self:center;max-width:340px;border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.6),0 0 80px rgba(169,139,255,.25)}
+.def{margin:46px 0 0;padding:18px 22px;border-left:3px solid var(--gold);background:var(--card);border-radius:0 12px 12px 0;color:var(--muted);max-width:70ch}
+.def b{color:var(--text)}
+section{padding:70px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(26px,3.4vw,38px);line-height:1.15;letter-spacing:-.5px;margin:0 0 12px}
+.sub{color:var(--muted);max-width:62ch;margin:0 0 34px}
+.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.card h3{margin:0 0 8px;font-size:19px}
+.card h3 span{margin-right:8px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.quotes{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+blockquote{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;font-size:17px}
+blockquote footer{margin-top:10px;color:var(--gold);font-size:14px}
+.shots{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.shots figure{margin:0}
+.shots img{border-radius:14px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.shots figcaption{color:var(--muted);font-size:15px;margin-top:10px}
+.shots figcaption b{color:var(--text)}
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.code{background:#0b0820;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:14px/1.6 "SF Mono",Menlo,Consolas,monospace;overflow-x:auto;white-space:pre;color:#e9e3fb}
+footer.foot{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--dim);font-size:15px}
+footer.foot .wrap{display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center}
+.coffee{display:inline-flex;align-items:center;gap:8px;background:#ffdd00;color:#1b1b1b;font-weight:700;border-radius:10px;padding:9px 14px;margin-left:auto}
+.coffee:hover{text-decoration:none}
+@media (max-width:860px){.hero .grid2{grid-template-columns:1fr}.phone{max-width:300px}}
+@media (max-width:760px){nav.links{display:none}header.top .btn{margin-left:auto}.coffee{margin-left:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><span>✶</span> Sternenflunk</a>
+    <nav class="links" aria-label="Seitennavigation">
+      <a href="#features">Was drin ist</a>
+      <a href="#bilder">Bilder</a>
+      <a href="#selbst">Selbst hosten</a>
+      <a href="https://bingerminger.github.io/">Weitere Projekte</a>
+    </nav>
+    <a class="btn primary" href="demo/">Demo ansehen</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="grid2">
+        <div>
+          <span class="eyebrow">Version {{VERSION}} · AGPL-3.0 · selbst gehostet</span>
+          <h1>Das tägliche <em>Paar-Flunkoskop</em> für euch zwei.</h1>
+          <p class="lead">Ja, genau euch. Zwei Namen, zwei Sternzeichen — ab dann flunkert Sternenflunk jeden Tag ein Flunkoskop pro Person und ein gemeinsames Paar-Protokoll. Mit Kino-Vorspann, Sternbild des Tages, Spielwiese und einem Archiv aller vergangenen Tage. Die Zukunft bleibt versiegelt.</p>
+          <div class="cta">
+            <a class="btn primary" href="demo/">Demo mit Kim &amp; Alex ansehen</a>
+            <a class="btn" href="https://github.com/Bingerminger/sternenflunk">Quellcode auf GitHub</a>
+          </div>
+        </div>
+        <img class="phone" src="assets/mobile.png" alt="Sternenflunk auf dem Handy: das Flunkoskop des Tages für eine Person">
+      </div>
+      <p class="def"><b>Flunkoskop, das:</b> Ein Horoskop, das zugibt, dass es flunkert — und gerade deshalb stimmt.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="quotes">
+        <blockquote>„Endlich sagt mir jemand täglich, wann ich recht habe.“<footer>— Person Eins ★★★★★</footer></blockquote>
+        <blockquote>„Ich wurde als ‚Vormittagsfels‘ klassifiziert und fühle mich gesehen.“<footer>— Person Zwei ★★★★★</footer></blockquote>
+        <blockquote>„Wissenschaftlich haltlos.“<footer>— Ein Satellit, der es wissen muss ★★★★★</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Keine Astrologie. Flunkologie.</h2>
+      <p class="sub">Klassische Horoskope werden für Millionen geschrieben — eures nur für euch. Sternenflunk kennt eure Namen, eure Zeichen, eure Element-Chemie und behauptet dann Dinge mit zwei Nachkommastellen.</p>
+      <div class="cards">
+        <div class="card"><h3><span>⏱</span>Onboarding in 30 Sekunden</h3><p>Zwei Namen, zwei Sternzeichen, eine Admin-PIN, fertig. Alle 144 Kombinationen, jede Konstellation — der Himmel ist da komplett entspannt.</p></div>
+        <div class="card"><h3><span>🎬</span>Sendestart-Vorspann</h3><p>Einmal am Tag fliegen eure Zeichen ins Bild, umkreisen sich, Sternen-Burst — dann Namen, Datum und die Kompatibilität des Tages.</p></div>
+        <div class="card"><h3><span>✶</span>Sternbild des Tages</h3><p>Täglich ein neues Paar-Sternbild — „Die Kuschelnde Kaffeetasse“ —, das sich Stern für Stern zeichnet, inklusive eures Doppelsterns.</p></div>
+        <div class="card"><h3><span>🎟</span>Spielwiese</h3><p>Rubbellose mit Gutscheinen füreinander, Fingerzeig-Duell „Wer von euch?“, Entscheidungsrad, Liebes-Funkspruch und das Liebesorakel.</p></div>
+        <div class="card"><h3><span>✏️</span>Sonntagsrätsel</h3><p>Jeden Sonntag ein kleines Kreuzworträtsel mit Lösungswort — und ein, zwei Fragen, die nur ihr beantworten könnt.</p></div>
+        <div class="card"><h3><span>🛋</span>Sofa-Modus</h3><p>Wer angeschlagen ist, schaltet die Sofa-Edition ein: Genesungs-Prognose, Sternen-Apotheke, Tee des Tages und ein Pflegeauftrag für die andere Hälfte.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bilder">
+    <div class="wrap">
+      <h2>So sieht euer Himmel aus</h2>
+      <p class="sub">Vier Ansichten: Person Eins, Gemeinsam, Person Zwei und die Spielwiese — auf dem Handy wie am großen Schirm.</p>
+      <div class="shots">
+        <figure><img src="assets/vorspann.png" loading="lazy" alt="Der Sendestart-Vorspann mit beiden Sternzeichen im Orbit"><figcaption><b>Vorspann</b> — einmal am Tag, mit Kompatibilität des Tages.</figcaption></figure>
+        <figure><img src="assets/paar.png" loading="lazy" alt="Das gemeinsame Paar-Protokoll mit Energie-Kurven"><figcaption><b>Gemeinsam</b> — das Paar-Protokoll mit Energie-Kurven.</figcaption></figure>
+        <figure><img src="assets/person.png" loading="lazy" alt="Das Flunkoskop einer Person"><figcaption><b>Person</b> — euer Flunkoskop, auf zwei Nachkommastellen genau.</figcaption></figure>
+        <figure><img src="assets/spielwiese.png" loading="lazy" alt="Die Spielwiese mit Rubbellosen und Duellen"><figcaption><b>Spielwiese</b> — Rubbellose, Duelle, Entscheidungsrad.</figcaption></figure>
+        <figure><img src="assets/raetsel.png" loading="lazy" alt="Das Sonntagsrätsel mit Bildschirmtastatur"><figcaption><b>Sonntagsrätsel</b> — mit eigener Bildschirmtastatur.</figcaption></figure>
+        <figure><img src="assets/sofa.png" loading="lazy" alt="Der Sofa-Modus mit Genesungs-Prognose"><figcaption><b>Sofa-Modus</b> — Sternen-Apotheke inklusive.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="selbst">
+    <div class="wrap">
+      <h2>Selbst hosten</h2>
+      <p class="sub">PHP und Vanilla JS, keine Datenbank, keine Konten, kein Tracking — läuft auf jedem Webspace mit PHP, auf dem NAS oder lokal. Die ausführliche Anleitung steht in <a href="https://github.com/Bingerminger/sternenflunk/blob/main/INSTALL.md">INSTALL.md</a>.</p>
+      <div class="steps">
+        <div class="code">git clone https://github.com/Bingerminger/sternenflunk.git
+cd sternenflunk
+php -S localhost:8000</div>
+        <div class="card"><h3><span>🔮</span>Erst schauen, dann hosten</h3><p>Die <a href="demo/">Demo</a> zeigt das Beispielpaar Kim &amp; Alex — täglich neu geflunkert, ganz ohne Installation.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>✶ Sternenflunk {{VERSION}} · <a href="https://github.com/Bingerminger/sternenflunk/blob/main/LICENSE">AGPL-3.0</a></span>
+    <a href="https://github.com/Bingerminger/sternenflunk">GitHub</a>
+    <a href="https://bingerminger.github.io/">Weitere Projekte</a>
+    <a class="coffee" href="https://buymeacoffee.com/bingerminger">☕ Buy Me a Coffee</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -127,7 +127,7 @@ php -S localhost:8018    # im Projektroot; http://localhost:8018
   `/git-commit-prod` (Commit + Push + PROD-Deploy mit Backup). Die beiden
   Skills liegen lokal in `.claude/skills/` (gitignored, enthalten die
   privaten Synology-Ziele).
-- **Öffentliche Demo (seit 2.2.0):** https://bingerminger.github.io/sternenflunk/
+- **Öffentliche Demo (seit 2.2.0):** https://bingerminger.github.io/sternenflunk/demo/
   — `tools/build-demo.sh` ruft die echte API (Beispielpaar Kim & Alex, 60 Tage
   Archiv) ab und legt die Antworten unter `demo-api/` ab; `app.js` liest im
   Demo-Modus (`data-demo` an `<html>`, `DEMO`/`apiUrl()`) daraus, Speichern

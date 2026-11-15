@@ -34,6 +34,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Projektseite (site/, aus main) an die Wurzel von /sternenflunk/, die Demo aus dem
+      # Release-Tag darunter nach demo/ — Muster aller Projekte unter bingerminger.github.io.
+      - name: Projektseite aus main sichern
+        run: bash tools/build-site.sh "$RUNNER_TEMP/seite"
+
       - name: Neuestes Release auschecken
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
@@ -57,12 +62,15 @@ jobs:
           coverage: none
 
       - name: Demo bauen
-        run: bash tools/build-demo.sh dist/demo
+        run: bash tools/build-demo.sh dist/site/demo
+
+      - name: Projektseite dazulegen
+        run: cp -R "$RUNNER_TEMP/seite/." dist/site/
 
       - name: Hochladen
         uses: actions/upload-pages-artifact@v5
         with:
-          path: dist/demo
+          path: dist/site
 
   deploy:
     name: Demo veröffentlichen
